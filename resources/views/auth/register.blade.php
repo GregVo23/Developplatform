@@ -9,51 +9,95 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+        <!-- TEST -->
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+                <form class="mt-4" method="POST" action="{{ route('register') }}">
+                    @csrf
+                      <div class="grid grid-cols-6 gap-6">
+                        <div class="col-span-6 sm:col-span-3">
+                          <label for="first_name" class="block text-sm font-medium text-gray-700">Prénom</label>
+                          <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+                        <div class="col-span-6 sm:col-span-3">
+                          <label for="last_name" class="block text-sm font-medium text-gray-700">Nom</label>
+                          <input type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                        <div class="col-span-6 sm:col-span-4">
+                          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                          <input type="text" name="email" id="email" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+                        <div class="col-span-6 sm:col-span-4">
+                          <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                          <input type="text" name="phone" id="phone" autocomplete="phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-3">
+                          <label for="country" class="block text-sm font-medium text-gray-700">Pays</label>
+                          <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option>Belgique</option>
+                            <option>France</option>
+                            <option>Luxembourg</option>
+                          </select>
+                        </div>
+
+                        <div class="col-span-6">
+                          <label for="street" class="block text-sm font-medium text-gray-700">Rue</label>
+                          <input type="text" name="street" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                          <label for="number" class="block text-sm font-medium text-gray-700">Numéro</label>
+                          <input type="number" name="number" id="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                          <label for="city" class="block text-sm font-medium text-gray-700">Ville</label>
+                          <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                          <label for="postalCode" class="block text-sm font-medium text-gray-700">Code postal</label>
+                          <input type="text" name="postalCode" id="postalCode" autocomplete="postalCode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+            <div class="col-span-6">
+                <x-label for="password" :value="__('Mot de passe')" />
 
-                <x-input id="password" class="block mt-1 w-full"
+                <x-input id="password" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 type="password"
                                 name="password"
                                 required autocomplete="new-password" />
             </div>
 
             <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+            <div class="col-span-6">
+                <x-label for="password_confirmation" :value="__('Confirmez Mot de passe')" />
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
+                <x-input id="password_confirmation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 type="password"
                                 name="password_confirmation" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end col-span-6">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Déjà enregistré ?') }}
                 </a>
 
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('S\'enregistrer') }}
                 </x-button>
             </div>
-        </form>
+
+        </div>
+    </div>
+                </form>
+
+
+        <!-- TEST -->
+
     </x-auth-card>
 </x-guest-layout>
