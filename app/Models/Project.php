@@ -47,9 +47,9 @@ class Project extends Model
         return $this->belongsToMany(User::class)->withTimestamps()->withPivot('user_id', 'project_id', 'price', 'created_at','updated_at', 'accepted');
     }
 
-    public function favorite_project()
+    public function favorites_projects()
     {
-        return $this->hasOne(FavoriteProject::class);
+        return $this->hasMany(Favorite::class);
     }
 
     public function delay($deadline)
