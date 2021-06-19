@@ -2,26 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
-class ProjectController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
-        $user = auth()->user();
+        $user = $request->user();
 
-        return view('project.index', [
-            'projects' => $projects,
+        return view('dashboard',[
             'user' => $user,
+            'personalUserPage' => true,
         ]);
     }
+
+    /**
+     * Upload user avatar.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saveAvatar(Request $request)
+    {
+        $request->validate([
+           'file' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
+        ]);
+
+        $fileUpload = Auth()->user;
+
+
+        if($request->file()) {
+            $file_name = time().'_'.$request->file->getClientOriginalName();
+            $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
+
+            $fileUpload->name = time().'_'.$request->file->getClientOriginalName();
+            $fileUpload->avatar = '/storage/' . $file_path;
+            $fileUpload->save();
+
+            return response()->json(['success'=>'File uploaded successfully.']);
+        }
+   }
 
     /**
      * Show the form for creating a new resource.
