@@ -17,9 +17,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
+        'role_id',
+        'country',
+        'street',
+        'number',
+        'city',
+        'zipcode',
+        'phone',
+        'level',
+        'avatar',
+        'about',
+        'notification',
+        'nb_project',
+        'lost_password',
+        'suspended',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -32,6 +49,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $table = 'users';
+
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -40,4 +60,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function project()
+    {
+        return $this->belongsToMany(Project::class)->withTimestamps()->withPivot('user_id', 'project_id', 'price', 'created_at','updated_at', 'accepted');
+
+    }
+
+    public function favorites_projects()
+    {
+        return $this->hasMany(FavoriteProject::class);
+    }
+
+    public function address()
+    {
+        $address = $this->city.",".$this->street." n°".$this->number;
+
+        return $address;
+    }
 }

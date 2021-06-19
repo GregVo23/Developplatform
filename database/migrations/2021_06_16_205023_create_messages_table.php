@@ -16,9 +16,8 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('relation_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->text('message');
-            $table->timestamp('written_at')->useCurrent();
+            $table->unsignedBigInteger('written_at');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

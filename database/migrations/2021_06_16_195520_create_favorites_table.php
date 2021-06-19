@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectsMessagesTable extends Migration
+class CreateFavoritesProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateProjectsMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects_messages', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('relation_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->timestamps();
+            $table->foreignId('project_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateProjectsMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects_messages');
+        Schema::dropIfExists('favorites');
     }
 }

@@ -19,7 +19,6 @@ class CreateProjectsCategoriesTable extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('sub_category_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->string('name');
-            $table->text('description');
         });
     }
 
