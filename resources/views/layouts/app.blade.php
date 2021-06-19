@@ -31,6 +31,9 @@
             <main>
                 {{ $slot }}
             </main>
+            @php
+                            //dd(Auth()->user()->project[0]->pivot);
+            @endphp
         </div>
     </body>
 </html>
