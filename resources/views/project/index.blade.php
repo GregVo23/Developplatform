@@ -88,7 +88,7 @@
                       <div class="w-24 h-24 relative mb-4">
                           <div class="group w-full h-full rounded-full overflow-hidden shadow-inner text-center bg-purple table cursor-pointer">
                           @if(!empty( "{{ $user->avatar }}" ))
-                            <img src="{{ $user->avatar }}" alt="profile image" style="height:100%; width:100%; object-fit:cover;">
+                            <img src="{{ $user->avatar }}" alt="profile image" style="object-fit:cover;">
                           @else
                             <span class="hidden group-hover:table-cell text-white font-bold align-middle">KR</span>
                             <i class="fas fa-user fa-6x object-cover object-center w-full h-full visible group-hover:hidden"></i>

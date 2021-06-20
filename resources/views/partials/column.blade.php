@@ -1,4 +1,66 @@
+<script>
+
+// 1. css in js
+
+let lastKnownScrollPosition = 0;
+let ticking = false;
+let footer = document.querySelector('#footer');
+
+function doSomething(scrollPos) {
+
+  let position = window.pageYOffset;
+  if(position === 0){
+    document.querySelector('#sidebar').style.position = 'fixed';
+    document.querySelector('#sidebar').style.width = '30%';
+    document.querySelector('#sidebar').style.transition = 'background-color 0.3s ease';
+    document.querySelector('#sidebar').style.backgroundColor = 'white';
+    document.querySelector('#sidebar').style.display = 'flex';
+  }
+  if(position>10){
+    
+    document.querySelector('#sidebar').style.position = 'fixed';
+    document.querySelector('#sidebar').style.width = '30%';
+    document.querySelector('#sidebar').style.transition = 'background-color 0.2s ease';
+    document.querySelector('#sidebar').style.backgroundColor = 'transparent';
+    document.querySelector('#sidebar').style.display = 'flex';
+  }
+  if(position>50){
+    
+    document.querySelector('#sidebar').style.display = 'none';
+
+  }
+  if(position>300){
+    
+    document.querySelector('#sidebar').style.display = 'flex';
+    document.querySelector('#sidebar').style.width = '30%';
+
+  }
+  if(position>350){
+    document.querySelector('#sidebar').style.position = 'fixed';
+    document.querySelector('#sidebar').style.width = '30%';
+    document.querySelector('#sidebar').style.transition = 'background-color 0.3s ease';
+    document.querySelector('#sidebar').style.backgroundColor = 'white';
+  }
+}
+
+document.addEventListener('scroll', function(e) {
+  lastKnownScrollPosition = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      doSomething(lastKnownScrollPosition);
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+
+</script>
+
 <!-- This example requires Tailwind CSS v2.0+ -->
+
+
 <nav class="space-y-1" aria-label="Sidebar">
   <input id="search" class="border leading-none border-gray-500
   dark:border-gray-600 select-none block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 rounded-md mb-6 text-gray-900 placeholder-gray-500 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-700 focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search">
@@ -36,7 +98,7 @@
     </a>
 
     @endforeach
-    
+
   @endforeach
 
 </nav>

@@ -36,7 +36,7 @@
 						</button>
                         </div>
                         <div class="flex mx-2">
-                        <button
+                        <a href="{{ route('create_project') }}"><button
 						class="flex items-center
 						focus:outline-none border rounded-full
 						py-2 px-6 leading-none border-gray-500
@@ -44,8 +44,8 @@
 						hover:bg-indigo-700 hover:text-white
 						dark-hover:text-gray-200">
                         <i class="fa-solid fa-magnifying-glass"></i>
-						<span>Déposer un projet</span>
-						</button>
+						<span>Demander une réalisation</span>
+						</button></a>
                         </div>
                     </div>
                 </div>

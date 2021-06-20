@@ -24,3 +24,5 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index'])->middleware(['auth'])->name('projects');
+Route::get('/project/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth'])->name('create_project');
+Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])->middleware(['auth'])->name('profil');

@@ -79,7 +79,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth()->user();
+
+        return view("user.show",[
+            "user" => $user,
+        ]);
     }
 
     /**
