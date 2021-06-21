@@ -33,9 +33,9 @@
                 <!-- Profile Card -->
                 <div class="bg-white p-3 border-t-4 border-green-400">
                     <div class="image overflow-hidden">
-                        <img class="h-auto w-full mx-auto"
-                            src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                            alt="">
+                        @if(!empty( "{{ $user->avatar }}" ))
+                        <img src="{{ asset($user->avatar) }}" alt="profile image" style="object-fit:cover;">
+                        @endif
                     </div>
                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Jane Doe</h1>
                     <h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>

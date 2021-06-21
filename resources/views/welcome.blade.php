@@ -29,7 +29,7 @@
 
     <!-- Document Title
     ============================================= -->
-    <title>Develop Platform | Designer & Developer réalisent vos projects</title>
+    <title>Develop Platform | Designer & Developer réalisent vos projets</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -77,7 +77,7 @@
                                 <li class="menu-item"><a class="menu-link" href="#" data-scrollto="#footer" data-easing="easeInOutExpo" data-speed="1250" data-offset="70"><div>A propos</div></a></li>
                             <li class="menu-item">
                                 @auth
-                                <a href="{{ url('/projects') }}" class="button button-border rounded-full py-2 px-4">Mes projets</a>
+                                <a href="{{ url('/projets') }}" class="button button-border rounded-full py-2 px-4">Mes projets</a>
                                 @else
                                 <a href="{{ route('login') }}" class="button button-border rounded-full py-2 px-4">Connexion</a></li>
                                     @if (Route::has('register'))
@@ -131,7 +131,7 @@
                 <div style="display:flex; flex-wrap:nowrap; justify-content:space-between;">
                     <img src="./images/left.jpg" style="max-width: 200px;">
                     <div class="m-12 p-12 text-center">
-                        <h3 class="font-weight-bolder h1 mb-4">Designer & Developer, to make your <span class="gradient-text gradient-horizon">Projects</span></h3>
+                        <h3 class="font-weight-bolder h1 mb-4">Designer & Developer, to make your <span class="gradient-text gradient-horizon">projets</span></h3>
                         <p class="mb-5 text-xl font-light text-black-50 font-weight-extralight">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, atque. Minus, harum porro unde quisquam! Minima vitae neque hic vel porro quidem totam.</p>
                     </div>
                     <img src="./images/right.jpg" style="float:right; max-width: 220px;">
@@ -146,7 +146,7 @@
                         <div class="flex flex-wrap  justify-center text-center mt-5">
                             <div class="lg:w-1/2 pr-4 pl-4">
                                 <div>
-                                    <h3 class="font-weight-bolder h1 mb-4">Designer & Developer, to make your <span class="gradient-text gradient-horizon">Projects</span></h3>
+                                    <h3 class="font-weight-bolder h1 mb-4">Designer & Developer, to make your <span class="gradient-text gradient-horizon">projets</span></h3>
                                     <p class="mb-5 text-xl font-light text-black-50 font-weight-extralight">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, atque. Minus, harum porro unde quisquam! Minima vitae neque hic vel porro quidem totam.</p>
                                 </div>
                             </div>

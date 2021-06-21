@@ -20,7 +20,15 @@ class CreateProjectsTable extends Migration
             $table->string('document')->nullable();
             $table->string('picture')->nullable();
             $table->text('about');
-            $table->integer('price_min')->nullable();
+            
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->integer('number')->nullable();
+            $table->integer('zipcode')->nullable();
+            $table->string('phone')->nullable()->unique();
+            $table->string('email')->nullable()->unique();
+
             $table->integer('price_max')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();

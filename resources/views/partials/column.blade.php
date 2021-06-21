@@ -9,6 +9,8 @@ let footer = document.querySelector('#footer');
 function doSomething(scrollPos) {
 
   let position = window.pageYOffset;
+  let positionFooter = footer.pageYOffset;
+  console.log(positionFooter);
   if(position === 0){
     document.querySelector('#sidebar').style.position = 'fixed';
     document.querySelector('#sidebar').style.width = '30%';
@@ -20,11 +22,11 @@ function doSomething(scrollPos) {
     
     document.querySelector('#sidebar').style.position = 'fixed';
     document.querySelector('#sidebar').style.width = '30%';
-    document.querySelector('#sidebar').style.transition = 'background-color 0.2s ease';
+    document.querySelector('#sidebar').style.transition = 'background-color 0.3s ease';
     document.querySelector('#sidebar').style.backgroundColor = 'transparent';
     document.querySelector('#sidebar').style.display = 'flex';
   }
-  if(position>50){
+  if(position>30){
     
     document.querySelector('#sidebar').style.display = 'none';
 
@@ -38,7 +40,7 @@ function doSomething(scrollPos) {
   if(position>350){
     document.querySelector('#sidebar').style.position = 'fixed';
     document.querySelector('#sidebar').style.width = '30%';
-    document.querySelector('#sidebar').style.transition = 'background-color 0.3s ease';
+    document.querySelector('#sidebar').style.transition = 'background-color 0.4s ease';
     document.querySelector('#sidebar').style.backgroundColor = 'white';
   }
 }
@@ -62,10 +64,11 @@ document.addEventListener('scroll', function(e) {
 
 
 <nav class="space-y-1" aria-label="Sidebar">
+
   <input id="search" class="border leading-none border-gray-500
-  dark:border-gray-600 select-none block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 rounded-md mb-6 text-gray-900 placeholder-gray-500 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-700 focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search">
+  dark:border-gray-600 select-none block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 rounded-md mb-6 text-gray-900 placeholder-gray-500 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-700 focus:ring-0 sm:text-sm" placeholder="Recherche par mot clé" type="search" name="search">
   <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-  
+  <h3>Les catégories</h3>
   @foreach (session()->get('categories') as $category)
   
   <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="page">

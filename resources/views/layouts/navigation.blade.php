@@ -12,11 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('projects')" :active="request()->routeIs('projects')">
-                        {{ __('projects') }}
+                        {{ __('Projets') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('my_projects', Auth()->user()->id)" :active="request()->routeIs('my_projects', Auth()->user()->id)">
+                        {{ __('Mes projets') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                         <div class="m-2">
                             <div class="group w-full h-full rounded-full overflow-hidden shadow-inner text-center bg-purple table cursor-pointer">
                                 @if(!empty( "{{ Auth()->user()->avatar }}" ))
-                                <img src="{{ Auth()->user()->avatar }}" alt="profile image" style="object-fit:cover; width:40px;">
+                                <img src="{{ asset(Auth()->user()->avatar) }}" alt="profile image" style="object-fit:cover; width:40px;">
                                 @endif
                             </div>
                         </div>
