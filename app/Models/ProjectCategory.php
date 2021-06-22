@@ -18,7 +18,6 @@ class ProjectCategory extends Pivot
         'project_id',
         'category_id',
         'sub_category_id',
-        'name',
     ];
 
     /**

@@ -26,10 +26,10 @@ class CreateUsersTable extends Migration
             $table->string('street')->nullable();
             $table->integer('number')->nullable();
             $table->integer('zipcode')->nullable();
-            $table->string('phone')->nullable()->unique();;
+            $table->string('phone')->nullable()->unique();
             $table->enum('level', ['expert','pro','advanced','novice','student'])->nullable();
             $table->text('about')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default("./images/profil.png");
             $table->boolean('notification')->default(false);
             $table->boolean('suspended')->default(false);
             $table->boolean('lost_password')->default(false);

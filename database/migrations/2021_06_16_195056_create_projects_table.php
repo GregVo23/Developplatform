@@ -17,10 +17,18 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->string('name');
-            $table->string('document')->nullable();
-            $table->string('picture')->nullable();
+            $table->string('document')->nullable(); //TODO
+            $table->string('picture')->nullable(); //TODO
             $table->text('about');
-            $table->integer('price_min')->nullable();
+            
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->integer('number')->nullable();
+            $table->integer('zipcode')->nullable();
+            $table->string('phone')->nullable()->unique();
+            $table->string('email')->nullable()->unique();
+
             $table->integer('price_max')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();

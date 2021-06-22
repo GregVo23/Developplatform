@@ -24,7 +24,7 @@
         <header class="pb-4 bg-gray-100">
             @include('layouts.navigation')
         </header>
-        <main class="mt-4 mb-6">
+        <main class="mt-4 mb-4">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-full lg:px-8">
             <h1 class="sr-only">Page title</h1>
 
@@ -42,7 +42,7 @@
                         {{ $slot }}
 
                     </div>
-                    </div>
+                </div>
                 </section>
                 </div>
 
@@ -50,7 +50,7 @@
                 <div class="grid grid-cols-1 gap-4 wrap" id="wrap">
                 <section aria-labelledby="section-2-title">
                     <h2 class="sr-only" id="section-2-title">Section title</h2>
-                    <div class="rounded-lg bg-white overflow-hidden shadow">
+                    <div class="rounded-lg bg-white overflow-hidden shadow" id="sidebar">
                     <div class="p-6">
                         <!-- Your content -->
                         @include('partials.column')
@@ -62,7 +62,7 @@
             </div>
             </div>
         </main>
-        <footer>
+        <footer id="footer">
             @include('partials.footer')
         </footer>
         </div>

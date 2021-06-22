@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'country' => ucfirst($request->country),
             'city' => ucfirst($request->city),
-            'zipcode' => $request->postalcode,
+            'zipcode' => $request->postalCode,
             'number' => $request->number,
             'street' => $request->street,
             'password' => Hash::make($request->password),
