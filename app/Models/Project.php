@@ -15,6 +15,7 @@ class Project extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'name',
         'document',
         'picture',
@@ -68,5 +69,12 @@ class Project extends Model
         $days = floor($diff / (60*60*24)); 
 
         return $days;
+    }
+
+    public function address()
+    {
+        $address = $this->country.", ".$this->city;
+
+        return $address;
     }
 }

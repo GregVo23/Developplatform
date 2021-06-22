@@ -17,8 +17,8 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->string('name');
-            $table->string('document')->nullable();
-            $table->string('picture')->nullable();
+            $table->string('document')->nullable(); //TODO
+            $table->string('picture')->nullable(); //TODO
             $table->text('about');
             
             $table->string('country')->nullable();

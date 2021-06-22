@@ -20,16 +20,9 @@
 					<p>{{ $project->about }}</p>
 					<div class="mt-4 flex">
 						<div class="flex">
-						<svg
-							class="h-5 w-5 fill-current
-							dark:text-gray-300"
-							viewBox="0 0 24 24">
-							<path
-							d="M12 4a4 4 0 014 4 4 4 0 01-4 4
-							4 4 0 01-4-4 4 4 0 014-4m0
-							10c4.42 0 8 1.79 8
-							4v2H4v-2c0-2.21 3.58-4 8-4z"></path>
-						</svg>
+							<svg class="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+							</svg>
 						<span
 							class="ml-2 text-sm text-gray-600
 							dark:text-gray-300 capitalize">
@@ -37,31 +30,38 @@
 						</span>
 						</div>
 
+						@isset($project->price_max)
 						<div class="flex ml-6">
-						<svg
-							class="h-5 w-5 fill-current
-							dark:text-gray-300"
-							viewBox="0 0 24 24">
-							<path
-							d="M19
-							19H5V8h14m-3-7v2H8V1H6v2H5c-1.11
-							0-2 .89-2 2v14a2 2 0 002 2h14a2 2
-							0 002-2V5a2 2 0 00-2-2h-1V1m-1
-							11h-5v5h5v-5z"></path>
-						</svg>
+							<svg class="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+							</svg>
 						<span
 							class="ml-2 text-sm text-gray-600
 							dark:text-gray-300">
-							{{ $project->price_min ? "Prix min: ".$project->price_min." €" : "" }}<br>
-							{{ $project->price_max ? "Prix max: ".$project->price_max." €" : "" }}
+							{{ $project->price_max ? $project->price_max." €" : "" }}
 						</span>
 						</div>
+						@endisset
+
+						@if($project->address() !== NULL)
+						<div class="flex ml-6">
+							<svg class="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+							</svg>
+						<span
+							class="ml-2 text-sm text-gray-600
+							dark:text-gray-300">
+							{{ $project->address() ? $project->address() : "" }}
+						</span>
+						</div>
+						@endisset
 
 						<div class="flex ml-6">
 						<svg
 							class="h-5 w-5 fill-current
-							dark:text-gray-300"
-							viewBox="0 0 24 24">
+							text-gray-400"
+							viewBox="0 0 24 24"
+							fill="text-gray-400">
 							<path
 							d="M13 2.05v2.02c3.95.49 7 3.85 7
 							7.93 0 3.21-1.92 6-4.72 7.28L13

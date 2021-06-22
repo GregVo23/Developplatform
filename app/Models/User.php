@@ -74,7 +74,7 @@ class User extends Authenticatable
 
     public function address()
     {
-        $address = $this->city.",".$this->street." n°".$this->number;
+        $address = $this->city.", ".$this->street." n°".$this->number;
 
         return $address;
     }
