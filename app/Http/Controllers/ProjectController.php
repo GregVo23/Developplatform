@@ -38,7 +38,6 @@ class ProjectController extends Controller
     {
         $user = auth()->user();
         $projects = project::where('user_id', $user->id);
-        dd($projects);
 
         return view('project.index', [
             'projects' => $projects,
