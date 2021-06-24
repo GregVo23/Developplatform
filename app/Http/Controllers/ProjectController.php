@@ -97,12 +97,34 @@ class ProjectController extends Controller
             $project->zipcode = $request->input('postalCode');
             $project->number = $request->input('number');
             $project->street = $request->input('street');
+            if($request->hasFile('picture')){
 
-            $project->save();
-
+                //Storage::delete('/public/avatars/'.$user->avatar);
+    
+                // Get filename with the extension
+                $filenameWithExt = $request->file('picture')->getClientOriginalName();
+                //Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $request->file('avatar')->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
+                // Upload Image
+                $path = $request->file('avatar')->storeAs('public/avatars',$fileNameToStore);
+    
+                $project->picture = $fileNameToStore ;
+            }
+                
+            $result = $project->save();
+            
             // redirect
-            Session::flash('message', 'Félicitation ! Votre projet a été enregistré');
-            return Redirect::to('dashboard');
+            if($result){
+                Session::flash('success', 'Félicitation ! Votre projet a été enregistré');
+                return Redirect::to('dashboard');
+            }else{
+                Session::flash('message', 'Désolé ! Un problème est survenu');
+                return Redirect::to('dashboard');
+            }
         }
     }
 

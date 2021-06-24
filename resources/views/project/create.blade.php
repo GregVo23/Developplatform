@@ -22,7 +22,7 @@
   }
   ```
 -->
-<form class="space-y-8 divide-y divide-gray-200" method="POST" action="{{ route('store_project', auth()->user()->id ) }}">
+<form name="frmProjet" id="frmProjet" class="space-y-8 divide-y divide-gray-200" method="POST" enctype="multipart/form-data" action="{{ route('store_project', auth()->user()->id ) }}">
   @csrf
   <div class="space-y-8 divide-y divide-gray-200">
     <div>
@@ -201,44 +201,48 @@
           </div>
         </div>
 
+      </div>
+        <div class="mt-8 flex justify-evenly">
+
+        <div class="sm:col-span-4">
+          <label for="photo" class="block text-sm font-medium text-gray-700">
+            Photo de couverture
+          </label>
+          <div class="flex bg-grey-lighter">
+            <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+                <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                </svg>
+                <span class="mt-2 text-base leading-normal">Select a file</span>
+                <input type='file' class="hidden" />
+            </label>
+        </div>
+        </div>
+
         <div class="sm:col-span-6">
           <label for="photo" class="block text-sm font-medium text-gray-700">
             Photo de couverture
           </label>
-          <div class="mt-1 flex items-center">
-            <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-              <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            </span>
-            <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Choisir
-            </button>
-          </div>
+          <div class="flex bg-grey-lighter">
+            <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+                <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                </svg>
+                <span class="mt-2 text-base leading-normal">Select a file</span>
+                <input type='file' class="hidden" />
+            </label>
+        </div>
         </div>
 
-        <div class="sm:col-span-6">
-          <label for="cover_photo" class="block text-sm font-medium text-gray-700">
-            Document (text, pdf, word, excell)
-          </label>
-          <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-            <div class="space-y-1 text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              <div class="flex text-sm text-gray-600">
-                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                  <span>Upload a file</span>
-                  <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                </label>
-                <p class="pl-1">or drag and drop</p>
-              </div>
-              <p class="text-xs text-gray-500">
-                PDF, TXT, Word, Excell, PNG, JPG, GIF up to 10MB
-              </p>
-            </div>
-          </div>
-        </div>
+      </div>
+
+
+      
+
+
+
+
+
       </div>
     </div>
 
@@ -337,6 +341,37 @@
       </div>
     </div>
   </div>
+
+
+  <div class="pt-8">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        Notifications
+      </h3>
+      <p class="mt-1 text-sm text-gray-500">
+        Indiquez les notifications que vous souhaitez recevoir.
+      </p>
+    </div>
+    <div class="mt-6">
+      <fieldset>
+
+
+  <div class="mt-4 space-y-4">
+    <div class="relative flex items-start">
+      <div class="flex items-center h-5">
+        <input id="comments" name="comments" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+      </div>
+      <div class="ml-3 text-sm">
+        <label for="comments" class="font-medium text-gray-700">Offres de prix</label>
+        <p class="text-gray-500">Me notifier si je recois une offre de prix pour mon projet.</p>
+      </div>
+    </div>
+  </div>
+
+      </fieldset>
+    </div>
+  </div>
+  
 
   <div class="pt-5">
     <div class="flex justify-end">
