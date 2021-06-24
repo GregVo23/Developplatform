@@ -154,29 +154,7 @@
             </div>
     
         </main>
-    
-        <div id="app">
-    
-            <div class="text-center" style="color:black; font-size:2.5em; margin-top: 35vh; transform: translateY(-40%);">
-                <hello-world/>
-            </div>
-    
-        </div>
-    
-    
-        <div id="app2">
-            <div>
-                <formulaire/>
-            </div>
-        </div>
-    
-    
-        <div id="app3">
-            <div>
-                <countries/>
-            </div>
-        </div>
-    
+  
     
     </x-app-layout>
     
