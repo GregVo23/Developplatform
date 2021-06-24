@@ -37,7 +37,8 @@ class ProjectController extends Controller
     public function myProjects()
     {
         $user = auth()->user();
-        $projects = project::where('user_id', $user->id);
+        $projects = project::where('user_id', $user->id)->get();
+
 
         return view('project.index', [
             'projects' => $projects,
