@@ -37,7 +37,8 @@ class ProjectController extends Controller
     public function myProjects()
     {
         $user = auth()->user();
-        $projects = project::where('user_id', $user->id);
+        $projects = project::where('user_id', $user->id)->get();
+
 
         return view('project.index', [
             'projects' => $projects,
@@ -71,14 +72,14 @@ class ProjectController extends Controller
         $rules = array(
             'name'       => 'required',
             'about'       => 'required',
-            'price' => 'required|numeric',
+            'price' => 'numeric|nullable',
             'email' => 'required|string|email',
         );
         $validator = Validator::make($request->all(), $rules);
 
         // process
         if ($validator->fails()) {
-            return Redirect::to('dashboard')
+            return Redirect()->route('create_project')
                 ->withErrors($validator);
         } else {
             // store
@@ -97,12 +98,53 @@ class ProjectController extends Controller
             $project->zipcode = $request->input('postalCode');
             $project->number = $request->input('number');
             $project->street = $request->input('street');
+            if($request->hasFile('picture')){
+    
+                $file = $request->file('picture');
+                // Get filename with the extension
+                $filenameWithExt = $file->getClientOriginalName();
+                //Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $file->extension();
+                // Filename to store
+                $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
+                // Upload Image
+                $path = $file->storeAs('public/project/cover/'.auth()->user()->id,$fileNameToStore);
+    
+                $project->picture = $fileNameToStore ;
+            }
 
-            $project->save();
+            if(!empty($request->file('document'))){
 
+                foreach ($request->file('document') as $file){
+                    if(is_object($file) && $file->isValid()){
+
+                        $filenameWithExt = $file->getClientOriginalName();
+                        //Get just filename
+                        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                        // Get just ext
+                        $extension = $file->extension();
+                        // Filename to store
+                        $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
+                        // Upload Image
+                        $path = $file->storeAs('public/project/doc/'.auth()->user()->id,$fileNameToStore);
+            
+                        $project->document = $fileNameToStore ;
+                    }
+                }
+            }
+                
+            $result = $project->save();
+            
             // redirect
-            Session::flash('message', 'Félicitation ! Votre projet a été enregistré');
-            return Redirect::to('dashboard');
+            if($result){
+                Session::flash('success', 'Félicitation ! Votre projet a été enregistré');
+                return Redirect::to('dashboard');
+            }else{
+                Session::flash('message', 'Désolé ! Un problème est survenu');
+                return Redirect::to('dashboard');
+            }
         }
     }
 

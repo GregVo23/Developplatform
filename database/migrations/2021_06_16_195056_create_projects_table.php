@@ -26,8 +26,8 @@ class CreateProjectsTable extends Migration
             $table->string('street')->nullable();
             $table->integer('number')->nullable();
             $table->integer('zipcode')->nullable();
-            $table->string('phone')->nullable()->unique();
-            $table->string('email')->nullable()->unique();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
 
             $table->integer('price_max')->nullable();
             $table->timestamp('created_at')->useCurrent();

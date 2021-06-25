@@ -12,7 +12,7 @@
 				<div class="flex">
 					<img
 					class="h-28 w-28 rounded object-cover"
-					src="{{ $project->picture }}"
+					src="{{ asset('storage/project/cover/'.$project->user_id.'/'.$project->picture) }}"
 					alt="infamous" />
 
 					<div class="flex flex-col ml-6">
@@ -38,7 +38,7 @@
 						<span
 							class="ml-2 text-sm text-gray-600
 							dark:text-gray-300">
-							{{ $project->price_max ? $project->price_max." €" : "" }}
+							{{ ($project->price_max != 0) ? $project->price_max." €" : "" }}
 						</span>
 						</div>
 						@endisset
