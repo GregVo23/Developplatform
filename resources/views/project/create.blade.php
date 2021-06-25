@@ -39,7 +39,7 @@
                 Nom du projet
               </label>
               <div class="mt-1 flex rounded-md shadow-sm">
-                <input type="text" name="name" id="name" class="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300">
+                <input type="text" name="name" id="name" value="{{ old('name') }}" class="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300">
               </div>
             </div>
 
@@ -48,7 +48,7 @@
                 Description de la demande
               </label>
               <div class="mt-1">
-                <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                <textarea id="about" name="about" rows="3" value="{{ old('about') }}" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
               </div>
               <p class="mt-2 text-sm text-gray-500">Expliquez ce que vous attendez comme résultat, donnez des exemples.</p>
             </div>
@@ -61,13 +61,13 @@
                     €
                   </span>
                 </div>
-                <input type="number" name="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" aria-describedby="price-currency">
+                <input type="number" name="price" id="price" value="{{ old('price') }}" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" aria-describedby="price-currency">
               </div>
             </div>
 
             <div class="col-span-6 sm:col-span-6 lg:col-span-2">
               <label for="deadline" class="block text-sm font-medium text-gray-700">Délais</label>
-              <input type="date" name="deadline" id="deadline" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="date" name="deadline" id="deadline" value="{{ old('deadline') }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div  class="sm:col-span-4">
@@ -251,7 +251,7 @@
               <input type="text" name="postalCode" id="postalCode" autocomplete="postalCode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
-          </div>  
+          </div>
 
         <div class="pt-8">
           <div>

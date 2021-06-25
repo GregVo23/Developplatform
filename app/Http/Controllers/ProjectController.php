@@ -70,10 +70,12 @@ class ProjectController extends Controller
     {
         // validate
         $rules = array(
-            'name'       => 'required',
-            'about'       => 'required',
+            'name' => 'required|string|min:3',
+            'about' => 'required|min:20|max:2000',
             'price' => 'numeric|nullable',
             'email' => 'required|string|email',
+            'picture' => 'nullable|image|mimes:jpeg,jpg,png',
+            'document' => 'nullable|mimes:pdf,txt,jpeg,jpg,png',
         );
         $validator = Validator::make($request->all(), $rules);
 
@@ -103,7 +105,7 @@ class ProjectController extends Controller
                 $file = $request->file('picture');
                 // Get filename with the extension
                 $filenameWithExt = $file->getClientOriginalName();
-                //Get just filename
+                // Get just filename
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 // Get just ext
                 $extension = $file->extension();
@@ -121,7 +123,7 @@ class ProjectController extends Controller
                     if(is_object($file) && $file->isValid()){
 
                         $filenameWithExt = $file->getClientOriginalName();
-                        //Get just filename
+                        // Get just filename
                         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                         // Get just ext
                         $extension = $file->extension();
