@@ -17,10 +17,10 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->string('name');
-            $table->string('document')->nullable(); //TODO
-            $table->string('picture')->nullable(); //TODO
+            $table->string('document')->nullable();
+            $table->string('picture')->nullable();
             $table->text('about');
-            
+
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->string('street')->nullable();
@@ -29,7 +29,7 @@ class CreateProjectsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
 
-            $table->integer('price_max')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deadline')->nullable();

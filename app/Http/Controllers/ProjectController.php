@@ -76,6 +76,7 @@ class ProjectController extends Controller
             'email' => 'required|string|email',
             'picture' => 'nullable|image|mimes:jpeg,jpg,png',
             'document' => 'nullable|mimes:pdf,txt,jpeg,jpg,png',
+            'deadline' => 'nullable|date|after:tomorrow',
         );
         $validator = Validator::make($request->all(), $rules);
 
@@ -89,7 +90,7 @@ class ProjectController extends Controller
             $project->user_id = auth()->user()->id;
             $project->name = $request->input('name');
             $project->about = $request->input('about');
-            $project->price_max = $request->input('price');
+            $project->price = $request->input('price');
             $project->document = $request->input('document');
             $project->picture = $request->input('picture');
             $project->phone = $request->input('phone');

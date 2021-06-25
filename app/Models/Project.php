@@ -66,7 +66,7 @@ class Project extends Model
         $date2 = strtotime($deadline);
 
         $diff = abs($date2 - $date1);
-        $days = floor($diff / (60*60*24)); 
+        $days = floor($diff / (60*60*24));
 
         return $days;
     }
