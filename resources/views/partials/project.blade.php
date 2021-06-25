@@ -195,5 +195,7 @@
 
     @endforeach
 
+    <!--paginate-->
 	<div class="flex flex-row justify-center m-7">
-		</div>
+        {{ $projects->links() }}
+    </div>

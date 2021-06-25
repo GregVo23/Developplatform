@@ -20,7 +20,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::paginate(10);
         $user = auth()->user();
 
         return view('project.index', [
@@ -37,7 +37,7 @@ class ProjectController extends Controller
     public function myProjects()
     {
         $user = auth()->user();
-        $projects = project::where('user_id', $user->id)->get();
+        $projects = project::where('user_id', '=', $user->id)->paginate(10);
 
 
         return view('project.index', [
@@ -99,7 +99,7 @@ class ProjectController extends Controller
             $project->number = $request->input('number');
             $project->street = $request->input('street');
             if($request->hasFile('picture')){
-    
+
                 $file = $request->file('picture');
                 // Get filename with the extension
                 $filenameWithExt = $file->getClientOriginalName();
@@ -111,7 +111,7 @@ class ProjectController extends Controller
                 $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
                 // Upload Image
                 $path = $file->storeAs('public/project/cover/'.auth()->user()->id,$fileNameToStore);
-    
+
                 $project->picture = $fileNameToStore ;
             }
 
@@ -129,14 +129,14 @@ class ProjectController extends Controller
                         $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
                         // Upload Image
                         $path = $file->storeAs('public/project/doc/'.auth()->user()->id,$fileNameToStore);
-            
+
                         $project->document = $fileNameToStore ;
                     }
                 }
             }
-                
+
             $result = $project->save();
-            
+
             // redirect
             if($result){
                 Session::flash('success', 'Félicitation ! Votre projet a été enregistré');
