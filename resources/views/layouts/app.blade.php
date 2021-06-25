@@ -54,9 +54,13 @@
                     <div class="p-6">
                         <!-- Your content -->
                         @include('partials.column')
+
                     </div>
                     </div>
                 </section>
+                    <div>
+                        <img src="{{ asset("images/1.jpeg") }}">
+                    </div>
                 </div>
 
             </div>

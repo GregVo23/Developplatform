@@ -78,83 +78,23 @@
             class="flex-1 bg-transparant dark:bg-gray-900 overflow-y-auto transition
             duration-500 ease-in-out">
     
-        <!--Profil + content-->
-            <div class="px-2 py-6 text-gray-700 dark:text-gray-500 transition duration-500 ease-in-out">
-          <!--Menu profil + links -->
-          <div class="mt-1 mb-4 flex items-center justify-between">
-              <!--profil-->
-              <div class="inline-flex">
-                  <div class="mr-5">
-                      <div class="w-24 h-24 relative mb-4">
-                          <div class="group w-full h-full rounded-full overflow-hidden shadow-inner text-center bg-purple table cursor-pointer">
-                          @if(!empty( "{{ $user->avatar }}" ))
-                            <img src="{{ asset($user->avatar) }}" alt="profile image" style="object-fit:cover;">
-                          @else
-                            <span class="hidden group-hover:table-cell text-white font-bold align-middle">KR</span>
-                            <i class="fas fa-user fa-6x object-cover object-center w-full h-full visible group-hover:hidden"></i>
-                          @endif
-                          </div>
-                      </div>
-                  </div>
-                  <div>
-                      <h2 class="text-4xl font-medium capitalize">{{ Auth::user()->firstname }}</h2>
-                      <p class="text-lg font-bold">{{ Auth::user()->lastname }}</p>
-                      <p class="text-lg">Level {{ Auth::user()->level }}</i></p>
-                  </div>
-              </div>
-    
-              <!--Project link-->
-              <div class="items-center select-none">
-                  <a href="{{ route('projects') }}">
-                      <div class="flex items-center select-none">
-                          <i class="far fa-handshake fa-3x"></i>
-                      </div>
-                      <p class="flex items-center">Mes projets</p>
-                  </a>
-              </div>
-    
-              <!--Project link-->
-              <div class="items-center select-none">
-                  <a href="#">
-                      <div class="flex items-center select-none">
-                          <i class="far fa-star fa-3x"></i>
-                      </div>
-                      <p class="flex items-center">Favoris</p>
-                  </a>
-              </div>
-    
-              <!--Project link-->
-              <div class="items-center select-none">
-                  <a href="#">
-                      <div class="flex items-center select-none">
-                          <i class="far fa-arrow-alt-circle-down fa-3x"></i>
-                      </div>
-                      <p class="flex items-center">Catégories</p>
-                  </a>
-              </div>
-                </div>
           <!--end menu with profil-->
     
+              <div class="max-w-full">
                 <div class="max-w-full">
-                    <div class="max-w-full">
-    
-                    <div class="container bg-white w-full">    
-
-                            @if(empty($personalUserPage))
-                                @include('partials.project')
-                            @else
-                                @include('myprofile')
-                            @endif
-    
-                <!--Projects-->
-    
-                <div class="border dark:border-gray-700 transition duration-500 ease-in-out">
-          </div>
-    
-            </div>
-    
-        </main>
   
+                  <div class="container bg-white w-full">    
+
+                          @if(empty($personalUserPage))
+                              @include('partials.project')
+                          @else
+                              @include('myprofile')
+                          @endif
+  
+                  </div>
+                </div>
+              </div>
+        </main>
     
     </x-app-layout>
     

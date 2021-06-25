@@ -72,14 +72,14 @@ class ProjectController extends Controller
         $rules = array(
             'name'       => 'required',
             'about'       => 'required',
-            'price' => 'numeric|min:1',
+            'price' => 'numeric|nullable',
             'email' => 'required|string|email',
         );
         $validator = Validator::make($request->all(), $rules);
 
         // process
         if ($validator->fails()) {
-            return Redirect::to('dashboard')
+            return Redirect()->route('create_project')
                 ->withErrors($validator);
         } else {
             // store
@@ -115,20 +115,23 @@ class ProjectController extends Controller
                 $project->picture = $fileNameToStore ;
             }
 
-            foreach ($request->file('document') as $file){
-                if(is_object($file) && $file->isValid()){
+            if(!empty($request->file('document'))){
 
-                    $filenameWithExt = $file->getClientOriginalName();
-                    //Get just filename
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    // Get just ext
-                    $extension = $file->extension();
-                    // Filename to store
-                    $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
-                    // Upload Image
-                    $path = $file->storeAs('public/project/doc/'.auth()->user()->id,$fileNameToStore);
-        
-                    $project->document = $fileNameToStore ;
+                foreach ($request->file('document') as $file){
+                    if(is_object($file) && $file->isValid()){
+
+                        $filenameWithExt = $file->getClientOriginalName();
+                        //Get just filename
+                        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                        // Get just ext
+                        $extension = $file->extension();
+                        // Filename to store
+                        $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
+                        // Upload Image
+                        $path = $file->storeAs('public/project/doc/'.auth()->user()->id,$fileNameToStore);
+            
+                        $project->document = $fileNameToStore ;
+                    }
                 }
             }
                 
