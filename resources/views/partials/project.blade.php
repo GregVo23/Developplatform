@@ -12,7 +12,7 @@
 				<div class="flex">
 					<img
 					class="h-28 w-28 rounded object-cover"
-					src="{{ asset('storage/project/cover/'.$project->user_id.'/'.$project->picture) }}"
+					src="{{ asset('project/cover/'.$project->picture) }}"
 					alt="infamous" />
 
 					<div class="flex flex-col ml-6">
