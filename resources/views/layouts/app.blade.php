@@ -12,9 +12,9 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
 
         <!-- Scripts -->
+        <script src="{{ asset('js/script.js') }}" defer></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/jquery.js') }}"></script>
     </head>
@@ -31,7 +31,7 @@
             <!-- Main 3 column grid -->
             <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
 
-            
+
                 <!-- Left column -->
                 <div class="grid grid-cols-1 gap-4 lg:col-span-2">
                 <section aria-labelledby="section-1-title">
@@ -58,7 +58,7 @@
                     </div>
                     </div>
                 </section>
-                    <div>
+                    <div class="absolute bottom-0 ">
                         <img src="{{ asset("images/1.jpeg") }}">
                     </div>
                 </div>
@@ -73,6 +73,6 @@
 
         <!-- //////////////////////////////////////// -->
 
-        
+
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\Auth;
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class UserController extends Controller
@@ -80,9 +81,12 @@ class UserController extends Controller
     public function show($id)
     {
         $user = Auth()->user();
+        $myProjects = Project::where('user_id', '=', $user->id)->get();
+        //dd($myProjects);
 
         return view("user.show",[
             "user" => $user,
+            "myProjects" => $myProjects,
         ]);
     }
 
