@@ -55,4 +55,7 @@
             </div>
         </div>
     </div>
+    <div>
+        <img src="{{ asset("images/1.jpeg") }}" alt="image de bienvenue">
+    </div>
 </x-app-layout>

@@ -75,6 +75,7 @@ class UserSeeder extends Seeder
                 'notification' => $data['notification'],
                 'level' => $data['level'],
                 'about' => $data['about'],
+                'created_at' => now(),
             ]);
         }
 
