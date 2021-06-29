@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Carbon;
+use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -128,9 +129,15 @@ class ProjectController extends Controller
                 // Filename to store
                 $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
                 // Upload Image
-                $path = $file->storeAs('public/project/cover/'.auth()->user()->id,$fileNameToStore);
 
-                $project->picture = $fileNameToStore ;
+                $path = 'public/project/cover/'.auth()->user()->id;
+                $file->storeAs($path ,$fileNameToStore);
+
+                $cover = Image::make($file);
+                // resize image to fixed size
+                $cover->fit(300, 300)->save(public_path('/project/cover/'.$fileNameToStore));
+
+                $project->picture = $fileNameToStore;
             }
 
             if(!empty($request->file('document'))){
