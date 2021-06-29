@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Developplatform') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -14,9 +14,9 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/script.js') }}" defer></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/jquery.js') }}"></script>
+
     </head>
     <body class="font-sans antialiased">
 
@@ -31,14 +31,13 @@
             <!-- Main 3 column grid -->
             <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
 
-
                 <!-- Left column -->
                 <div class="grid grid-cols-1 gap-4 lg:col-span-2">
                 <section aria-labelledby="section-1-title">
                     <h2 class="sr-only" id="section-1-title">Section title</h2>
                     <div class="rounded-lg bg-white overflow-hidden shadow">
                     <div class="p-4">
-
+                        <!-- Content -->
                         {{ $slot }}
 
                     </div>
@@ -52,13 +51,15 @@
                     <h2 class="sr-only" id="section-2-title">Section title</h2>
                     <div class="rounded-lg bg-white overflow-hidden shadow" id="sidebar">
                     <div class="p-6">
-                        <!-- Your content -->
+                        <!-- Column Content -->
                         @include('partials.column')
 
                     </div>
                     </div>
                 </section>
                     <div class="absolute bottom-0 ">
+
+                        <!-- Image -->
                         <img src="{{ asset("images/1.jpeg") }}">
                     </div>
                 </div>
@@ -67,12 +68,13 @@
             </div>
         </main>
         <footer id="footer">
+
+            <!-- Column Content -->
             @include('partials.footer')
         </footer>
         </div>
 
-        <!-- //////////////////////////////////////// -->
-
-
+        <!-- Specific Scripts -->
+        @stack('scripts')
 </body>
 </html>

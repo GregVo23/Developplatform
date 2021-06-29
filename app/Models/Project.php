@@ -31,6 +31,8 @@ class Project extends Model
         'updated_at',
         'deadline',
         'done',
+        'notifications',
+        'rules',
     ];
 
     /**

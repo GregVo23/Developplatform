@@ -34,6 +34,8 @@ class CreateProjectsTable extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deadline')->nullable();
             $table->timestamp('done')->nullable()->default(null);
+            $table->boolean('notifications')->default(true);
+            $table->boolean('rules')->default(true);
         });
     }
 

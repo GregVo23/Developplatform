@@ -71,13 +71,24 @@ class ProjectController extends Controller
     {
         // validate
         $rules = array(
+
             'name' => 'required|string|min:3',
             'about' => 'required|min:20|max:2000',
             'price' => 'numeric|nullable',
+            'phone' => 'numeric|nullable',
             'email' => 'required|string|email',
             'picture' => 'nullable|image|mimes:jpeg,jpg,png',
             'document' => 'nullable|mimes:pdf,txt,jpeg,jpg,png',
             'deadline' => 'nullable|date|after:tomorrow',
+            'category' => 'required|string',
+            'subCategory' => 'nullable|string',
+            'country' => 'nullable|string',
+            'city' => 'nullable|string',
+            'street' => 'nullable|string',
+            'number' => 'nullable|numeric',
+            'postalCode' => 'nullable|numeric',
+            'rules' => 'nullable',
+            'notifications' => 'nullable',
         );
         $validator = Validator::make($request->all(), $rules);
 
@@ -89,8 +100,8 @@ class ProjectController extends Controller
             // store
             $project = new Project;
             $project->user_id = auth()->user()->id;
-            $project->name = $request->input('name');
-            $project->about = $request->input('about');
+            $project->name = ucfirst($request->input('name'));
+            $project->about = ucfirst($request->input('about'));
             $project->price = $request->input('price');
             $project->document = $request->input('document');
             $project->picture = $request->input('picture');
@@ -102,6 +113,9 @@ class ProjectController extends Controller
             $project->zipcode = $request->input('postalCode');
             $project->number = $request->input('number');
             $project->street = $request->input('street');
+            $project->notifications = $request->input('notifications') ? true : false;
+            $project->rules = $request->input('rules') ? true : false;
+
             if($request->hasFile('picture')){
 
                 $file = $request->file('picture');
