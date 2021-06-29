@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
 
-    <!--errors-->
+    <!--show if errors-->
     @if($errors->any())
 
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -39,11 +39,11 @@
           <div class="sm:col-span-6">
             <label for="category" class="block text-sm font-medium text-gray-700">Catégorie</label>
             <select id="category" name="category" autocomplete="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-
+                    <option>Sélectionner une catégorie</option>
                 @if (session()->get('categories') !== NULL)
                 @foreach (session()->get('categories') as $category)
 
-                    <option>{{ $category->name }}</option>
+                    <option data-id="{{ $category->id }}">{{ $category->name }}</option>
 
                 @endforeach
                 @endif
@@ -54,7 +54,7 @@
         <div class="sm:col-span-6">
             <label for="subCategory" class="block text-sm font-medium text-gray-700">Sous catégorie</label>
             <select id="subCategory" name="subCategory" autocomplete="subCategory" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-
+                    <option>Sélectionner une catégorie</option>
                 @if (session()->get('subcategory') !== NULL)
                 @foreach (session()->get('subcategory') as $subcategory)
 
@@ -224,10 +224,10 @@
               <div class="mt-4 space-y-4">
                 <div class="relative flex items-start">
                   <div class="flex items-center h-5">
-                    <input id="comments" name="comments" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                    <input id="notifications" name="notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                   </div>
                   <div class="ml-3 text-sm">
-                    <label for="comments" class="font-medium text-gray-700">Offres de prix</label>
+                    <label for="notifications" class="font-medium text-gray-700">Offres de prix</label>
                     <p class="text-gray-500">Me notifier si je recois une offre de prix pour mon projet.</p>
                   </div>
                 </div>
@@ -240,11 +240,8 @@
       <div class="pt-8">
         <div>
           <h3 class="text-lg leading-6 font-medium text-gray-900">
-            Notifications
+            Conditions générales (Obligatoire)
           </h3>
-          <p class="mt-1 text-sm text-gray-500">
-            Indiquez les notifications que vous souhaitez recevoir.
-          </p>
         </div>
         <div class="mt-6">
           <fieldset>
@@ -252,11 +249,10 @@
           <div class="mt-4 space-y-4">
             <div class="relative flex items-start">
               <div class="flex items-center h-5">
-                <input id="comments" name="comments" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                <input id="rules" name="rules" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
               </div>
               <div class="ml-3 text-sm">
-                <label for="comments" class="font-medium text-gray-700">Offres de prix</label>
-                <p class="text-gray-500">Me notifier si je recois une offre de prix pour mon projet.</p>
+                <p class="text-gray-700">J'accepte les Conditions <a href="#">générales d’utilisation</a></p>
               </div>
             </div>
           </div>
@@ -276,5 +272,10 @@
         </div>
       </div>
     </form>
+
+    <!--Add specific script-->
+    @push('scripts')
+        <script src="{{ asset('js/script.js') }}" defer></script>
+    @endpush
 
 </x-app-layout>

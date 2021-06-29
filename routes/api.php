@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // All projects
 Route::get('/projets', [App\Http\Controllers\Api\ProjectApiController::class, 'index'])->name('all.projects');  // SECURISE THIS ROUTE
+// All subcategories from a category
+Route::get('/subcategories', [App\Http\Controllers\Api\SubCategoryApiController::class, 'index'])->name('all.subcategories');  // SECURISE THIS ROUTE
