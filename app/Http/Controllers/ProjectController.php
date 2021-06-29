@@ -119,6 +119,7 @@ class ProjectController extends Controller
 
             if($request->hasFile('picture')){
 
+                $user_id = auth()->user()->id;
                 $file = $request->file('picture');
                 // Get filename with the extension
                 $filenameWithExt = $file->getClientOriginalName();
@@ -127,15 +128,18 @@ class ProjectController extends Controller
                 // Get just ext
                 $extension = $file->extension();
                 // Filename to store
-                $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
+                $fileNameToStore = $filename.'_'.$user_id.'.'.$extension;
                 // Upload Image
 
-                $path = 'public/project/cover/'.auth()->user()->id;
+                $path = 'public/project/cover/'.$user_id;
                 $file->storeAs($path ,$fileNameToStore);
 
                 $cover = Image::make($file);
                 // resize image to fixed size
-                $cover->fit(300, 300)->save(public_path('/project/cover/'.$fileNameToStore));
+                $cover->resize(null, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $cover->save(public_path('/project/cover/'.$fileNameToStore));
 
                 $project->picture = $fileNameToStore;
             }
