@@ -37,9 +37,10 @@ window.onload = () => {
                       for (i = 0; i <= data.length - 1; i++) {
                         if(data[i].category_id == dataId){
 
-                            let option = document.createElement('option');  //On crée un <li> dans la boucle
-                            //option.setAttribute('style', 'display: block;');  //On lui donne des attributs
-                            let a = document.createElement('a');    //On crée un <a> dans la boucle
+                            let option = document.createElement('option');
+                            let a = document.createElement('a');
+                            let description = document.createElement('p');
+                            description.setAttribute('style', 'color: #374151;');
                             a.setAttribute('href', '#LaRouteQuilFautEnvoyerVersLeControleurAvecLIDduUserPourExecuterUneFonctionPourAfficherLeUserCliqueEnDessous');             // --->  ICI IL FAUT FAIRE QQCHOSE AVEC LA ROUTE
                             a.setAttribute('style', 'text-decoration: none;');             //Juste enlever le fait que les links sont soulignés
                             select.appendChild(option);   //On dit que les <li> sont des enfants de <ul>

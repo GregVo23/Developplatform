@@ -30,3 +30,6 @@ Route::post('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'st
 Route::get('/projet/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth'])->name('create_project');
 //Profil du User
 Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])->middleware(['auth'])->name('profil');
+//Favoris
+Route::get('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'index'])->middleware(['auth'])->name('favoris');
+Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware(['auth'])->name('store_favoris');

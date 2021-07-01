@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function favorites_projects()
     {
-        return $this->hasMany(FavoriteProject::class);
+        return $this->belongsToMany(Project::class)->wherePivot('favorite', true);;
     }
 
     public function address()

@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('my_projects', Auth()->user()->id)" :active="request()->routeIs('my_projects', Auth()->user()->id)">
                         {{ __('Mes projets') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('favoris', Auth()->user()->id)" :active="request()->routeIs('favoris', Auth()->user()->id)">
+                        {{ __('Favoris') }}
+                    </x-nav-link>
                 </div>
             </div>
 

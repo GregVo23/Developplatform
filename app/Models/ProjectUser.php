@@ -21,6 +21,7 @@ class ProjectUser extends Pivot
         'accepted',
         'created_at',
         'updated_at',
+        'favorite',
     ];
 
     /**

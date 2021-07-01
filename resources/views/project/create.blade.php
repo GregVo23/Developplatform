@@ -59,7 +59,7 @@
                 @foreach (session()->get('subcategory') as $subcategory)
 
                     <option>{{ $this->subcategory }}</option>
-                    @dump($this->subcategory)
+
                 @endforeach
                 @endif
 
