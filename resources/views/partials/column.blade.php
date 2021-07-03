@@ -27,8 +27,8 @@ window.onload = function(){
     });
 
 
-  let datas = 
-        [    
+  let datas =
+        [
             {"name":"greg", "email":"greg@aaa.com", "job":"artiste"},
             {"name":"sophie","email":"sophie@aaa.com", "job":"architecte"},
             {"name":"marc","email":"marc@aaa.com", "job":"pompier"},
@@ -48,7 +48,7 @@ window.onload = function(){
 
         //Les variables
         let recherche;
-        let response = []; 
+        let response = [];
         let type = 'all';  //Ou email, job via les boutons
 
         //les evenements
@@ -66,7 +66,7 @@ window.onload = function(){
             type = 'job';
             execution();
             rechercheInput.placeholder = "Rechercher par job";
-            
+
         })
         rechercheInput.addEventListener('keyup', () => {
             execution()
@@ -80,7 +80,7 @@ window.onload = function(){
         /**
          * fonctions de triage
          * recherche = la donnée a rechercher (string, number ...)
-         * 
+         *
          * @param { String } recherche = la donnée a rechercher rentrer via l'input search
          * @param { Tab with Objects } data = les données
          * @return { Tab with Objects } response
@@ -108,7 +108,7 @@ window.onload = function(){
 
         /**
          * fonction pour affichage des données
-         * 
+         *
          * @param { String } rep = Les données à afficher dans un <ul><li><a> -> J'imagine que 'il faudra créer une route avec une méthod (comme avant mais vers un autres controlleur qui renvois les données à affficher)'
          * @param { Tab with Objects } data = les données à rechercher choisie via les boutons (name, job, email)
          */
@@ -142,7 +142,7 @@ window.onload = function(){
 
         /**
          * fonction pour traiter l'envois et nettoyer les variables et également éviter des répétitions de code
-         * 
+         *
          */
         function execution(){
             response = [];   //On vide la tableau si non les recherches sont répétées car restent dans le tableau ... Donc a chaque action on le vide
@@ -222,6 +222,7 @@ window.onload = function(){
 
 
 <nav class="space-y-1" aria-label="Sidebar">
+    <livewire:search/>
 
   <input id="search" class="border leading-none border-gray-500
   dark:border-gray-600 select-none block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 rounded-md mb-6 text-gray-900 placeholder-gray-500 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-700 focus:ring-0 sm:text-sm" placeholder="Recherche par mot clé" type="search" name="search">

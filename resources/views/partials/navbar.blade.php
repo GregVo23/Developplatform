@@ -42,7 +42,7 @@
                 To: "transform opacity-0 scale-95"
             -->
             <div class="origin-top-right z-40 absolute -right-2 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-            <a href="{{ route('profil') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Mon Profil</a>
+            <a href="{{ route('profil.show') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Mon Profil</a>
             <form name="frmLogout" method="post" action="{{ route('logout') }}">
                 @csrf
                 @method('POST')

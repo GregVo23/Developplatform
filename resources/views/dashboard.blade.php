@@ -39,7 +39,7 @@
 						</button>
                         </div>
                         <div class="flex mx-2">
-                        <a href="{{ route('create_project') }}"><button
+                        <a href="{{ route('project.create') }}"><button
 						class="flex items-center
 						focus:outline-none border rounded-full
 						py-2 px-6 leading-none border-gray-500

@@ -119,7 +119,7 @@
 						<span>Accepter le projet</span>
 						</button>
 
-                        <form method="POST" action="{{ route('store_favoris', $project->id) }}" name="frmFavorite">
+                        <form method="POST" action="{{ route('favoris.store', $project->id) }}" name="frmFavorite">
                             @csrf
 
                             <input type="hidden" name="favorite" value="{{ $project->id }}" >
