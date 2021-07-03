@@ -24,12 +24,13 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //Pages liées aux projects
-Route::get('/projets', [App\Http\Controllers\ProjectController::class, 'index'])->middleware(['auth'])->name('projects');
-Route::get('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'myProjects'])->middleware(['auth'])->name('my_projects');
-Route::post('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'store'])->middleware(['auth'])->name('store_project');
-Route::get('/projet/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth'])->name('create_project');
+Route::get('/projets', [App\Http\Controllers\ProjectController::class, 'index'])->middleware(['auth'])->name('projects.index');
+Route::get('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'mine'])->middleware(['auth'])->name('projects.mine');
+Route::get('/{id}/projet', [App\Http\Controllers\ProjectController::class, 'show'])->middleware(['auth'])->name('project.show');
+Route::post('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'store'])->middleware(['auth'])->name('project.store');
+Route::get('/projet/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth'])->name('project.create');
 //Profil du User
-Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])->middleware(['auth'])->name('profil');
+Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])->middleware(['auth'])->name('profil.show');
 //Favoris
-Route::get('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'index'])->middleware(['auth'])->name('favoris');
-Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware(['auth'])->name('store_favoris');
+Route::get('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'index'])->middleware(['auth'])->name('favoris.index');
+Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware(['auth'])->name('favoris.store');

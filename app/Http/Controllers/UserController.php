@@ -82,7 +82,6 @@ class UserController extends Controller
     {
         $user = Auth()->user();
         $myProjects = Project::where('user_id', '=', $user->id)->get();
-        //dd($myProjects);
 
         return view("user.show",[
             "user" => $user,

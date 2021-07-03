@@ -15,13 +15,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Accueil') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('projects')" :active="request()->routeIs('projects')">
+                    <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
                         {{ __('Projets') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('my_projects', Auth()->user()->id)" :active="request()->routeIs('my_projects', Auth()->user()->id)">
+                    <x-nav-link :href="route('projects.mine', Auth()->user()->id)" :active="request()->routeIs('projects.mine', Auth()->user()->id)">
                         {{ __('Mes projets') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('favoris', Auth()->user()->id)" :active="request()->routeIs('favoris', Auth()->user()->id)">
+                    <x-nav-link :href="route('favoris.index', Auth()->user()->id)" :active="request()->routeIs('favoris.index', Auth()->user()->id)">
                         {{ __('Favoris') }}
                     </x-nav-link>
                 </div>
@@ -53,7 +53,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profil', Auth()->user()->id)">
+                        <x-dropdown-link :href="route('profil.show', Auth()->user()->id)">
 
                             {{ __('Mon profil') }}
 

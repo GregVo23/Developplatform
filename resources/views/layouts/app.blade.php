@@ -17,6 +17,8 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/jquery.js') }}"></script>
 
+        <!--Livewire-->
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
 
@@ -76,5 +78,7 @@
 
         <!-- Specific Scripts -->
         @stack('scripts')
+        <!--Livewire-->
+        @livewireScripts
 </body>
 </html>

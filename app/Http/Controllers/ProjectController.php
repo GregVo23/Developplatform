@@ -36,7 +36,7 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function myProjects()
+    public function mine()
     {
         $user = auth()->user();
         $projects = project::where('user_id', '=', $user->id)->paginate(10);
@@ -95,7 +95,7 @@ class ProjectController extends Controller
 
         // process
         if ($validator->fails()) {
-            return Redirect()->route('create_project')
+            return Redirect()->route('project.create')
                 ->withErrors($validator);
         } else {
             // store
@@ -185,7 +185,13 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth()->user();
+        $myProject = Project::where('id', '=', $id)->get();
+
+        return view("project.show",[
+            "user" => $user,
+            "myProject" => $myProject,
+        ]);
     }
 
     /**

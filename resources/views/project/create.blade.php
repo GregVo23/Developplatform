@@ -21,7 +21,7 @@
     @endif
     <!--content-->
 
-    <form name="frmProjet" id="frmProjet" class="p-8 space-y-8 divide-y divide-gray-200" method="POST" enctype="multipart/form-data" action="{{ route('store_project', auth()->user()->id ) }}">
+    <form name="frmProjet" id="frmProjet" class="p-8 space-y-8 divide-y divide-gray-200" method="POST" enctype="multipart/form-data" action="{{ route('project.store', auth()->user()->id ) }}">
       @csrf
 
       <div class="space-y-8 divide-y divide-gray-200">
