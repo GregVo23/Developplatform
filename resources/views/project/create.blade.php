@@ -43,7 +43,7 @@
                 @if (session()->get('categories') !== NULL)
                 @foreach (session()->get('categories') as $category)
 
-                    <option data-id="{{ $category->id }}">{{ $category->name }}</option>
+                    <option data-id="{{ $category->id }}" value="{{ $category->id }}">{{ $category->name }}</option>
 
                 @endforeach
                 @endif
@@ -58,7 +58,7 @@
                 @if (session()->get('subcategory') !== NULL)
                 @foreach (session()->get('subcategory') as $subcategory)
 
-                    <option>{{ $this->subcategory }}</option>
+                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
 
                 @endforeach
                 @endif

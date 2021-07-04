@@ -166,6 +166,8 @@ class ProjectController extends Controller
 
             $result = $project->save();
 
+            $project->category()->attach($request->input('category'), ['project_id' => $project->id ,'sub_category_id' => $request->input('subCategory')]);
+
             // redirect
             if($result){
                 Session::flash('success', 'Félicitation ! Votre projet a été enregistré');
@@ -186,11 +188,19 @@ class ProjectController extends Controller
     public function show($id)
     {
         $user = Auth()->user();
-        $myProject = Project::where('id', '=', $id)->get();
+        $project = Project::find($id);
+        $owner = User::find($project->owner());
+
+        if($user->id === $owner->id){
+            $name = "Vous même";
+        }else{
+            $name = $owner->name();
+        }
 
         return view("project.show",[
             "user" => $user,
-            "myProject" => $myProject,
+            "project" => $project,
+            "name" => $name,
         ]);
     }
 

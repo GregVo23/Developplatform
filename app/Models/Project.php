@@ -50,12 +50,19 @@ class Project extends Model
 
     public function category()
     {
-        return $this->belongsToMany(Category::class, "projects_categories")->withPivot('project_id', 'category_id', 'sub_category_id', 'name');
+        return $this->belongsToMany(Category::class, "projects_categories")->withPivot('project_id', 'category_id', 'sub_category_id');
     }
 
     public function user()
     {
         return $this->belongsToMany(User::class)->withTimestamps()->withPivot('user_id', 'project_id', 'price', 'created_at','updated_at', 'accepted');
+    }
+
+    public function owner()
+    {
+        $owner = $this->user_id;
+
+        return $owner;
     }
 
     public function favorites_projects()

@@ -79,4 +79,11 @@ class User extends Authenticatable
 
         return $address;
     }
+
+    public function name()
+    {
+        $name = $this->firstname." ".$this->lastname;
+
+        return $name;
+    }
 }
