@@ -12,6 +12,11 @@
                         {{ trans('cookie-consent::texts.agree') }}
                     </a>
                 </div>
+                <div class="mt-2 ml-2 flex-shrink-0 w-full sm:mt-0 sm:w-auto">
+                    <a class="js-cookie-consent-refuse flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-yellow-800 bg-yellow-400 hover:bg-yellow-300">
+                        {{ trans('cookie-consent::texts.refuse') }}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
