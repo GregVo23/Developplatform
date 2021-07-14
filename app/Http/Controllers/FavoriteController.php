@@ -20,11 +20,10 @@ class FavoriteController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $projects = $user->favorites_projects;
 
         return view('project.index', [
-            'projects' => $projects,
             'user' => $user,
+            'rendering' => 'favorite',
         ]);
     }
 
@@ -36,43 +35,6 @@ class FavoriteController extends Controller
     public function create()
     {
         //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'favorite' => 'nullable|required|boolean',
-        ]);
-
-        $projectId = $id;
-        $userId = auth()->user()->id;
-        $favorite = DB::table('project_user');
-        $project = $favorite->where('project_id', '=', $id)->first();
-        if(!empty($project)){
-            $status =  ($project->favorite == 0)? true : false;
-            $favorite->updateOrInsert(
-                ['user_id' => $userId, 'project_id' => $projectId],
-                ['favorite' => $status]
-            );
-            if($status === false){
-                Session::flash('message', 'Ce projet est retiré de vos favoris');
-            }else{
-                Session::flash('message', 'Ce projet est ajouté à vos favoris');
-            }
-        }else{
-            $favorite->updateOrInsert(
-                ['user_id' => $userId, 'project_id' => $projectId],
-                ['favorite' => true]
-            );
-            Session::flash('message', 'Ce projet est ajouté à vos favoris');
-        }
-        return back();
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ProjectUser;
 
 class Project extends Model
 {
@@ -50,7 +51,12 @@ class Project extends Model
 
     public function category()
     {
-        return $this->belongsToMany(Category::class, "projects_categories")->withPivot('project_id', 'category_id', 'sub_category_id', 'name');
+        return $this->belongsTo(Category::class);
+    }
+
+    public function sub_category()
+    {
+        return $this->belongsTo(SubCategory::class);
     }
 
     public function user()
@@ -58,9 +64,24 @@ class Project extends Model
         return $this->belongsToMany(User::class)->withTimestamps()->withPivot('user_id', 'project_id', 'price', 'created_at','updated_at', 'accepted');
     }
 
+    public function owner()
+    {
+        $owner = $this->user_id;
+
+        return $owner;
+    }
+
     public function favorites_projects()
     {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function isFavorite()
+    {
+        if (!auth()->check()) {
+            return false;
+        }
+        return auth()->user()->favorites_projects->contains('user_id', $this->id);
     }
 
     public function delay($deadline)

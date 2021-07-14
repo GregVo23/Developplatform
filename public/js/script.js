@@ -38,19 +38,13 @@ window.onload = () => {
                         if(data[i].category_id == dataId){
 
                             let option = document.createElement('option');
-                            let a = document.createElement('a');
-                            let description = document.createElement('p');
-                            description.setAttribute('style', 'color: #374151;');
-                            a.setAttribute('href', '#LaRouteQuilFautEnvoyerVersLeControleurAvecLIDduUserPourExecuterUneFonctionPourAfficherLeUserCliqueEnDessous');             // --->  ICI IL FAUT FAIRE QQCHOSE AVEC LA ROUTE
-                            a.setAttribute('style', 'text-decoration: none;');             //Juste enlever le fait que les links sont soulignés
-                            select.appendChild(option);   //On dit que les <li> sont des enfants de <ul>
-                            a.innerHTML = data[i].name;
-                            option.appendChild(a);     //On dit que les <a> sont des enfants des <li>
+                            option.setAttribute('value', data[i].id);
+                            option.innerHTML = data[i].name;
+                            select.appendChild(option);
 
                         }
                     }
-                    //affichage.appendChild(select);  //On dit que le <ul> est un enfant de la <div> qui a l'id : affichage
-
+                    
                   });
                 }
               )
