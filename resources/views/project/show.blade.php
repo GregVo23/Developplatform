@@ -23,33 +23,36 @@
 
     <div class="px-4 py-5 sm:px-6 flex">
         <div class="flex-grow">
-            <h2 class="text-xl leading-6 font-medium text-gray-900">
+
+            <h2 class="mt-4 text-xl leading-6 font-medium text-gray-900">
                 {{ $project->name }}
             </h2>
-            <p class="mt-8 max-w-2xl text-sm text-gray-500">
-                <b>Catégorie:</b> {{ $project->category[0]->name }}</p><p class="text-gray-400 text-sm mt-2">{{ $project->category[0]->description }}</p>
-                        <!--($projects[0]->user[0]->pivot->price)-->
-                        <!--($projects[0]->category[0]->pivot)--> 
-            </p>
-            <p class="mt-2 max-w-2xl text-sm text-gray-500">
-                <b>Sous-Catégorie:</b> {{ $project->category[0]->sub_category[0]->name }}</p><p class="text-gray-400 text-sm mt-2">{{ $project->category[0]->sub_category[0]->description }}</p>
+            <h5 class="mt-8 max-w-2xl text-sm text-gray-500 font-bold">Description:</h5>
+            <p class="mt-1 text-sm text-gray-900">
+                {{ $project->about }}
             </p>
         </div>
 
         <div class="flex-shrink-0 ml-4">
-            <a href="{{ asset('project/cover/'.$project->picture) }}">
+            <a href="{{ asset('project/cover/'.$project->picture) }}" target="about_blank">
             <img
-            class="h-64 w-64 rounded object-cover"
+            class="h-56 w-56 rounded object-cover"
             src="{{ asset('project/cover/'.$project->picture) }}"
             alt="infamous" />
             </a>
         </div>
     </div>
     <div class="mt-1 px-4 py-5 sm:px-6">
-        <b class="mt-2 max-w-2xl text-sm text-gray-500">Description:</b>
-        <dd class="mt-1 text-sm text-gray-900">
-            {{ $project->about }}
-        </dd>
+
+        <p class="mt-8 max-w-2xl text-sm text-gray-500">
+        <b>Catégorie:</b> {{ $project->category->name }}</p><p class="text-gray-400 text-sm mt-2">{{ $project->category->description }}</p>
+                <!--($projects[0]->user[0]->pivot->price)-->
+                <!--($projects[0]->category[0]->pivot)--> 
+        </p>
+        <p class="mt-2 max-w-2xl text-sm text-gray-500">
+            <b>Sous-Catégorie:</b> {{ $project->sub_category->name }}</p><p class="text-gray-400 text-sm mt-2">{{ $project->sub_category->description }}</p>
+        </p>
+
     </div>
 
         <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
@@ -74,7 +77,7 @@
             @isset($project->email)
                 <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">
-                    Email address
+                    Adresse email
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900">
                     {{ $project->email }}

@@ -35,7 +35,7 @@ class Category extends Model
 
     public function project()
     {
-        return $this->belongsToMany(Project::class, "projects_categories")->withPivot('project_id', 'category_id', 'sub_category_id', 'name',);
+        return $this->belongsTo(Project::class);
     }
 
     public function sub_category()

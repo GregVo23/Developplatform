@@ -1,9 +1,4 @@
 
-
-    @php
-    //var_dump($projects);
-    @endphp
-
     @foreach ($projects as $project)
 
 

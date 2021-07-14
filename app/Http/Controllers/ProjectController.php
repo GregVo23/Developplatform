@@ -22,12 +22,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(10);
+        $projects = Project::all();
         $user = auth()->user();
 
         return view('project.index', [
             'projects' => $projects,
             'user' => $user,
+            'rendering' => 'projects',
         ]);
     }
 
@@ -39,12 +40,13 @@ class ProjectController extends Controller
     public function mine()
     {
         $user = auth()->user();
-        $projects = project::where('user_id', '=', $user->id)->paginate(10);
+        //$projects = project::where('user_id', '=', $user->id)->paginate(10);
 
 
         return view('project.index', [
-            'projects' => $projects,
+            //'projects' => $projects,
             'user' => $user,
+            'rendering' => 'mine',
         ]);
     }
 
@@ -79,7 +81,7 @@ class ProjectController extends Controller
             'phone' => 'numeric|nullable',
             'email' => 'required|string|email',
             'picture' => 'nullable|image|mimes:jpeg,jpg,png',
-            'document' => 'nullable|mimes:pdf,txt,jpeg,jpg,png',
+            'document' => 'nullable|file|mimes:ppt,pptx,doc,docx,pdf,xls,xlsx|max:204800',
             'deadline' => 'nullable|date|after:tomorrow',
             'category' => 'required|string',
             'subCategory' => 'nullable|string',
@@ -101,6 +103,8 @@ class ProjectController extends Controller
             // store
             $project = new Project;
             $project->user_id = auth()->user()->id;
+            $project->category_id = $request->input('category');
+            $project->sub_category_id = $request->input('subCategory');
             $project->name = ucfirst($request->input('name'));
             $project->about = ucfirst($request->input('about'));
             $project->price = $request->input('price');
@@ -166,7 +170,8 @@ class ProjectController extends Controller
 
             $result = $project->save();
 
-            $project->category()->attach($request->input('category'), ['project_id' => $project->id ,'sub_category_id' => $request->input('subCategory')]);
+            //If many to many
+            //$project->category()->attach($request->input('category'), ['project_id' => $project->id ,'sub_category_id' => $request->input('subCategory')]);
 
             // redirect
             if($result){
