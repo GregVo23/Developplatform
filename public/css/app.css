@@ -8,6 +8,14 @@ Document
 */
 
 /**
+Pagination.
+*/
+
+body > div.min-h-screen.bg-gray-100 > main > div > div > div.grid.grid-cols-1.gap-4.lg\:col-span-2 > section > div > div > main > div > div > div > div > div.flex.flex-grow.justify-center.m-7 > div > nav > div.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between > div:nth-child(1){
+    display: none;
+}
+
+/**
 Use a better box model (opinionated).
 */
 
@@ -524,14 +532,14 @@ samp {
  *    CSS Remedy, with `svg` added as well.
  *
  *    https://github.com/mozdevs/cssremedy/issues/14
- * 
+ *
  * 2. Add `vertical-align: middle` to align replaced elements more
  *    sensibly by default when overriding `display` by adding a
  *    utility like `inline`.
  *
  *    This can trigger a poorly considered linting error in some
  *    tools but is included by design.
- * 
+ *
  *    https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210
  */
 

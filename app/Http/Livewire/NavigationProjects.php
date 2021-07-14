@@ -23,15 +23,14 @@ class NavigationProjects extends Component
     public function favorite($id)
     {
         $user = auth()->user();
-        //$project = ProjectUser::where('project_id', $id)->first();
         $favorite = ProjectUser::firstOrCreate(
             ['project_id' =>  $id, 'user_id' => $user->id],
             ['created_at' => Carbon::now(), 'project_id' =>  $id, 'user_id' => $user->id],
         );
-        //@dump($id);
+
         $favorite->favorite = !$favorite->favorite;
         $favorite->save();
-        //dd($favorite);
+
         if($favorite->favorite == false){
             $favorite->delete();
         }

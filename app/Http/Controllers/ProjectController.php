@@ -6,12 +6,13 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
-use Illuminate\Support\Facades\Carbon;
-use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -263,6 +264,13 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $project = Project::find($id);
+            $project->delete();
+
+            return back();
+        }else{
+            return back();
+        }
     }
 }
