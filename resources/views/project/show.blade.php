@@ -23,6 +23,7 @@
 
     <div class="px-4 py-5 sm:px-6 flex">
         <div class="flex-grow">
+
             <h2 class="mt-4 text-xl leading-6 font-medium text-gray-900">
                 {{ $project->name }}
             </h2>

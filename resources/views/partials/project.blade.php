@@ -1,2 +1,2 @@
-@livewire('navigation-projects', ['rendering' => $rendering])
 
+@livewire('navigation-projects', ['rendering' => $rendering])
