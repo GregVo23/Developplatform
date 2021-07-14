@@ -3,6 +3,13 @@
 	transition: background-color 2s ease;
 }
 
+/* Navigation update
+---------------------------------------------------------------------------- */
+
+body > div.min-h-screen.bg-gray-100 > main > div > div > div.grid.grid-cols-1.gap-4.lg\:col-span-2 > section > div > div > main > div > div > div > div > div.flex.flex-grow.justify-center.m-7 > div > nav > div.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between > div:nth-child(1){
+    display:none;
+}
+
 /*-----------------------------------------------------------------------------------
 
 	Theme Name: Canvas

@@ -18,11 +18,14 @@
                     <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
                         {{ __('Projets') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('projects.mine', Auth()->user()->id)" :active="request()->routeIs('projects.mine', Auth()->user()->id)">
-                        {{ __('Mes projets') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('favoris.index', Auth()->user()->id)" :active="request()->routeIs('favoris.index', Auth()->user()->id)">
                         {{ __('Favoris') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('projects.mine', Auth()->user()->id)" :active="request()->routeIs('projects.mine', Auth()->user()->id)">
+                        {{ __('Mes demandes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('projects.maked.mine', Auth()->user()->id)" :active="request()->routeIs('projects.maked.mine', Auth()->user()->id)">
+                        {{ __('Mes réalisations') }}
                     </x-nav-link>
                 </div>
             </div>

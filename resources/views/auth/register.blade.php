@@ -82,6 +82,15 @@
                                 name="password_confirmation" required />
             </div>
 
+            <div class="col-span-6">
+                  <div class="h-1">
+                    <input id="rules" name="rules" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                  </div>
+                  <div class="ml-5 text-sm">
+                    <p class="text-gray-700">J'accepte les Conditions <a href="#">générales d’utilisation</a></p>
+                  </div>
+              </div>
+
             <div class="flex items-center justify-end col-span-6">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Déjà enregistré ?') }}

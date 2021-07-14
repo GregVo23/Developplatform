@@ -26,6 +26,7 @@ require __DIR__.'/auth.php';
 //Pages liées aux projects
 Route::get('/projets', [App\Http\Controllers\ProjectController::class, 'index'])->middleware(['auth'])->name('projects.index');
 Route::get('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'mine'])->middleware(['auth'])->name('projects.mine');
+Route::get('/realisations', [App\Http\Controllers\ProjectController::class, 'maked'])->middleware(['auth'])->name('projects.maked.mine');
 Route::get('/{id}/projet', [App\Http\Controllers\ProjectController::class, 'show'])->middleware(['auth'])->name('project.show');
 Route::post('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'store'])->middleware(['auth'])->name('project.store');
 Route::get('/projet/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth'])->name('project.create');

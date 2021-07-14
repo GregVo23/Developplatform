@@ -6,13 +6,13 @@
         <div class="flex-grow mt-2">
             <div
             class="flex-grow w-full items-center justify-between bg-white
-            dark:bg-gray-800 px-8 py-6 border-l-4 border-indigo-700
+            dark:bg-gray-800 px-8 py-6 border-l-2 border-indigo-700
             dark:border-indigo-300">
             <!-- card -->
             <div class="flex justify-between">
                 <div class="flex-none">
                     <img
-                    class="h-28 w-28 rounded object-cover"
+                    class="h-36 w-36 rounded object-cover"
                     src="{{ asset('project/cover/'.$project->picture) }}"
                     alt="{{ $project->name }}" />
                 </div>
@@ -86,17 +86,9 @@
                         10.04 0 0011 22v-2a8.063 8.063 0
                         01-3.89-1.63z"></path>
                     </svg>
-                    <span class="ml-2 text-sm text-gray-600
-                    dark:text-gray-300">Il reste</span>
-                    <span
-                        class="ml-2 text-sm text-gray-600
-                        dark:text-gray-300 capitalize font-bold">
-                        @if($project instanceof \Illuminate\Database\Eloquent\Collection)
-                        {{ $project->delay($project->deadline) ? $project->delay($project->deadline) : "" }}
-                        @endif
+                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-300">
+                        {{ Carbon\Carbon::parse($project->deadline)->diffForHumans() ? Carbon\Carbon::parse($project->deadline)->diffForHumans() : "" }}
                     </span>
-                    <span class="ml-2 text-sm text-gray-600
-                    dark:text-gray-300">jours</span>
                     </div>
                 </div>
 
@@ -105,55 +97,54 @@
                     <form name="frmFavorite">
                         @csrf
                         @if($rendering!="mine")
-
+                            @if($project->user_id !== auth()->user()->id || $rendering === "favorite" )
                             <button
                                 wire:click.prevent="favorite({{ ($rendering == "favorite") ? $project->project_id : $project->id }})"
                                 class="flex items-center ml-4
-                                focus:outline-none border rounded-full
+                                focus:outline-none group border rounded-full
                                 py-2 px-6 leading-none border-indigo-700
                                 dark:border-indigo-700 select-none
-                                hover:bg-indigo-700 hover:text-white
+                                hover:bg-indigo-700 text-indigo-700 hover:text-white
                                 dark-hover:text-gray-200">
 
                                 @if($rendering === "favorite")
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                     </svg>
                                 @elseif($project->isFavorite())
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                     </svg>
                                 @else
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                     </svg>
                                 @endif
 
-                                <span>
+                                <span class="text-gray-700 group-hover:text-white">
                                     @if($rendering === "favorite"){{ "Supprimer des favoris" }}
                                     @elseif($project->isFavorite()){{ "Supprimer des favoris" }}
                                     @else{{ "Ajouter aux favoris" }}
                                     @endif
-                                </span>                                
+                                </span>
                             </button>
-                            
+                            @endif
+
                         @else
                             <button
 
                                 class="flex items-center ml-4
-                                focus:outline-none border rounded-full
+                                focus:outline-none group border rounded-full
                                 py-2 px-6 leading-none border-indigo-700
                                 dark:border-indigo-700 select-none
-                                hover:bg-indigo-700 hover:text-white
+                                hover:bg-indigo-700 text-indigo-700 hover:text-white
                                 dark-hover:text-gray-200">
-
-
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                 </svg>
-                                <span>
-                                    {{ "Supprimer le projet" }}
-                                </span>  
+                                <span class="text-gray-700 group-hover:text-white">
+                                    {{ "Supprimer mon projet" }}
+                                </span>
                             </button>
                         @endif
                     </form>
@@ -162,16 +153,18 @@
                         @csrf
                         <button
                             class="flex items-center ml-4
-                            focus:outline-none border rounded-full
-                            py-2 px-6 leading-none border-indigo-700
+                            focus:outline-none group border rounded-full
+                            py-2 px-6 leading-none border-gray-700
                             dark:border-indigo-700 select-none
-                            hover:bg-indigo-700 hover:text-white
-                            dark-hover:text-gray-200">
+                            hover:bg-gray-700 text-gray-700 hover:text-white
+                            dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
-                            <span>Voir le projet</span>
+                            <span class="text-gray-700 group-hover:text-white">
+                                {{ "Voir le projet" }}
+                            </span>
                         </button>
                     </form>
                 </div>
@@ -181,8 +174,7 @@
         </div>
     </div>
 
-
-@endforeach
+    @endforeach
     <!--paginate-->
     @if(!$projects instanceof \Illuminate\Database\Eloquent\Collection)
         <div class="flex flex-grow justify-center m-7">

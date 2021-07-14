@@ -51,6 +51,24 @@ class ProjectController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function maked()
+    {
+        $user = auth()->user();
+        //$projects = project::where('user_id', '=', $user->id)->paginate(10);
+
+
+        return view('project.index', [
+            //'projects' => $projects,
+            'user' => $user,
+            'rendering' => 'maked',
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -96,92 +114,97 @@ class ProjectController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         // process
-        if ($validator->fails()) {
-            return Redirect()->route('project.create')
-                ->withErrors($validator);
-        } else {
-            // store
-            $project = new Project;
-            $project->user_id = auth()->user()->id;
-            $project->category_id = $request->input('category');
-            $project->sub_category_id = $request->input('subCategory');
-            $project->name = ucfirst($request->input('name'));
-            $project->about = ucfirst($request->input('about'));
-            $project->price = $request->input('price');
-            $project->document = $request->input('document');
-            $project->picture = $request->input('picture');
-            $project->phone = $request->input('phone');
-            $project->deadline = $request->input('deadline');
-            $project->email = $request->input('email');
-            $project->country = ucfirst($request->input('country'));
-            $project->city = ucfirst($request->input('city'));
-            $project->zipcode = $request->input('postalCode');
-            $project->number = $request->input('number');
-            $project->street = $request->input('street');
-            $project->notifications = $request->input('notifications') ? true : false;
-            $project->rules = $request->input('rules') ? true : false;
+        if($request->has('rules')){
+            if($validator->fails()) {
+                return Redirect()->route('project.create')
+                    ->withErrors($validator);
+            } else {
+                // store
+                $project = new Project;
+                $project->user_id = auth()->user()->id;
+                $project->category_id = $request->input('category');
+                $project->sub_category_id = $request->input('subCategory');
+                $project->name = ucfirst($request->input('name'));
+                $project->about = ucfirst($request->input('about'));
+                $project->price = $request->input('price');
+                $project->document = $request->input('document');
+                $project->picture = $request->input('picture');
+                $project->phone = $request->input('phone');
+                $project->deadline = $request->input('deadline');
+                $project->email = $request->input('email');
+                $project->country = ucfirst($request->input('country'));
+                $project->city = ucfirst($request->input('city'));
+                $project->zipcode = $request->input('postalCode');
+                $project->number = $request->input('number');
+                $project->street = $request->input('street');
+                $project->notifications = $request->input('notifications') ? true : false;
+                $project->rules = $request->input('rules') ? true : false;
 
-            if($request->hasFile('picture')){
+                if($request->hasFile('picture')){
 
-                $user_id = auth()->user()->id;
-                $file = $request->file('picture');
-                // Get filename with the extension
-                $filenameWithExt = $file->getClientOriginalName();
-                // Get just filename
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                // Get just ext
-                $extension = $file->extension();
-                // Filename to store
-                $fileNameToStore = $filename.'_'.$user_id.'.'.$extension;
-                // Upload Image
+                    $user_id = auth()->user()->id;
+                    $file = $request->file('picture');
+                    // Get filename with the extension
+                    $filenameWithExt = $file->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $file->extension();
+                    // Filename to store
+                    $fileNameToStore = $filename.'_'.$user_id.'.'.$extension;
+                    // Upload Image
 
-                $path = 'public/project/cover/'.$user_id;
-                $file->storeAs($path ,$fileNameToStore);
+                    $path = 'public/project/cover/'.$user_id;
+                    $file->storeAs($path ,$fileNameToStore);
 
-                $cover = Image::make($file);
-                // resize image to fixed size
-                $cover->resize(null, 300, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $cover->save(public_path('/project/cover/'.$fileNameToStore));
+                    $cover = Image::make($file);
+                    // resize image to fixed size
+                    $cover->resize(null, 300, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $cover->save(public_path('/project/cover/'.$fileNameToStore));
 
-                $project->picture = $fileNameToStore;
-            }
+                    $project->picture = $fileNameToStore;
+                }
 
-            if(!empty($request->file('document'))){
+                if(!empty($request->file('document'))){
 
-                foreach ($request->file('document') as $file){
-                    if(is_object($file) && $file->isValid()){
+                    foreach ($request->file('document') as $file){
+                        if(is_object($file) && $file->isValid()){
 
-                        $filenameWithExt = $file->getClientOriginalName();
-                        // Get just filename
-                        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                        // Get just ext
-                        $extension = $file->extension();
-                        // Filename to store
-                        $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
-                        // Upload Image
-                        $path = $file->storeAs('public/project/doc/'.auth()->user()->id,$fileNameToStore);
+                            $filenameWithExt = $file->getClientOriginalName();
+                            // Get just filename
+                            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                            // Get just ext
+                            $extension = $file->extension();
+                            // Filename to store
+                            $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
+                            // Upload Image
+                            $path = $file->storeAs('public/project/doc/'.auth()->user()->id,$fileNameToStore);
 
-                        $project->document = $fileNameToStore ;
+                            $project->document = $fileNameToStore ;
+                        }
                     }
                 }
-            }
 
-            $result = $project->save();
+                $result = $project->save();
 
-            //If many to many
-            //$project->category()->attach($request->input('category'), ['project_id' => $project->id ,'sub_category_id' => $request->input('subCategory')]);
+                //If many to many
+                //$project->category()->attach($request->input('category'), ['project_id' => $project->id ,'sub_category_id' => $request->input('subCategory')]);
 
-            // redirect
-            if($result){
-                Session::flash('success', 'Félicitation ! Votre projet a été enregistré');
-                return Redirect::to('dashboard');
-            }else{
-                Session::flash('message', 'Désolé ! Un problème est survenu');
-                return Redirect::to('dashboard');
+                // redirect
+                if($result){
+                    Session::flash('success', 'Félicitation ! Votre projet a été enregistré');
+                    return Redirect::to('dashboard');
+                }else{
+                    Session::flash('message', 'Désolé ! Un problème est survenu');
+                    return Redirect::to('dashboard');
+                }
             }
         }
+
+        Session::flash('message', 'Vous devez accepter le réglement');
+        return Redirect::to('dashboard');
     }
 
     /**

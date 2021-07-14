@@ -59,11 +59,7 @@
                     </div>
                     </div>
                 </section>
-                    <div class="absolute bottom-0 ">
-
-                        <!-- Image -->
-                        <img src="{{ asset("images/1.jpeg") }}">
-                    </div>
+                    <!-- Image publicity-->
                 </div>
 
             </div>

@@ -73,7 +73,16 @@ class NavigationProjects extends Component
             return view('livewire.navigation-projects', [
                 'projects' => project::where('user_id', '=', $user->id)->paginate(10),
             ]);
+        }elseif($this->rendering === "maked")
+        {
+            return view('livewire.navigation-projects', [
+                'projects' => DB::table('projects')
+                ->join('project_user','projects.id','=','project_user.project_id')
+                ->where('project_user.favorite','=',0)
+                ->where('project_user.user_id', '=', $user->id)
+                ->paginate(10),
+            ]);
         }
-        
+
     }
 }
