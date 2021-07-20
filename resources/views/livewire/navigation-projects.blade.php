@@ -1,45 +1,57 @@
 <div>
+    <div class="flex mt-2 flex-col">
+        <div class="flex justify-items-stretch">
 
-    <div class="flex mt-2 flex-grow">
-        <div class="flex">
-            <select wire:model.lazy="perPage" id="nbPage" name="nBpage" class="w-24 mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                @for ($i = 5; $i <= 25; $i += 5)
-                    <option value="{{ $i }}">{{ $i }}</option>
-                @endfor
-            </select>
-            <label for="nbPage" class="mt-2 ml-2">
+            <div class="flex-col w-1/3 mx-1">
+                <select wire:model.lazy="category_id" id="Selectcategory" name="Selectcategory" class="w-full mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="">Filtre par catégorie</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>                    
+                    @endforeach
+                </select>
+            </div>
 
-                @if ($rendering === "projects")
-                    Projets
-                @elseif ($rendering === "favorite")
-                    Favoris
-                @elseif ($rendering === "mine")
-                    Demandes
-                @elseif ($rendering === "maked")
-                    Réalisations
-                @else
-                    Projets
-                @endif
+            <div class="flex-col w-1/3 mx-1">
+                <select wire:model.lazy="sub_category_id" id="SelectSubCategory" name="SelectSubCategory" class="w-full mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="">Filtre par sous-catégorie</option>
+                    @foreach ($subCategories as $subCategory)
+                        <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>                    
+                    @endforeach
+                </select>
+            </div>
 
-            par page</label>
+            <div class="flex-col w-1/3 mx-1">
+                <input class="mt-1 relative border leading-none border-gray-500
+                dark:border-gray-600 select-none block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 rounded-md mb-6 text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-700 focus:ring-0 sm:text-sm" placeholder="Filtre par mot clé" type="FilterSearch" name="FilterSearch"
+                wire:model="query">
+            </div>
+
         </div>
+        <div class="flex justify-items-end">
 
-        <div class="flex">
-            <label for="Selectcategory" class="mt-2 ml-2">Catégorie</label>
-            <select wire:model.lazy="category_id" id="Selectcategory" name="Selectcategory" class="w-24 mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+            <div class="flex ml-1">
+                <select wire:model.lazy="perPage" id="nbPage" name="nBpage" class="w-24 mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                    @for ($i = 5; $i <= 25; $i += 5)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                </select>
+                <label for="nbPage" class="mt-2 ml-2">
 
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                    @if ($rendering === "projects")
+                        Projets
+                    @elseif ($rendering === "favorite")
+                        Favoris
+                    @elseif ($rendering === "mine")
+                        Demandes
+                    @elseif ($rendering === "maked")
+                        Réalisations
+                    @else
+                        Projets
+                    @endif
 
-            </select>
+                par page</label>
+            </div>
         </div>
-
-        <div>
-            <input class="relative border leading-none border-gray-500
-            dark:border-gray-600 select-none block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 rounded-md mb-6 text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-700 focus:ring-0 sm:text-sm" placeholder="Recherche par mot clé" type="FilterSearch" name="FilterSearch"
-            wire:model="query">
-        </div>
-
     </div>
 
     @foreach ($projects as $project)
@@ -142,6 +154,10 @@
                             @if($project->user_id !== auth()->user()->id || $rendering === "favorite" )
                                 <form name="frmFavorite">
                                     @csrf
+
+                                    <!--livewire:favorite-button :id = "$project->id"-->
+                                        
+
                                     <button
                                         wire:click.prevent="favorite({{ ($rendering == "favorite") ? $project->project_id : $project->id }})"
                                         class="flex items-center ml-4
@@ -166,12 +182,20 @@
                                         @endif
 
                                         <span class="text-gray-700 group-hover:text-white">
-                                            @if($rendering === "favorite"){{ "Supprimer des favoris" }}
-                                            @elseif($project->isFavorite()){{ "Supprimer des favoris" }}
-                                            @else{{ "Ajouter aux favoris" }}
+                                 
+                                            @if($rendering === "favorite")
+                                                {{ "Supprimer des Favoris" }}
+                                            @elseif($project->isFavorite())
+                                                {{ "Supprimer des Favoris" }}
+                                            @else
+                                                {{ "Ajouter aux favoris" }}
                                             @endif
+
                                         </span>
                                     </button>
+
+                                    <!--livewire:favorite-button :id = "$project->id"-->
+
                                 </form>
                             @endif
 
