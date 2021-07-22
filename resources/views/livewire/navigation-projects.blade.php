@@ -6,7 +6,7 @@
                 <select wire:model.lazy="category_id" id="Selectcategory" name="Selectcategory" class="w-full mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                         <option value="">Filtre par catégorie</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>                    
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -15,7 +15,7 @@
                 <select wire:model.lazy="sub_category_id" id="SelectSubCategory" name="SelectSubCategory" class="w-full mt-1 block pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                         <option value="">Filtre par sous-catégorie</option>
                     @foreach ($subCategories as $subCategory)
-                        <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>                    
+                        <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -156,7 +156,7 @@
                                     @csrf
 
                                     <!--livewire:favorite-button :id = "$project->id"-->
-                                        
+
 
                                     <button
                                         wire:click.prevent="favorite({{ ($rendering == "favorite") ? $project->project_id : $project->id }})"
@@ -182,7 +182,7 @@
                                         @endif
 
                                         <span class="text-gray-700 group-hover:text-white">
-                                 
+
                                             @if($rendering === "favorite")
                                                 {{ "Supprimer des Favoris" }}
                                             @elseif($project->isFavorite())
@@ -226,9 +226,9 @@
                         <button
                             class="flex items-center ml-4
                             focus:outline-none group border rounded-full
-                            py-2 px-6 leading-none border-gray-700
-                            dark:border-indigo-700 select-none
-                            hover:bg-gray-700 text-gray-700 hover:text-white
+                            py-2 px-6 leading-none border-yellow
+                            dark:border-yellow select-none
+                            hover:bg-yellow text-yellow hover:text-white
                             dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
