@@ -10,6 +10,37 @@ body > div.min-h-screen.bg-gray-100 > main > div > div > div.grid.grid-cols-1.ga
     display: none;
 }
 
+/* Select base color
+---------------------------------------------------------------------------- */
+
+select:focus{
+    border-color: gray;
+    outline:none;
+}
+
+select option {
+    margin: 40px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+
+select option:hover,
+    select option:focus,
+    select option:active {
+        background: rgba(0, 0, 0, 0.6) !important;
+        background-color: rgba(0, 0, 0, 0.6) !important;  /* for IE */
+        color: white !important;
+    }
+
+    select option:checked {
+        background: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.6); /* for IE */
+        color: white !important;
+    }
+
 /*-----------------------------------------------------------------------------------
 
 	Theme Name: Canvas

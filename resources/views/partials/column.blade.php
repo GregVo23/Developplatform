@@ -1,5 +1,5 @@
 <script>
-/*
+
 window.onload = function(){
   const APP_URL = '{{ env('APP_URL') }}'+'/api';
   const options = {
@@ -85,6 +85,7 @@ window.onload = function(){
          * @param { String } recherche = la donnée a rechercher rentrer via l'input search
          * @param { Tab with Objects } data = les données
          * @return { Tab with Objects } response
+         */
 
         function triage(recherche, data){
 
@@ -106,14 +107,14 @@ window.onload = function(){
             });
             return response;
         }
-*/
+
         /**
          * fonction pour affichage des données
          *
          * @param { String } rep = Les données à afficher dans un <ul><li><a> -> J'imagine que 'il faudra créer une route avec une méthod (comme avant mais vers un autres controlleur qui renvois les données à affficher)'
          * @param { Tab with Objects } data = les données à rechercher choisie via les boutons (name, job, email)
          */
-/*
+
         function afficher(rep, type){
 
             let ul = document.createElement('ul');    //On crée le <ul>
@@ -141,12 +142,12 @@ window.onload = function(){
             }
             affichage.appendChild(ul);  //On dit que le <ul> est un enfant de la <div> qui a l'id : affichage
         }
-*/
+
         /**
          * fonction pour traiter l'envois et nettoyer les variables et également éviter des répétitions de code
          *
          */
-/*
+
         function execution(){
             response = [];   //On vide la tableau si non les recherches sont répétées car restent dans le tableau ... Donc a chaque action on le vide
             affichage.innerHTML = "";   //On vide la div d'affichage si non les recherches sont répétées car restent visible sur la page ... Donc a chaque action on la vide
@@ -160,7 +161,7 @@ window.onload = function(){
         }
 
 
-  */
+
   // 1. css in js
   /*
   let lastKnownScrollPosition = 0;
@@ -224,10 +225,10 @@ window.onload = function(){
 <!-- This example requires Tailwind CSS v2.0+ -->
 
 
-<nav class="space-y-1" aria-label="Sidebar">
+<nav class="space-y-1" aria-label="Sidebar" x-data="{categories: false}">
     <livewire:search/>
 
-  <!--
+
   <input id="search" class="border leading-none border-gray-500
   dark:border-gray-600 select-none block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 rounded-md mb-6 text-gray-900 placeholder-gray-500 focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-700 focus:ring-0 sm:text-sm" placeholder="Recherche par mot clé" type="search" name="search">
   <button id="email">email</button>
@@ -235,14 +236,14 @@ window.onload = function(){
   <button id="job">job</button>
 
   <div id="affichage"></div>
-  -->
-  <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
+
   <h3>Les catégories</h3>
+
   @if(session()->get('categories') !== NULL)
 
     @foreach (session()->get('categories') as $category)
 
-    <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="page">
+    <a href="#" @click.prevent ="categories = !categories" class="bg-gray-100 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="page">
         <!--
         Heroicon name: outline/home
 
@@ -259,7 +260,7 @@ window.onload = function(){
 
         @foreach ($category->sub_category as $sub_category)
 
-        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+        <a x-show="categories" href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
         <!-- Heroicon name: outline/users -->
         <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />

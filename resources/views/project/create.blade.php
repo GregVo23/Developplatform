@@ -21,10 +21,10 @@
     @endif
     <!--content-->
 
-    <form name="frmProjet" id="frmProjet" class="p-8 space-y-8 divide-y divide-gray-200" method="POST" enctype="multipart/form-data" action="{{ route('project.store', auth()->user()->id ) }}">
+    <form wire:submit="save" name="frmProjet" id="frmProjet" class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8" method="POST" enctype="multipart/form-data" action="{{ route('project.store', auth()->user()->id ) }}">
       @csrf
 
-      <div class="space-y-8 divide-y divide-gray-200">
+      <div>
         <div>
           <div>
             <h2 class="pb-4 pt-2 text-xl leading-6 font-medium text-gray-900">
@@ -105,24 +105,11 @@
 
 
         </div>
-        <div class="mt-8 flex justify-evenly">
+        <div class="mt-8 flex justify-between">
 
-            <div class="sm:col-span-4">
-              <label for="picture" class="block text-sm font-medium text-gray-700">
-                Photo de couverture
-              </label>
-              <div class="flex bg-grey-lighter">
-                <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
-                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                    </svg>
-                    <span class="mt-2 text-base leading-normal">Choisir une photo</span>
-                    <input type='file' class="hidden" name="picture"/>
-                </label>
-            </div>
-            </div>
+            <livewire:upload-file/>
 
-            <div class="sm:col-span-6">
+            <div>
               <label for="document" class="block text-sm font-medium text-gray-700">
                 Fichiers (PDF, Jpeg, PNG, txt, Word ...)
               </label>
@@ -151,7 +138,7 @@
           </p>
         </div>
 
-          <div class="sm:col-span-4 pt-6 pb-8">
+          <div class="sm:col-span-4 pt-6 pb-10">
             <label for="email" class="block text-sm font-medium text-gray-700">
               Votre adresse email (obligatoire)
             </label>
@@ -160,52 +147,104 @@
             </div>
           </div>
 
-          <div>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Informations optionnelles
-            </h3>
-            <p class="mt-1 text-sm text-gray-500">
-              Renseigner davantage d'informations qui seront également communiqués au prestataire de votre projet.
-            </p>
-          </div>
+          <section class="mb-6" x-data="{open: false}">
+
+
+            <div class="flex justify-center">
+                <div class="flex bg-grey-lighter" @click.prevent ="open = !open">
+                  <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" x-show="!open" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
+                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" x-show="open" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="mt-2 text-base leading-normal text-center">Informations complémentaires</span>
+                      <a href="#" ></a>
+                  </label>
+                </div>
+            </div>
+
 
           <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
 
-            <div class="col-span-6 sm:col-span-6">
-              <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-              <input type="text" name="phone" id="phone" autocomplete="phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <div class="col-span-6 sm:col-span-6"
+                x-show="open"
+                x-transition:enter="ease-in-out duration-500"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="ease-in-out duration-500"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0">
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                    <input type="text" name="phone" id="phone" autocomplete="phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-6"
+                x-show="open"
+                x-transition:enter="ease-in-out duration-500"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="ease-in-out duration-500"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0">
+                    <label for="country" class="block text-sm font-medium text-gray-700">Pays</label>
+                    <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option>Belgique</option>
+                        <option>France</option>
+                        <option>Luxembourg</option>
+                    </select>
+                </div>
+
+            <div class="col-span-6"
+            x-show="open"
+            x-transition:enter="ease-in-out duration-500"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in-out duration-500"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0">
+                <label for="street" class="block text-sm font-medium text-gray-700">Rue</label>
+                <input type="text" name="street" id="street" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
-            <div class="col-span-6 sm:col-span-6">
-              <label for="country" class="block text-sm font-medium text-gray-700">Pays</label>
-              <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>Belgique</option>
-                <option>France</option>
-                <option>Luxembourg</option>
-              </select>
+            <div class="col-span-6 sm:col-span-3 lg:col-span-2"
+            x-show="open"
+            x-transition:enter="ease-in-out duration-500"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in-out duration-500"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0">
+                <label for="number" class="block text-sm font-medium text-gray-700">Numéro</label>
+                <input type="number" name="number" id="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
-            <div class="col-span-6">
-              <label for="street" class="block text-sm font-medium text-gray-700">Rue</label>
-              <input type="text" name="street" id="street" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            <div class="col-span-6 sm:col-span-6 lg:col-span-2"
+            x-show="open"
+            x-transition:enter="ease-in-out duration-500"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in-out duration-500"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0">
+                <label for="city" class="block text-sm font-medium text-gray-700">Ville</label>
+                <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
-            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-              <label for="number" class="block text-sm font-medium text-gray-700">Numéro</label>
-              <input type="number" name="number" id="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            <div class="col-span-6 sm:col-span-3 lg:col-span-2"
+            x-show="open"
+            x-transition:enter="ease-in-out duration-500"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in-out duration-500"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0">
+                <label for="postalCode" class="block text-sm font-medium text-gray-700">Code postal</label>
+                <input type="text" name="postalCode" id="postalCode" autocomplete="postalCode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
-
-            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-              <label for="city" class="block text-sm font-medium text-gray-700">Ville</label>
-              <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-
-            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-              <label for="postalCode" class="block text-sm font-medium text-gray-700">Code postal</label>
-              <input type="text" name="postalCode" id="postalCode" autocomplete="postalCode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-
           </div>
+        </section>
 
         <div class="pt-8">
           <div>

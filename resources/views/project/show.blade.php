@@ -47,7 +47,7 @@
         <p class="mt-8 max-w-2xl text-sm text-gray-500">
         <b>Catégorie:</b> {{ $project->category->name }}</p><p class="text-gray-400 text-sm mt-2">{{ $project->category->description }}</p>
                 <!--($projects[0]->user[0]->pivot->price)-->
-                <!--($projects[0]->category[0]->pivot)--> 
+                <!--($projects[0]->category[0]->pivot)-->
         </p>
         <p class="mt-2 max-w-2xl text-sm text-gray-500">
             <b>Sous-Catégorie:</b> {{ $project->sub_category->name }}</p><p class="text-gray-400 text-sm mt-2">{{ $project->sub_category->description }}</p>

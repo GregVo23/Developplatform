@@ -37,7 +37,7 @@
             <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2">
                 <!-- Profile Card -->
-                <div class="bg-white p-3 border-t-4 border-green-400">
+                <div class="bg-white p-3 border-t-4 border-indigo-400">
                     <div class="image overflow-hidden">
                         @if(!empty( "{{ $user->avatar }}" ))
                         <img src="{{ asset($user->avatar) }}" alt="profile image" style="object-fit:cover;">
@@ -51,7 +51,7 @@
                         <li class="flex items-center py-3">
                             <span>Statut</span>
                             <span class="ml-auto"><span
-                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Actif</span></span>
+                                    class="bg-indigo-500 py-1 px-2 rounded text-white text-sm">Actif</span></span>
                         </li>
                         <li class="flex items-center py-3">
                             <span>Membre depuis</span>
@@ -118,7 +118,7 @@
                     <div class="grid grid-cols-2">
                         <div>
                             <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                                <span clas="text-green-500">
+                                <span clas="text-indigo-500">
                                     <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -144,7 +144,7 @@
                         </div>
                         <div>
                             <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                                <span clas="text-green-500">
+                                <span clas="text-indigo-500">
                                     <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -160,7 +160,7 @@
                                 <li>
                                     <div class="text-teal-600">Lorem ypsum</div>
                                     <div class="text-gray-500 text-xs">Lorem ypsum</div>
-                                    <h1 class="bg-clip-text text-transparent bg-gradient-to-l from-blue-600 to-green-400">Gradient Text</h1>
+                                    <h1 class="bg-clip-text text-transparent bg-gradient-to-l from-blue-600 to-indigo-400">Gradient Text</h1>
                                 </li>
                             </ul>
                         </div>

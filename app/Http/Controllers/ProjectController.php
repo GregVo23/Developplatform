@@ -101,7 +101,7 @@ class ProjectController extends Controller
             'phone' => 'numeric|nullable',
             'email' => 'required|string|email',
             'picture' => 'nullable|image|mimes:jpeg,jpg,png',
-            'document' => 'nullable|file|mimes:ppt,pptx,doc,docx,pdf,xls,xlsx|max:204800',
+            'document' => 'nullable|max:20000',
             'deadline' => 'nullable|date|after:tomorrow',
             'category' => 'required|string',
             'subCategory' => 'nullable|string',

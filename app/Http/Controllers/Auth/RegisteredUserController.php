@@ -65,6 +65,6 @@ class RegisteredUserController extends Controller
             return redirect(RouteServiceProvider::HOME);
         }
 
-        return redirect(RouteServiceProvider::HOME)->withErrors("Réglement non accepté");
+        return redirect()->back()->withErrors("Réglement non accepté")->withInput();;
     }
 }
