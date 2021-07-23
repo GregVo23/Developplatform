@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Carbon;
 use Illuminate\Support\Facades\Session;
@@ -267,9 +268,15 @@ class ProjectController extends Controller
     {
         if(Auth::check()){
             $project = Project::find($id);
+            $name = $project->name;
+            if (File::exists(public_path('project/cover/'.$project->id.'/'.$project->picture))) {
+                File::delete(public_path('project/cover/'.$project->id.'/'.$project->picture));
+            }
             $project->delete();
+            $message = "Vous avez supprimer le projet : ".$name." !";
 
-            return back();
+            Session::flash('message', $message);
+            return Redirect::to('dashboard');
         }else{
             return back();
         }
