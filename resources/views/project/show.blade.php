@@ -136,6 +136,87 @@
         </dl>
     </div>
 
+    <section class="mb-6" x-data="{open: false}">
+
+    <div class="flex justify-evenly">
+
+        <div class="flex justify-center">
+            <div class="flex bg-grey-lighter">
+              <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="mt-2 text-base leading-normal text-center">Accepter le projet</span>
+                  <a href="#" ></a>
+              </label>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <div class="flex bg-grey-lighter" @click.prevent ="open = !open">
+              <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+                  <svg xmlns="http://www.w3.org/2000/svg" x-show="!open" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" x-show="open" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="mt-2 text-base leading-normal text-center">Faire une offre</span>
+                  <a href="#" ></a>
+              </label>
+            </div>
+        </div>
+
+    </div>
+
+      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+
+            <div class="col-span-6 sm:col-span-6"
+            x-show="open"
+            x-transition:enter="ease-in-out duration-500"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in-out duration-500"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0">
+                <div>
+                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="text-gray-500 sm:text-sm">
+                      €
+                    </span>
+                  </div>
+                  <input type="text" name="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" aria-describedby="price-currency">
+                  <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <span class="text-gray-500 sm:text-sm" id="price-currency">
+                      EUR
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6"
+            x-show="open"
+            x-transition:enter="ease-in-out duration-500"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in-out duration-500"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0">
+                <div class="flex justify-between">
+                  <label for="message" class="block text-sm font-medium text-warm-gray-900">Message</label>
+                  <span id="message-max" class="text-sm text-warm-gray-500">Max. 500 characters</span>
+                </div>
+                <div class="mt-1">
+                  <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm text-warm-gray-900 focus:ring-teal-500 focus:border-indigo-500 border border-gray-300 rounded-md" aria-describedby="message-max"></textarea>
+                </div>
+              </div>
+
+    </section>
+
+
 
     <!--Add specific script-->
     @push('scripts')
