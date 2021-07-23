@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ProjectUser;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
@@ -100,5 +100,15 @@ class Project extends Model
         $address = $this->country.", ".$this->city;
 
         return $address;
+    }
+
+    public function liked()
+    {
+        $likes = DB::table('project_user')
+        ->where('favorite', 1)
+        ->where('project_id', $this->id)
+        ->count();
+
+        return $likes;
     }
 }
