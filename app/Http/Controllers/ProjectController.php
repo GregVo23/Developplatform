@@ -269,11 +269,12 @@ class ProjectController extends Controller
         if(Auth::check()){
             $project = Project::find($id);
             $name = $project->name;
-            if (File::exists(public_path('project/cover/'.$project->id.'/'.$project->picture))) {
-                File::delete(public_path('project/cover/'.$project->id.'/'.$project->picture));
+            if (File::exists(public_path('storage/project/cover/'.$project->user_id.'/'.$project->picture))) {
+                dd(File::delete(public_path('storage/project/cover/'.$project->user_id.'/'.$project->picture)));
             }
             $project->delete();
             $message = "Vous avez supprimer le projet : ".$name." !";
+            dd(public_path('storage/project/cover/'.$project->id.'/'.$project->picture));
 
             Session::flash('message', $message);
             return Redirect::to('dashboard');
