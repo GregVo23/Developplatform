@@ -93,6 +93,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request, $id)
     {
+        $user_id = auth()->user()->id;
         // validate
         $rules = array(
 
@@ -124,7 +125,7 @@ class ProjectController extends Controller
             } else {
                 // store
                 $project = new Project;
-                $project->user_id = auth()->user()->id;
+                $project->user_id = $user_id;
                 $project->category_id = $request->input('category');
                 $project->sub_category_id = $request->input('subCategory');
                 $project->name = ucfirst($request->input('name'));
@@ -143,9 +144,11 @@ class ProjectController extends Controller
                 $project->notifications = $request->input('notifications') ? true : false;
                 $project->rules = $request->input('rules') ? true : false;
 
+                $result = $project->save();
+                $project = Project::find($project->id);
+
                 if($request->hasFile('picture')){
 
-                    $user_id = auth()->user()->id;
                     $file = $request->file('picture');
                     // Get filename with the extension
                     $filenameWithExt = $file->getClientOriginalName();
@@ -157,7 +160,7 @@ class ProjectController extends Controller
                     $fileNameToStore = $filename.'_'.$user_id.'.'.$extension;
                     // Upload Image
 
-                    $path = 'public/project/cover/'.$user_id;
+                    $path = 'public/project/cover/'.$user_id.'/'.$project->id;
                     $file->storeAs($path ,$fileNameToStore);
 
                     $cover = Image::make($file);
@@ -171,7 +174,7 @@ class ProjectController extends Controller
                 }
 
                 if(!empty($request->file('document'))){
-
+                    $documents = [];
                     foreach ($request->file('document') as $file){
                         if(is_object($file) && $file->isValid()){
 
@@ -181,15 +184,15 @@ class ProjectController extends Controller
                             // Get just ext
                             $extension = $file->extension();
                             // Filename to store
-                            $fileNameToStore = $filename.'_'.auth()->user()->id.'.'.$extension;
+                            $fileNameToStore = $filename.'_'.$user_id.'.'.$extension;
                             // Upload Image
-                            $path = $file->storeAs('public/project/doc/'.auth()->user()->id,$fileNameToStore);
+                            $path = $file->storeAs('public/project/doc/'.$user_id.'/'.$project->id,$fileNameToStore);
 
-                            $project->document = $fileNameToStore ;
+                            array_push($documents, $fileNameToStore);
                         }
                     }
+                    $project->document = json_encode($documents);
                 }
-
                 $result = $project->save();
 
                 //If many to many
@@ -269,12 +272,28 @@ class ProjectController extends Controller
         if(Auth::check()){
             $project = Project::find($id);
             $name = $project->name;
-            if (File::exists(public_path('storage/project/cover/'.$project->user_id.'/'.$project->picture))) {
-                dd(File::delete(public_path('storage/project/cover/'.$project->user_id.'/'.$project->picture)));
-            }
-            $project->delete();
             $message = "Vous avez supprimer le projet : ".$name." !";
-            dd(public_path('storage/project/cover/'.$project->id.'/'.$project->picture));
+            $picture_path = 'storage/project/cover/'.$project->user_id.'/'.$project->id;
+            $document_path = 'storage/project/doc/'.$project->user_id.'/'.$project->id;
+            
+            if (File::exists(public_path($picture_path.'/'.$project->picture))) {
+                File::delete(public_path($picture_path.'/'.$project->picture));
+                File::deleteDirectory(public_path($picture_path));
+                File::deleteDirectory(public_path('storage/project/cover/'.$project->user_id));
+            }
+            
+            if(!empty($project->document)){
+                $documents = json_decode($project->document);
+                foreach($documents as $document){
+                    if (File::exists(public_path($document_path.'/'.$document))) {
+                        File::delete(public_path($document_path.'/'.$document));
+                        File::deleteDirectory(public_path($document_path));
+                        File::deleteDirectory(public_path('storage/project/doc/'.$project->user_id));
+                    }
+                }
+            }
+            
+            $project->delete();
 
             Session::flash('message', $message);
             return Redirect::to('dashboard');

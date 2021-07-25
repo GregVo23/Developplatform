@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
             $table->foreignId('sub_category_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             
             $table->string('name');
-            $table->string('document')->nullable();
+            $table->json('document')->nullable();
             $table->string('picture')->nullable();
             $table->text('about');
 
