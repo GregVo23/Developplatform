@@ -160,6 +160,7 @@ class ProjectController extends Controller
                     $fileNameToStore = $filename.'_'.$user_id.'.'.$extension;
                     // Upload Image
 
+                    // Save XL Project image
                     $path = 'public/project/cover/'.$user_id.'/'.$project->id;
                     $file->storeAs($path ,$fileNameToStore);
 
@@ -168,6 +169,7 @@ class ProjectController extends Controller
                     $cover->resize(null, 300, function ($constraint) {
                         $constraint->aspectRatio();
                     });
+                    // Save small project image
                     $cover->save(public_path('/project/cover/'.$fileNameToStore));
 
                     $project->picture = $fileNameToStore;
@@ -185,7 +187,7 @@ class ProjectController extends Controller
                             $extension = $file->extension();
                             // Filename to store
                             $fileNameToStore = $filename.'_'.$user_id.'.'.$extension;
-                            // Upload Image
+                            // Save link
                             $path = $file->storeAs('public/project/doc/'.$user_id.'/'.$project->id,$fileNameToStore);
 
                             array_push($documents, $fileNameToStore);
@@ -224,7 +226,7 @@ class ProjectController extends Controller
         $user = Auth()->user();
         $project = Project::find($id);
         $owner = User::find($project->owner());
-        $picture_path = 'storage/project/cover/'.$project->user_id.'/'.$project->id;
+        $picture_path = 'storage/project/cover/'.$project->user_id.'/'.$project->id.'/';
         $document_path = 'storage/project/doc/'.$project->user_id.'/'.$project->id.'/';
         
         //$file = File::get(public_path($picture_path.'/'.$project->picture));
@@ -243,8 +245,25 @@ class ProjectController extends Controller
             "name" => $name,
             "documents" => $documents,
             "document_path" => $document_path,
+            "picture_path" => $picture_path,
         ]);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function download($id)
+    {
+    	$filePath = public_path("dummy.pdf");
+    	$headers = ['Content-Type: application/pdf'];
+    	$fileName = time().'.pdf';
+
+    	return response()->download($filePath, $fileName, $headers);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -256,6 +275,7 @@ class ProjectController extends Controller
     {
         //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -285,7 +305,11 @@ class ProjectController extends Controller
             $document_path = 'storage/project/doc/'.$project->user_id.'/'.$project->id;
             
             if (File::exists(public_path($picture_path.'/'.$project->picture))) {
+                //Delete small project image
                 File::delete(public_path($picture_path.'/'.$project->picture));
+                //Delete XL project image
+                File::delete(public_path('project/cover/'.$project->picture));
+                //Delete all directories
                 File::deleteDirectory(public_path($picture_path));
                 File::deleteDirectory(public_path('storage/project/cover/'.$project->user_id));
             }
@@ -303,7 +327,7 @@ class ProjectController extends Controller
             
             $project->delete();
 
-            Session::flash('message', $message);
+            Session::flash('success', $message);
             return Redirect::to('dashboard');
         }else{
             return back();

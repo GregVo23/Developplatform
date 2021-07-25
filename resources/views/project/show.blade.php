@@ -59,11 +59,11 @@
         </div>
 
         <div class="flex-shrink-0 ml-4">
-            <a href="{{ asset('project/cover/'.$project->picture) }}" target="about_blank">
+            <a href="{{ asset($picture_path.'/'.$project->picture) }}" target="about_blank">
             <img
             class="h-56 w-56 rounded object-cover"
             src="{{ asset('project/cover/'.$project->picture) }}"
-            alt="infamous" />
+            alt="{{ $project->name }}" />
             </a>
         </div>
     </div>
@@ -96,7 +96,7 @@
                         </span>
                         </div>
                         <div class="ml-4 flex-shrink-0">
-                        <a href={{ $document_path }}{{ $document }} class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <a href="{{ asset($document_path.'/'.$document) }}" target="about_blank" class="font-medium text-indigo-600 hover:text-indigo-500">
                             Télécharger
                         </a>
                         </div>
@@ -109,6 +109,11 @@
             </div>
         </dl>
     </div>
+    
+    <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+        <p class="text-sm font-medium text-gray-500"><b>Notifications</b>: {{ $project->notifications ? "autorisées sur l'adresse email ".$project->email : "refusées " }}</p>
+    </div>
+
     <div class="mt-1 px-4 py-5 sm:px-6">
 
         <p class="mt-8 max-w-2xl text-sm text-gray-500">
