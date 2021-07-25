@@ -20,7 +20,7 @@ class CreateProjectUserTable extends Migration
             $table->bigInteger('price')->nullable();
             $table->boolean('accepted')->default(false);
             $table->boolean('favorite')->default(false);
-            $table->text('about');
+            $table->text('about')->nullable();
             $table->string('document')->nullable();
             $table->timestamps();
         });

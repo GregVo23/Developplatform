@@ -50,11 +50,11 @@
                         class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                         <li class="flex items-center py-3">
                             <span>Statut</span>
-                            <span class="ml-auto"><span
-                                    class="bg-indigo-500 py-1 px-2 rounded text-white text-sm">Actif</span></span>
+                            <span class="ml-auto">
+                            <span class="bg-indigo-500 py-1 px-2 rounded text-white text-sm">Actif</span></span>
                         </li>
-                        <li class="flex items-center py-3">
-                            <span>Membre depuis</span>
+                        <li class="py-3">
+                            <p>Devenu membre</p>
                             <span class="ml-auto">{{ $user->created_at->diffForHumans() }}</span>
                         </li>
                     </ul>
@@ -97,14 +97,42 @@
                     </div>
 
                     <div class="mt-8 flex">
-                    <button
+                    <!--<button
                         class="flex w-1/2 text-gray-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                         <b>Modifier mon profil</b>
-                    </button>
+                    </button>-->
+
                     <button
-                        class="flex w-1/2 text-gray-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                        <b>Supprimer mon profil</b>
-                    </button>
+                      class="flex items-center ml-4
+                      focus:outline-none group border rounded-full
+                      py-2 px-8 leading-none border-indigo-600
+                      dark:border-yellow select-none
+                      hover:bg-indigo-600 text-indigo-600 hover:text-white
+                      dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                      <span class="text-gray-700 group-hover:text-white">
+                          {{ "Modifier mon profil" }}
+                      </span>
+                  </button>
+
+                    <button
+                      class="flex items-center ml-4
+                      focus:outline-none group border rounded-full
+                      py-2 px-8 leading-none border-yellow
+                      dark:border-yellow select-none
+                      hover:bg-yellow text-yellow hover:text-white
+                      dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                      <span class="text-gray-700 group-hover:text-white">
+                          {{ "Supprimer mon profil" }}
+                      </span>
+                  </button>
                     </div>
 
                 </div>
@@ -131,7 +159,7 @@
 
                                 @forelse ($myProjects as $myProject)
                                     <li>
-                                        <div class="text-teal-600"><a href="#">{{ $myProject->name }}</a></div>
+                                        <div class="text-indigo-600 "><a href="{{ route('project.show', $myProject->id) }}">{{ $myProject->name }}</a></div>
                                         <div class="text-gray-500 text-xs">Demandé {{ $myProject->created_at->diffForHumans() }}</div>
                                     </li>
                                 @empty
@@ -157,11 +185,18 @@
                                 <span class="tracking-wide">Projets réalisés</span>
                             </div>
                             <ul class="list-inside space-y-2">
-                                <li>
-                                    <div class="text-teal-600">Lorem ypsum</div>
-                                    <div class="text-gray-500 text-xs">Lorem ypsum</div>
-                                    <h1 class="bg-clip-text text-transparent bg-gradient-to-l from-blue-600 to-indigo-400">Gradient Text</h1>
-                                </li>
+
+                                @forelse ($myProjectsDone as $myProjectDone)
+                                    <li>
+                                        <div class="text-indigo-600 "><a href="{{ route('project.show', $myProjectDone->id) }}">{{ $myProjectDone->name }}</a></div>
+                                        <div class="text-gray-500 text-xs">Réalisé {{ $myProjectDone->created_at->diffForHumans() }}</div>
+                                    </li>
+                                @empty
+                                    <li>
+                                        <div class="text-teal-600">Aucune réalisations</div>
+                                    </li>
+                                @endforelse
+
                             </ul>
                         </div>
                     </div>
