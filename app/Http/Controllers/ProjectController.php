@@ -224,6 +224,12 @@ class ProjectController extends Controller
         $user = Auth()->user();
         $project = Project::find($id);
         $owner = User::find($project->owner());
+        $picture_path = 'storage/project/cover/'.$project->user_id.'/'.$project->id;
+        $document_path = 'storage/project/doc/'.$project->user_id.'/'.$project->id.'/';
+        
+        //$file = File::get(public_path($picture_path.'/'.$project->picture));
+        $documents = Json_decode($project->document);
+        //$file = Storage::get('file.jpg');
 
         if($user->id === $owner->id){
             $name = "Vous même";
@@ -235,6 +241,8 @@ class ProjectController extends Controller
             "user" => $user,
             "project" => $project,
             "name" => $name,
+            "documents" => $documents,
+            "document_path" => $document_path,
         ]);
     }
 

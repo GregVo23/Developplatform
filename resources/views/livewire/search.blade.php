@@ -13,7 +13,7 @@
         <div x-show="open">
             @if (count($projects) > 0)
                 @foreach ($projects as $index => $project)
-                    <a href="{{ route('project.show', $project->id) }}"><p class="p-1 {{ ($index === $selectedIndex) ? 'text-green-600' : '' }}">{{ $project->name }}</p></a>
+                    <a href="{{ route('project.show', $project->id) }}"><p class="p-1 {{ ($index === $selectedIndex) ? 'text-indigo-600' : '' }}">{{ $project->name }}</p></a>
                 @endforeach
             @else
             <span class="text-red-600">0 résultats</span>
