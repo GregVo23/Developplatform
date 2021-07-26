@@ -59,6 +59,7 @@
         </div>
 
         <div class="flex-shrink-0 ml-4">
+
             <a href="{{ asset($picture_path.'/'.$project->picture) }}" target="about_blank">
             <img
             class="h-56 w-56 rounded object-cover"
@@ -79,12 +80,12 @@
             </dt>
             <dd class="mt-1 text-sm text-gray-900">
                 @if(empty($documents))
-                 
+
                     <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
-                    <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">Pas de pièce-jointe</li>   
+                    <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">Pas de pièce-jointe</li>
                 @else
                     @foreach ($documents as $document)
-                        
+
                     <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                         <div class="w-0 flex-1 flex items-center">
                         <!-- Heroicon name: solid/paper-clip -->
@@ -109,7 +110,7 @@
             </div>
         </dl>
     </div>
-    
+
     <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
         <p class="text-sm font-medium text-gray-500"><b>Notifications</b>: {{ $project->notifications ? "autorisées sur l'adresse email ".$project->email : "refusées " }}</p>
     </div>
@@ -133,21 +134,23 @@
 
         @if ($project->user_id != Auth()->user()->id)
 
-        <div class="flex justify-center">
-            <div class="flex bg-grey-lighter">
-              <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="mt-2 text-base leading-normal text-center">Accepter le projet</span>
-                  <a href="#" ></a>
-              </label>
-            </div>
-        </div>
+        <form name="frmAccept" method="post" action="{{ route('project.accept', $project->id) }}">
+            @csrf
+            <button class="flex justify-center">
+                <span class="flex bg-grey-lighter">
+                <span class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="mt-2 text-base leading-normal text-center">Accepter le projet</span>
+                </span>
+                </span>
+            </button>
+        </form>
 
         <div class="flex justify-center">
-            <div class="flex bg-grey-lighter" @click.prevent ="open = !open">
-              <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+            <span class="flex bg-grey-lighter" @click.prevent ="open = !open">
+              <span class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
                   <svg xmlns="http://www.w3.org/2000/svg" x-show="!open" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
                   </svg>
@@ -155,44 +158,43 @@
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
                   </svg>
                   <span class="mt-2 text-base leading-normal text-center">Faire une offre</span>
-                  <a href="#" ></a>
-              </label>
-            </div>
+              </span>
+            </span>
         </div>
 
         @else
 
         <div class="flex justify-center">
-            <div class="flex bg-grey-lighter">
-              <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+            <span class="flex bg-grey-lighter">
+              <span class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clip-rule="evenodd" />
                     <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
                 </svg>
                   <span class="mt-2 text-base leading-normal text-center">Modifier mon projet</span>
                   <a href="#" ></a>
-              </label>
-            </div>
+              </span>
+            </span>
         </div>
 
         <form name="frmDelete" method="get" action="{{ route("project.destroy", $project->id) }}">
             @csrf
             <button class="flex justify-center">
-                <div class="flex bg-grey-lighter">
-                <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
+                <span class="flex bg-grey-lighter">
+                <span class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-900">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                     </svg>
                     <span class="mt-2 text-base leading-normal text-center">Supprimer mon projet</span>
-                </label>
-                </div>
+                </span>
+                </span>
             </button>
         </form>
 
         @endif
 
     </div>
-    <form method="POST" action="#" name="frmNegociation">
+    <form method="POST" action="{{ route('project.offer', $project->id) }}" name="frmNegociation">
         @csrf
         <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
 

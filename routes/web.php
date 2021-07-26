@@ -36,3 +36,6 @@ Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])
 //Favoris
 Route::get('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'index'])->middleware(['auth'])->name('favoris.index');
 Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware(['auth'])->name('favoris.store');
+//Offre
+Route::post('/{id}/accept', [App\Http\Controllers\ProjectUserController::class, 'accept'])->middleware(['auth'])->name('project.accept');
+Route::post('/{id}/offre', [App\Http\Controllers\ProjectUserController::class, 'offer'])->middleware(['auth'])->name('project.offer');

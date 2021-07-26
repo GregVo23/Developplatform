@@ -18,12 +18,12 @@ class ProjectUser extends Pivot
         'user_id',
         'project_id',
         'price',
-        'accepted',
-        'created_at',
-        'updated_at',
         'favorite',
         'document',
         'about',
+        'accepted',
+        'created_at',
+        'updated_at',
     ];
 
     /**

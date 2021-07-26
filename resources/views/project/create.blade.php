@@ -138,15 +138,6 @@
           </p>
         </div>
 
-          <div class="sm:col-span-4 pt-6 pb-10">
-            <label for="email" class="block text-sm font-medium text-gray-700">
-              Votre adresse email (obligatoire)
-            </label>
-            <div class="mt-1">
-              <input id="email" name="email" type="email" class="shadow-sm w-full sm:text-sm border-gray-300 rounded-md " value="{{ auth()->user()->email }}" readonly>
-            </div>
-          </div>
-
           <section class="mb-6" x-data="{open: false}">
 
 
@@ -274,6 +265,16 @@
             </fieldset>
           </div>
         </div>
+
+        <div class="sm:col-span-4 pt-6 pb-10">
+            <label for="email" class="block text-sm font-medium text-gray-700">
+              Les notifications seront envoyées sur votre adresse email
+            </label>
+            <div class="mt-1">
+              <input id="email" name="email" type="email" class="shadow-sm w-full sm:text-sm border-gray-300 rounded-md " value="{{ auth()->user()->email }}" readonly>
+            </div>
+          </div>
+
       </div>
 
       <div class="pt-8">
@@ -302,9 +303,9 @@
 
       <div class="pt-8">
         <div class="flex justify-end">
-          <button type="button" class="bg-white mt-4 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <a href="{{ route('dashboard') }}" class="bg-white mt-4 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">
             Annuler
-          </button>
+          </a>
           <button type="submit" class="ml-8 inline-flex justify-center py-4 px-7 border border-transparent shadow-sm text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
             Enregistrer le projet
           </button>
