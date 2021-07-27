@@ -1,0 +1,1 @@
+Entrez en relation avec notre communauté d'artiste & de développeurs, ou rejoingnez-les. Transmettre une demande, et y répondre n'a jamais été si facile et ... <b>gratuit</b> !</p><p class="text-gray-500">Bienvenue chez <b>Developplatform</b> !
