@@ -17,10 +17,11 @@ class CreateProjectUserTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('project_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('price')->nullable();
+            $table->bigInteger('amount')->nullable();
+            $table->timestamp('proposal')->nullable()->default(null);
             $table->boolean('accepted')->default(false);
             $table->boolean('favorite')->default(false);
-            $table->text('about')->nullable();
+            $table->text('information')->nullable();
             $table->string('document')->nullable();
             $table->timestamps();
         });

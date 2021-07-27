@@ -225,10 +225,10 @@ class ProjectController extends Controller
     {
         $user = Auth()->user();
         $project = Project::find($id);
-        $owner = User::find($project->owner());
+        $owner = User::find($project->user_id);
         $picture_path = 'storage/project/cover/'.$project->user_id.'/'.$project->id.'/';
         $document_path = 'storage/project/doc/'.$project->user_id.'/'.$project->id.'/';
-        
+
         //$file = File::get(public_path($picture_path.'/'.$project->picture));
         $documents = Json_decode($project->document);
         //$file = Storage::get('file.jpg');
@@ -247,21 +247,6 @@ class ProjectController extends Controller
             "document_path" => $document_path,
             "picture_path" => $picture_path,
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function download($id)
-    {
-    	$filePath = public_path("dummy.pdf");
-    	$headers = ['Content-Type: application/pdf'];
-    	$fileName = time().'.pdf';
-
-    	return response()->download($filePath, $fileName, $headers);
     }
 
 
@@ -303,7 +288,7 @@ class ProjectController extends Controller
             $message = "Vous avez supprimer le projet : ".$name." !";
             $picture_path = 'storage/project/cover/'.$project->user_id.'/'.$project->id;
             $document_path = 'storage/project/doc/'.$project->user_id.'/'.$project->id;
-            
+
             if (File::exists(public_path($picture_path.'/'.$project->picture))) {
                 //Delete small project image
                 File::delete(public_path($picture_path.'/'.$project->picture));
@@ -313,7 +298,7 @@ class ProjectController extends Controller
                 File::deleteDirectory(public_path($picture_path));
                 File::deleteDirectory(public_path('storage/project/cover/'.$project->user_id));
             }
-            
+
             if(!empty($project->document)){
                 $documents = json_decode($project->document);
                 foreach($documents as $document){
@@ -324,7 +309,7 @@ class ProjectController extends Controller
                     }
                 }
             }
-            
+
             $project->delete();
 
             Session::flash('success', $message);

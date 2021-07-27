@@ -43,8 +43,6 @@
                         Favoris
                     @elseif ($rendering === "mine")
                         Demandes
-                    @elseif ($rendering === "maked")
-                        Réalisations
                     @else
                         Projets
                     @endif
@@ -72,8 +70,16 @@
                 </div>
 
                 <div class="flex-grow ml-6">
-                <span class="text-lg font-bold">{{ $project->id }}</span>
-                <span class="text-lg font-bold">{{ $project->name }}</span>
+
+                <span class="text-lg font-bold">
+                    @if ($rendering == "favorite" || $rendering == "maked")
+                    {{ $project->project_id }}
+                    @else
+                    {{ $project->id }}
+                    @endif
+                </span>
+                <span class="text-lg font-bold">{{ $project->name }}
+                </span>
                 <p>{{ Str::limit($project->about, 150 , ' ...') }}</p>
                 <div class="mt-4 flex">
                     <div class="flex">
@@ -146,6 +152,21 @@
                     </span>
                     </div>
                 </div>
+
+                <p class="mt-1 text-sm {{ ($project->accepted == true) ? "text-yellow" : "text-indigo-600" }}">
+                    @if (!empty($project->proposal && $project->user_id == auth()->user()->id))
+                        @if ($project->amount != NULL)
+                            Votre proposition de {{ $project->amount }} €
+                            @if ($project->accepted == true)
+                                a été accepté
+                            @else
+                                est en attente d'acceptation
+                            @endif
+                        @else
+                            Vous avez accepté ce projet
+                        @endif
+                    @endif
+                </p>
 
                 <div class="mt-4 flex justify-end flex-grow">
 
@@ -222,7 +243,7 @@
                         @endif
 
 
-                    <form method="GET" action="{{ route('project.show', $project->id) }}" name="frmShow">
+                    <form method="get" action="{{ route('project.show', ($rendering == "favorite" || $rendering == "maked") ? $project->project_id : $project->id) }}" name="frmShow">
                         @csrf
                         <button
                             class="flex items-center ml-4

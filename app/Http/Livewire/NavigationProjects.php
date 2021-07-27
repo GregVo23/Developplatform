@@ -24,7 +24,7 @@ class NavigationProjects extends Component
 
 
     //$this->button = $button;
-    
+
 
     public function mount($rendering)
     {
@@ -48,9 +48,9 @@ class NavigationProjects extends Component
         $favorite->favorite = !$favorite->favorite;
         $favorite->save();
 
-        
+
         if($favorite->favorite == false && $favorite->project_id == $id){
-            
+
             if($this->rendering != "favorite"){
                 $this->button = "Ajouter aux favoris";
             }
@@ -62,7 +62,7 @@ class NavigationProjects extends Component
             $this->button = "Supprimer des favoris";
             $this->emit('favorite');
         }
-        
+
 
         //dd($favorite);
         //dd($this);
@@ -107,8 +107,8 @@ class NavigationProjects extends Component
         {
             return view('livewire.navigation-projects', [
                 'projects' => Project::join('project_user','projects.id','=','project_user.project_id')
-                ->where('project_user.favorite','=',1)
                 ->where('project_user.user_id', '=', $user->id)
+                ->where('project_user.favorite','=',1)
                 ->where('name', 'like', '%'.$this->query.'%')
                 ->when($this->category_id, function ($query, $category_id) {
                     return $query->where('category_id', $category_id);
@@ -153,7 +153,8 @@ class NavigationProjects extends Component
                 ->when($this->sub_category_id, function ($query, $sub_category_id) {
                     return $query->where('sub_category_id', $sub_category_id);
                 })
-                ->where('project_user.favorite','=',0)
+                ->where('project_user.accepted','!=',NULL)
+                ->where('project_user.proposal','!=',NULL)
                 ->where('project_user.user_id', '=', $user->id)
                 ->where('name', 'like', '%'.$this->query.'%')
                 ->orderBy('project_user.created_at')

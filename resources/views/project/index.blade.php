@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    
+
         <!--content-->
         <style>
           .tab-component {
@@ -12,12 +12,12 @@
           max-height: 400px;
           overflow: hide;
           }
-    
+
           .tab-contents {
           height: 358px;
           overflow: auto;
           }
-    
+
           th, tr, td {
           border: 1px solid lightgray;
           }
@@ -25,7 +25,7 @@
           padding-left: 4px;
           padding-right: 4px;
           }
-    
+
           /**/
           .ease-in {
             transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
@@ -36,7 +36,7 @@
           .ease-in-out {
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           }
-    
+
           .transition-fastest {
             transition-duration: 75ms;
           }
@@ -58,7 +58,7 @@
           .transition-slowest {
             transition-duration: 700ms;
           }
-    
+
           .transition-all {
             transition-property: all;
           }
@@ -68,38 +68,33 @@
           .transition-transform {
             transition-property: transform;
           }
-    
+
           .focus-visible.focus-visible\:underline {
             text-decoration: underline;
           }
-    
+
           </style>
         <main
             class="flex-1 bg-transparant dark:bg-gray-900 overflow-y-auto transition
             duration-500 ease-in-out">
-    
+
           <!--end menu with profil-->
-    
+
               <div class="max-w-full">
                 <div class="max-w-full">
-  
-                  <div class="container bg-white w-full">    
+
+                  <div class="container bg-white w-full">
 
                           @if(empty($personalUserPage))
                               @include('partials.project')
                           @else
                               @include('myprofile')
                           @endif
-  
+
                   </div>
                 </div>
               </div>
         </main>
-    
+
     </x-app-layout>
-    
 
-
-
-                    <!--($projects[0]->user[0]->pivot->price)-->
-                    <!--($projects[0]->category[0]->pivot)-->
