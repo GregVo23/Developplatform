@@ -9,59 +9,57 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <!-- TEST -->
+    <form class="mt-4" method="POST" action="{{ route('register') }}">
+        @csrf
+        <div class="grid grid-cols-6 gap-6">
+            <div class="col-span-6 sm:col-span-3">
+                <label for="first_name" class="block text-sm font-medium text-gray-700">Prénom</label>
+                <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
-                <form class="mt-4" method="POST" action="{{ route('register') }}">
-                    @csrf
-                      <div class="grid grid-cols-6 gap-6">
-                        <div class="col-span-6 sm:col-span-3">
-                          <label for="first_name" class="block text-sm font-medium text-gray-700">Prénom</label>
-                          <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
+            <div class="col-span-6 sm:col-span-3">
+                <label for="last_name" class="block text-sm font-medium text-gray-700">Nom</label>
+                <input type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
-                        <div class="col-span-6 sm:col-span-3">
-                          <label for="last_name" class="block text-sm font-medium text-gray-700">Nom</label>
-                          <input type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
+            <div class="col-span-6 sm:col-span-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="text" name="email" id="email" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
-                        <div class="col-span-6 sm:col-span-4">
-                          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                          <input type="text" name="email" id="email" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
+            <div class="col-span-6 sm:col-span-4">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                <input type="text" name="phone" id="phone" autocomplete="phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
-                        <div class="col-span-6 sm:col-span-4">
-                          <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-                          <input type="text" name="phone" id="phone" autocomplete="phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
+            <div class="col-span-6 sm:col-span-3">
+                <label for="country" class="block text-sm font-medium text-gray-700">Pays</label>
+                <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <option>Belgique</option>
+                <option>France</option>
+                <option>Luxembourg</option>
+                </select>
+            </div>
 
-                        <div class="col-span-6 sm:col-span-3">
-                          <label for="country" class="block text-sm font-medium text-gray-700">Pays</label>
-                          <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option>Belgique</option>
-                            <option>France</option>
-                            <option>Luxembourg</option>
-                          </select>
-                        </div>
+            <div class="col-span-6">
+                <label for="street" class="block text-sm font-medium text-gray-700">Rue</label>
+                <input type="text" name="street" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
-                        <div class="col-span-6">
-                          <label for="street" class="block text-sm font-medium text-gray-700">Rue</label>
-                          <input type="text" name="street" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
+            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                <label for="number" class="block text-sm font-medium text-gray-700">Numéro</label>
+                <input type="number" name="number" id="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
-                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <label for="number" class="block text-sm font-medium text-gray-700">Numéro</label>
-                          <input type="number" name="number" id="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
+            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                <label for="city" class="block text-sm font-medium text-gray-700">Ville</label>
+                <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
-                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <label for="city" class="block text-sm font-medium text-gray-700">Ville</label>
-                          <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <label for="postalCode" class="block text-sm font-medium text-gray-700">Code postal</label>
-                          <input type="text" name="postalCode" id="postalCode" autocomplete="postalCode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
+            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                <label for="postalCode" class="block text-sm font-medium text-gray-700">Code postal</label>
+                <input type="text" name="postalCode" id="postalCode" autocomplete="postalCode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
 
             <!-- Password -->
             <div class="col-span-6">
@@ -83,13 +81,18 @@
             </div>
 
             <div class="col-span-6">
-                  <div class="h-1">
-                    <input id="rules" name="rules" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
-                  </div>
-                  <div class="ml-5 text-sm">
+                <input id="notification" name="notification" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                <label class="ml-5 text-sm" for="notification">
+                    <p class="text-gray-700">J'accepte de recevoir les notifications par email</p>
+                </label>
+            </div>
+
+            <div class="col-span-6">
+                <input id="rules" name="rules" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                <label class="ml-5 text-sm" for="rules">
                     <p class="text-gray-700">J'accepte les Conditions <a href="#">générales d’utilisation</a></p>
-                  </div>
-              </div>
+                </label>
+            </div>
 
             <div class="flex items-center justify-end col-span-6">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
@@ -102,8 +105,7 @@
             </div>
 
         </div>
-    </div>
-                </form>
+    </form>
 
 
         <!-- TEST -->

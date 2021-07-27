@@ -36,6 +36,10 @@ class RegisteredUserController extends Controller
         $categories = Category::all();
         session(['categories' => $categories]);
 
+        if($request->notification == "on"){
+            $notification = true;
+        }
+
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -58,6 +62,7 @@ class RegisteredUserController extends Controller
                 'number' => $request->number,
                 'street' => $request->street,
                 'password' => Hash::make($request->password),
+                'notification' => $notification,
             ]));
 
             event(new Registered($user));

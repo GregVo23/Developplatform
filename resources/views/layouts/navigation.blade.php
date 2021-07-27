@@ -16,7 +16,10 @@
                         {{ __('Accueil') }}
                     </x-nav-link>
                     <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
-                        {{ __('Projets') }}
+                        {{ __('Rechercher') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('project.create')" :active="request()->routeIs('project.create')">
+                        {{ __('Demander') }}
                     </x-nav-link>
                     <x-nav-link :href="route('favoris.index', Auth()->user()->id)" :active="request()->routeIs('favoris.index', Auth()->user()->id)">
                         {{ __('Favoris') }}
@@ -25,7 +28,7 @@
                         {{ __('Mes demandes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('projects.maked.mine', Auth()->user()->id)" :active="request()->routeIs('projects.maked.mine', Auth()->user()->id)">
-                        {{ __('Mes réalisations') }}
+                        {{ __('Mes offres') }}
                     </x-nav-link>
                 </div>
             </div>

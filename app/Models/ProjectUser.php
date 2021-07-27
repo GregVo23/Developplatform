@@ -17,10 +17,11 @@ class ProjectUser extends Pivot
     protected $fillable = [
         'user_id',
         'project_id',
-        'price',
+        'amount',
         'favorite',
         'document',
-        'about',
+        'information',
+        'proposal',
         'accepted',
         'created_at',
         'updated_at',

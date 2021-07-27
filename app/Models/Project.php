@@ -61,7 +61,7 @@ class Project extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('user_id', 'project_id', 'price', 'created_at','updated_at', 'accepted');
+        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('user_id', 'project_id', 'amount', 'created_at','updated_at', 'accepted', 'proposal');
     }
 
     public function owner()

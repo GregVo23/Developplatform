@@ -60,7 +60,7 @@
 
         <div class="flex-shrink-0 ml-4">
 
-            <a href="{{ asset($picture_path.'/'.$project->picture) }}" target="about_blank">
+            <a href="{{ asset($picture_path.''.$project->picture) }}" target="about_blank">
             <img
             class="h-56 w-56 rounded object-cover"
             src="{{ asset('project/cover/'.$project->picture) }}"
@@ -97,7 +97,7 @@
                         </span>
                         </div>
                         <div class="ml-4 flex-shrink-0">
-                        <a href="{{ asset($document_path.'/'.$document) }}" target="about_blank" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <a href="{{ asset($document_path.''.$document) }}" target="about_blank" class="font-medium text-indigo-600 hover:text-indigo-500">
                             Télécharger
                         </a>
                         </div>
@@ -233,11 +233,11 @@
             x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0">
                 <div class="flex justify-between">
-                  <label for="message" class="block text-sm font-medium text-warm-gray-900">Description proposition</label>
-                  <span id="message-max" class="text-sm text-warm-gray-500">Max. 1000 charactères</span>
+                  <label for="information" class="block text-sm font-medium text-warm-gray-900">Description proposition</label>
+                  <span id="information-max" class="text-sm text-warm-gray-500">Max. 1000 charactères</span>
                 </div>
                 <div class="mt-1">
-                  <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm text-warm-gray-900 focus:ring-teal-500 focus:border-indigo-500 border border-gray-300 rounded-md" aria-describedby="message-max"></textarea>
+                  <textarea id="information" name="information" rows="4" class="py-3 px-4 block w-full shadow-sm text-warm-gray-900 focus:ring-teal-500 focus:border-indigo-500 border border-gray-300 rounded-md" aria-describedby="information-max"></textarea>
                 </div>
               </div>
 
