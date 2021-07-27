@@ -6,6 +6,7 @@
             setTimeout(() => show = true, 500);
             setTimeout(() => show = false, 6000);
         }"
+        x-cloak
         x-show="show"
         x-description="Notification panel, show/hide based on alert state."
         @click.away="show = false"
@@ -22,6 +23,7 @@
             setTimeout(() => show = true, 500);
             setTimeout(() => show = false, 6000);
             }"
+            x-cloak
             x-show="show"
             x-description="Notification panel, show/hide based on alert state."
             @click.away="show = false"

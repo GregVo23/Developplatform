@@ -5,19 +5,6 @@
         </h2>
     </x-slot>
 
-    @if (!empty($message))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>message</strong>
-    </div>
-    @endif
-    @if (!empty($success))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>success</strong>
-    </div>
-    @endif
-
 	<x-message/>
 
     <div class="py-12">
