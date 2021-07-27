@@ -90,6 +90,7 @@
         @foreach ($category->sub_category as $sub_category)
 
         <a
+        x-cloak
         x-show="categories"
         x-transition:enter="ease-in-out duration-300"
         x-transition:enter-start="opacity-0"
@@ -114,5 +115,8 @@
     @endforeach
 
   @endif
+
+    <!-- Navigation Links -->
+    <x-menu/>
 
 </nav>

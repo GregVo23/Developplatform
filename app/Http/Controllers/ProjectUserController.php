@@ -29,9 +29,11 @@ class ProjectUserController extends Controller
             $result = $project->save();
             if($result){
                 if($user->notification == true){
+                    $request->session()->regenerate();
                     Session::flash('success', 'Votre demande a été envoyée, attendez maintenant l\'email de conffirmation');
                     return Redirect::to('dashboard')->with('success', 'Votre demande a été envoyée, attendez maintenant l\'email de conffirmation');
                 }else{
+                    $request->session()->regenerate();
                     Session::flash('success', 'Votre demande a été envoyée, attendez maintenant la conffirmation');
                     return Redirect::to('dashboard')->with('success', 'Votre demande a été envoyée, attendez maintenant la conffirmation');
                 }

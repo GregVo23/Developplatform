@@ -4,9 +4,9 @@
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
     <div class="xl:grid xl:grid-cols-3 xl:gap-8">
       <div class="space-y-8 xl:col-span-1">
-        <img class="h-10" src="{{ asset('images/logo.svg') }}" alt="Company name">
-        <p class="text-gray-500 text-base">
-          Making the world a better place through constructing elegant hierarchies.
+        <img class="h-10" src="{{ asset('images/logo.svg') }}" alt="Developplatform logo company">
+        <p class="text-gray-500 text-base mr-10">
+            <x-slogan/>
         </p>
         <div class="flex space-x-6">
           <a href="#" class="text-gray-400 hover:text-gray-500">
@@ -49,33 +49,9 @@
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
             <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Solutions
+              Menu
             </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Marketing
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Analytics
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Commerce
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Insights
-                </a>
-              </li>
-            </ul>
+            <x-menu/>
           </div>
           <div class="mt-12 md:mt-0">
             <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">

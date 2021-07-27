@@ -94,9 +94,26 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Accueil') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
+                {{ __('Rechercher') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('project.create')" :active="request()->routeIs('project.create')">
+                {{ __('Demander') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('favoris.index', Auth()->user()->id)" :active="request()->routeIs('favoris.index', Auth()->user()->id)">
+                {{ __('Favoris') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('projects.mine', Auth()->user()->id)" :active="request()->routeIs('projects.mine', Auth()->user()->id)">
+                {{ __('Mes demandes') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('projects.maked.mine', Auth()->user()->id)" :active="request()->routeIs('projects.maked.mine', Auth()->user()->id)">
+                {{ __('Mes offres') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -114,7 +131,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Se déconnecter') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
