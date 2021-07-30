@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectUserController extends Controller
 {
@@ -20,6 +21,7 @@ class ProjectUserController extends Controller
     public function accept(Request $request, $id)
     {
         $user = auth()->user();
+
         $project = ProjectUser::firstOrCreate(
             ['project_id' =>  $id, 'user_id' => $user->id],
             ['created_at' => Carbon::now(), 'project_id' =>  $id, 'user_id' => $user->id],
@@ -30,17 +32,18 @@ class ProjectUserController extends Controller
             if($result){
                 if($user->notification == true){
                     $request->session()->regenerate();
-                    Session::flash('success', 'Votre demande a été envoyée, attendez maintenant l\'email de conffirmation');
-                    return Redirect::to('dashboard')->with('success', 'Votre demande a été envoyée, attendez maintenant l\'email de conffirmation');
+                    Session::flash('success', 'Votre demande a été envoyée, attendez maintenant l\'email de confirmation');
+                    return Redirect::to('dashboard')->with('success', 'Votre demande a été envoyée, attendez maintenant l\'email de confirmation');
                 }else{
                     $request->session()->regenerate();
-                    Session::flash('success', 'Votre demande a été envoyée, attendez maintenant la conffirmation');
-                    return Redirect::to('dashboard')->with('success', 'Votre demande a été envoyée, attendez maintenant la conffirmation');
+                    Session::flash('success', 'Votre demande a été envoyée, attendez maintenant la confirmation');
+                    return Redirect::to('dashboard')->with('success', 'Votre demande a été envoyée, attendez maintenant la confirmation');
                 }
             }
         }else{
-            dd($project->project->user_id);
-            //erreur
+            $request->session()->regenerate();
+            Session::flash('message', 'Une erreur est survenue, veuillez réessayer plus tard !');
+            return Redirect::to('dashboard')->with('message', 'Une erreur est survenue, veuillez réessayer plus tard !');
         }
     }
 
@@ -53,6 +56,55 @@ class ProjectUserController extends Controller
      */
     public function offer(Request $request, $id)
     {
-        dd($request);
+        // dd($request);
+        $user = auth()->user();
+        // validate
+        $rules = array(
+
+            'information' => 'required|min:20|max:1000',
+            'amount' => 'required|numeric',
+        );
+        $validator = Validator::make($request->all(), $rules);
+
+        // process
+
+        if($validator->fails()) {
+            return Redirect()->back()
+                ->withErrors($validator);
+        } else {
+            $project = ProjectUser::firstOrCreate(
+                [
+                    'project_id' =>  $id,
+                    'user_id' => $user->id,
+                    'information' => $request->input('information'),
+                    'amount' => $request->input('amount'),
+                ], [
+                    'created_at' => Carbon::now(),
+                    'project_id' =>  $id, 'user_id' => $user->id,
+                    'information' => $request->input('information'),
+                    'amount' => $request->input('amount'),
+                ],
+            );
+
+            if($project->project->user_id != $user->id){
+                $project->proposal = today();
+                $result = $project->save();
+                if($result){
+                    if($user->notification == true){
+                        $request->session()->regenerate();
+                        Session::flash('success', 'Votre proposition d\'un montant de '.$request->amount.'€ a été envoyée, attendez maintenant l\'email de réponse');
+                        return Redirect::to('dashboard')->with('success', 'Votre proposition d\'un montant de '.$request->amount.'€ a été envoyée, attendez maintenant l\'email de réponse');
+                    }else{
+                        $request->session()->regenerate();
+                        Session::flash('success', 'Votre proposition d\'un montant de '.$request->amount.'€ a été envoyée, attendez maintenant la réponse');
+                        return Redirect::to('dashboard')->with('success', 'Votre proposition d\'un montant de '.$request->amount.'€ a été envoyée, attendez maintenant la réponse');
+                    }
+                }
+            }else{
+                $request->session()->regenerate();
+                Session::flash('message', 'Une erreur est survenue, veuillez réessayer plus tard !');
+                return Redirect::to('dashboard')->with('message', 'Une erreur est survenue, veuillez réessayer plus tard !');
+            }
+        }
     }
 }

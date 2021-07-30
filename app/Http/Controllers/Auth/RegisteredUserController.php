@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -33,13 +34,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $categories = Category::all();
-        session(['categories' => $categories]);
-
-        if($request->notification == "on"){
-            $notification = true;
-        }
-
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -48,6 +42,14 @@ class RegisteredUserController extends Controller
             'phone' => 'required|unique:users',
             'rules' => 'required',
         ]);
+
+        $categories = Category::all();
+        $message = "Vous êtes désormais membre sur Developplatform ! Bienvenue ".$request->first_name." !";
+        session(['categories' => $categories]);
+
+        if($request->notification == "on"){
+            $notification = true;
+        }
 
         if($request->has('rules')){
             Auth::login($user = User::create([
@@ -67,9 +69,11 @@ class RegisteredUserController extends Controller
 
             event(new Registered($user));
 
-            return redirect(RouteServiceProvider::HOME);
+            $request->session()->regenerate();
+            Session::flash('success', $message);
+            return redirect(RouteServiceProvider::HOME)->with('success', $message);
         }
 
-        return redirect()->back()->withErrors("Réglement non accepté")->withInput();;
+        return redirect()->back()->withErrors("Réglement non accepté")->withInput();
     }
 }

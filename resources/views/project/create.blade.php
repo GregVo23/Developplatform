@@ -66,7 +66,6 @@
             </select>
         </div>
 
-
             <div class="col-span-6 sm:col-span-6">
               <label for="name" class="block text-sm font-medium text-gray-700">
                 Nom du projet
@@ -124,7 +123,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
 

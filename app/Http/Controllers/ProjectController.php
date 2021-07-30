@@ -202,15 +202,17 @@ class ProjectController extends Controller
 
                 // redirect
                 if($result){
+                    $request->session()->regenerate();
                     Session::flash('success', 'Félicitation ! Votre projet a été enregistré');
                     return Redirect::to('dashboard');
                 }else{
+                    $request->session()->regenerate();
                     Session::flash('message', 'Désolé ! Un problème est survenu');
                     return Redirect::to('dashboard');
                 }
             }
         }
-
+        $request->session()->regenerate();
         Session::flash('message', 'Vous devez accepter le réglement');
         return Redirect::to('dashboard');
     }
@@ -280,7 +282,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         if(Auth::check()){
             $project = Project::find($id);
@@ -312,8 +314,9 @@ class ProjectController extends Controller
 
             $project->delete();
 
+            $request->session()->regenerate();
             Session::flash('success', $message);
-            return Redirect::to('dashboard');
+            return Redirect::to('dashboard')->with('success', $message);
         }else{
             return back();
         }
