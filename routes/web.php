@@ -24,18 +24,19 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //Pages liées aux projects
-Route::get('/projets', [App\Http\Controllers\ProjectController::class, 'index'])->middleware(['auth'])->name('projects.index');
-Route::get('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'mine'])->middleware(['auth'])->name('projects.mine');
-Route::get('/offres', [App\Http\Controllers\ProjectController::class, 'maked'])->middleware(['auth'])->name('projects.maked.mine');
-Route::get('/{id}/projet', [App\Http\Controllers\ProjectController::class, 'show'])->middleware(['auth'])->name('project.show');
-Route::get('/{id}/suppression', [App\Http\Controllers\ProjectController::class, 'destroy'])->middleware(['auth'])->name('project.destroy');
-Route::post('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'store'])->middleware(['auth'])->name('project.store');
-Route::get('/projet/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth'])->name('project.create');
+Route::get('/choose/projets', [App\Http\Controllers\ProjectController::class, 'choose'])->middleware(['auth','verified'])->name('projects.choose');
+Route::get('/projets', [App\Http\Controllers\ProjectController::class, 'index'])->middleware(['auth','verified'])->name('projects.index');
+Route::get('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'mine'])->middleware(['auth','verified'])->name('projects.mine');
+Route::get('/offres', [App\Http\Controllers\ProjectController::class, 'maked'])->middleware(['auth','verified'])->name('projects.maked.mine');
+Route::get('/{id}/projet', [App\Http\Controllers\ProjectController::class, 'show'])->middleware(['auth','verified'])->name('project.show');
+Route::get('/{id}/suppression', [App\Http\Controllers\ProjectController::class, 'destroy'])->middleware(['auth','verified'])->name('project.destroy');
+Route::post('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'store'])->middleware(['auth','verified'])->name('project.store');
+Route::get('/projet/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth','verified'])->name('project.create');
 //Profil du User
-Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])->middleware(['auth'])->name('profil.show');
+Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])->middleware(['auth','verified'])->name('profil.show');
 //Favoris
-Route::get('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'index'])->middleware(['auth'])->name('favoris.index');
-Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware(['auth'])->name('favoris.store');
+Route::get('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'index'])->middleware(['auth','verified'])->name('favoris.index');
+Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware(['auth','verified'])->name('favoris.store');
 //Offre
-Route::post('/{id}/accept', [App\Http\Controllers\ProjectUserController::class, 'accept'])->middleware(['auth'])->name('project.accept');
-Route::post('/{id}/offre', [App\Http\Controllers\ProjectUserController::class, 'offer'])->middleware(['auth'])->name('project.offer');
+Route::post('/{id}/accept', [App\Http\Controllers\ProjectUserController::class, 'accept'])->middleware(['auth','verified'])->name('project.accept');
+Route::post('/{id}/offre', [App\Http\Controllers\ProjectUserController::class, 'offer'])->middleware(['auth','verified'])->name('project.offer');

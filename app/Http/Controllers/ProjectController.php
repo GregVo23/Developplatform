@@ -40,6 +40,21 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function choose()
+    {
+        $user = auth()->user();
+
+        return view('project.choose', [
+            //'projects' => $projects,
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function mine()
     {
         $user = auth()->user();

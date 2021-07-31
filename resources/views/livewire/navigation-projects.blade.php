@@ -83,8 +83,8 @@
                 <p>{{ Str::limit($project->about, 150 , ' ...') }}</p>
                 <div class="mt-4 flex">
                     <div class="flex">
-                        <svg class="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        <svg class="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                     <span
                         class="ml-2 text-sm text-gray-600
@@ -159,11 +159,20 @@
                             Votre proposition de {{ $project->amount }} €
                             @if ($project->accepted == true)
                                 a été accepté
+                            @elseif($project->accepted == false)
+                                a été refusé
                             @else
                                 est en attente d'acceptation
                             @endif
                         @else
                             Vous avez accepté ce projet
+                            @if ($project->accepted == true)
+                                et l'auteur a accepté de travailler avec vous
+                            @elseif($project->accepted == false)
+                                mais l'auteur du projet a refusé la collaboration
+                            @else
+                                en attente d'une confirmation de l'auteur du projet
+                            @endif
                         @endif
                     @endif
                 </p>
@@ -243,7 +252,7 @@
                         @endif
 
 
-                    <form method="get" action="{{ route('project.show', ($rendering == "favorite" || $rendering == "maked") ? $project->project_id : $project->id) }}" name="frmShow">
+                    <form method="get" action="{{ route('project.show', $project->id) }}" name="frmShow">
                         @csrf
                         <button
                             class="flex items-center ml-4

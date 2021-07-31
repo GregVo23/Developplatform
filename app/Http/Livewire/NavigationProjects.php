@@ -153,7 +153,6 @@ class NavigationProjects extends Component
                 ->when($this->sub_category_id, function ($query, $sub_category_id) {
                     return $query->where('sub_category_id', $sub_category_id);
                 })
-                ->where('project_user.accepted','!=',NULL)
                 ->where('project_user.proposal','!=',NULL)
                 ->where('project_user.user_id', '=', $user->id)
                 ->where('name', 'like', '%'.$this->query.'%')
