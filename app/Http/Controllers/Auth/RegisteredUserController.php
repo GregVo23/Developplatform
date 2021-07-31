@@ -41,6 +41,11 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
             'phone' => 'required|unique:users',
             'rules' => 'required',
+            'country' => 'string|max:255',
+            'city' => 'string|max:255',
+            'zipcode' => 'string|max:255',
+            'number' => 'numeric|max:255',
+            'street' => 'string|max:255',
         ]);
 
         $categories = Category::all();
@@ -57,13 +62,13 @@ class RegisteredUserController extends Controller
                 'firstname' => ucfirst($request->first_name),
                 'lastname' => ucfirst($request->last_name),
                 'email' => $request->email,
+                'password' => Hash::make($request->password),
                 'phone' => $request->phone,
                 'country' => ucfirst($request->country),
                 'city' => ucfirst($request->city),
                 'zipcode' => $request->postalCode,
                 'number' => $request->number,
                 'street' => $request->street,
-                'password' => Hash::make($request->password),
                 'notification' => $notification,
             ]));
 

@@ -81,7 +81,7 @@
             </div>
 
             <div class="col-span-6">
-                <input id="notification" name="notification" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                <input id="notification" name="notification" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                 <label class="ml-5 text-sm" for="notification">
                     <p class="text-gray-700">J'accepte de recevoir les notifications par email</p>
                 </label>
