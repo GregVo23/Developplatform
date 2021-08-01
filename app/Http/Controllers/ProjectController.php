@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -14,10 +15,23 @@ use Illuminate\Support\Facades\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\Console\Input\Input;
 
 class ProjectController extends Controller
 {
+    /**
+     * Display 3 project on the homepage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function welcome()
+    {
+        $projects = Project::take(3)->get();
+
+        return view('welcome', [
+            'projects' => $projects,
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
