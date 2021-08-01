@@ -139,6 +139,7 @@
 
         <section id="content">
             <div class="content-wrap p-0">
+
                 <div class="section mb-0 pt-3 pb-0" style="background-color: #F4F4F4; margin-top: 0px; overflow: visible;">
                     <div class="container mx-auto sm:px-4">
                         <div class="flex flex-wrap  justify-center text-center mt-5">
@@ -162,38 +163,219 @@
                     </div>
                 </div>
 
-                <div class="container mx-auto sm:px-4" style="max-width: 1000px">
-                    <div class="flex flex-wrap  col-mb-30 mt-5">
-                        <div class="md:w-1/3 pr-4 pl-4">
-                            <div class="flex items-center justify-center">
-                                <div class="counter counter-xlarge text-gray-900 font-weight-bolder"><span data-from="1" data-to="15" data-refresh-interval="2" data-speed="600"></span></div>
-                                <span>+ Years Of<br>Experience.</span>
-                            </div>
-                        </div>
-
-                        <div class="md:w-1/3 pr-4 pl-4">
-                            <div class="flex items-center justify-center">
-                                <div class="counter counter-xlarge text-gray-900 font-weight-bolder"><span data-from="4" data-to="83" data-refresh-interval="50" data-speed="1500"></span></div>
-                                <span>% of Works <br>Completed.</span>
-                            </div>
-                        </div>
-
-                        <div class="md:w-1/3 pr-4 pl-4">
-                            <div class="flex items-center justify-center">
-                                <div class="counter counter-xlarge text-gray-900 font-weight-bolder"><span data-from="5" data-to="100" data-refresh-interval="30" data-speed="1200"></span></div>
-                                <span>% Satisfied<br>Customers.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line line-sm mb-0"></div>
-                </div>
             </div>
         </section>
+
+        <!-- #Separator
+        ============================================= -->
+
+            <div class="relative max-w-full">
+              <div class="relative py-24 bg-gray-500 shadow-2xl overflow-hidden">
+
+
+                    <div class="container mx-auto sm:px-4" style="max-width: 1000px">
+                        <div class="flex flex-wrap  col-mb-30 mt-5">
+                            <div class="md:w-1/3 pr-4 pl-4">
+                                <div class="flex items-center justify-center">
+                                    <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="1" data-to="15" data-refresh-interval="2" data-speed="600"></span></div>
+                                    <span class="text-white">+ Years Of<br>Experience.</span>
+                                </div>
+                            </div>
+
+                            <div class="md:w-1/3 pr-4 pl-4">
+                                <div class="flex items-center justify-center">
+                                    <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="4" data-to="83" data-refresh-interval="50" data-speed="1500"></span></div>
+                                    <span class="text-white">% de demandes <br>Ont reçus un devis.</span>
+                                </div>
+                            </div>
+
+                            <div class="md:w-1/3 pr-4 pl-4">
+                                <div class="flex items-center justify-center">
+                                    <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="5" data-to="100" data-refresh-interval="30" data-speed="1200"></span></div>
+                                    <span class="text-white">% Satisfied<br>Customers.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line line-sm mb-0"></div>
+                    </div>
+
+              </div>
+            </div>
+
+
+        <!-- #exemple projects
+        ============================================= -->
+        <section>
+
+        </section>
+        <div class="relative pt-16 pb-20 lg:pt-24 lg:pb-28">
+            <div class="absolute inset-0">
+              <div class="bg-white h-1/3 sm:h-2/3"></div>
+            </div>
+            <div class="relative max-w-7xl mx-auto">
+              <div class="text-center">
+                <h2 class="text-3xl tracking-tight uppercase ls3 font-weight-bolder text-gray-900 sm:text-4xl">
+                  Les dernières demandes
+                </h2>
+                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
+                </p>
+              </div>
+              <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+                <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                  <div class="flex-shrink-0">
+                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+                  </div>
+                  <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                      <p class="text-sm font-medium text-indigo-600">
+                        <a href="#" class="hover:underline">
+                          Article
+                        </a>
+                      </p>
+                      <a href="#" class="block mt-2">
+                        <p class="text-xl font-semibold text-gray-900">
+                          Boost your conversion rate
+                        </p>
+                        <p class="mt-3 text-base text-gray-500">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.
+                        </p>
+                      </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                      <div class="flex-shrink-0">
+                        <a href="#">
+                          <span class="sr-only">Roel Aufderehar</span>
+                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </a>
+                      </div>
+                      <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">
+                            Roel Aufderehar
+                          </a>
+                        </p>
+                        <div class="flex space-x-1 text-sm text-gray-500">
+                          <time datetime="2020-03-16">
+                            Mar 16, 2020
+                          </time>
+                          <span aria-hidden="true">
+                            &middot;
+                          </span>
+                          <span>
+                            6 min read
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                  <div class="flex-shrink-0">
+                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+                  </div>
+                  <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                      <p class="text-sm font-medium text-indigo-600">
+                        <a href="#" class="hover:underline">
+                          Video
+                        </a>
+                      </p>
+                      <a href="#" class="block mt-2">
+                        <p class="text-xl font-semibold text-gray-900">
+                          How to use search engine optimization to drive sales
+                        </p>
+                        <p class="mt-3 text-base text-gray-500">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.
+                        </p>
+                      </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                      <div class="flex-shrink-0">
+                        <a href="#">
+                          <span class="sr-only">Brenna Goyette</span>
+                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </a>
+                      </div>
+                      <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">
+                            Brenna Goyette
+                          </a>
+                        </p>
+                        <div class="flex space-x-1 text-sm text-gray-500">
+                          <time datetime="2020-03-10">
+                            Mar 10, 2020
+                          </time>
+                          <span aria-hidden="true">
+                            &middot;
+                          </span>
+                          <span>
+                            4 min read
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                  <div class="flex-shrink-0">
+                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+                  </div>
+                  <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                      <p class="text-sm font-medium text-indigo-600">
+                        <a href="#" class="hover:underline">
+                          Case Study
+                        </a>
+                      </p>
+                      <a href="#" class="block mt-2">
+                        <p class="text-xl font-semibold text-gray-900">
+                          Improve your customer experience
+                        </p>
+                        <p class="mt-3 text-base text-gray-500">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.
+                        </p>
+                      </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                      <div class="flex-shrink-0">
+                        <a href="#">
+                          <span class="sr-only">Daniela Metz</span>
+                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </a>
+                      </div>
+                      <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">
+                            Daniela Metz
+                          </a>
+                        </p>
+                        <div class="flex space-x-1 text-sm text-gray-500">
+                          <time datetime="2020-02-12">
+                            Feb 12, 2020
+                          </time>
+                          <span aria-hidden="true">
+                            &middot;
+                          </span>
+                          <span>
+                            11 min read
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <!-- #content end -->
 
         <!-- Footer
         ============================================= -->
-        <footer id="footer" class="border-0" style="background-color: #C9D6CF;">
+        <footer id="footer" class="border-0" style="background-color: #e5e5e5;">
 
             <div class="container mx-auto sm:px-4">
                 <div class="footer-widgets-wrap  m-0">

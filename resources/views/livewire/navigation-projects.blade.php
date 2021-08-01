@@ -153,7 +153,7 @@
                     </div>
                 </div>
 
-                <p class="mt-1 text-sm {{ ($project->accepted == true) ? "text-yellow" : "text-indigo-600" }}">
+                <div class="mt-1 text-sm {{ ($project->accepted == true) ? "text-yellow" : "text-indigo-600" }}">
                     @if (!empty($project->proposal && $project->user_id == auth()->user()->id))
                         @if ($project->amount != NULL)
                             Votre proposition de {{ $project->amount }} €
@@ -175,7 +175,7 @@
                             @endif
                         @endif
                     @endif
-                </p>
+                </div>
 
                 <div class="mt-4 flex justify-end flex-grow">
 
