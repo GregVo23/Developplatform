@@ -36,6 +36,8 @@ Route::post('/{id}/projets', [App\Http\Controllers\ProjectController::class, 'st
 Route::get('/projet/nouveau', [App\Http\Controllers\ProjectController::class, 'create'])->middleware(['auth','verified'])->name('project.create');
 //Profil du User
 Route::get('/{id}/profil', [App\Http\Controllers\UserController::class, 'show'])->middleware(['auth','verified'])->name('profil.show');
+//Contact
+Route::post('/', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 //Favoris
 Route::get('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'index'])->middleware(['auth','verified'])->name('favoris.index');
 Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware(['auth','verified'])->name('favoris.store');

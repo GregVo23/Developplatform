@@ -110,7 +110,7 @@
                             <span class="uppercase font-bold ml-3">SemiColonWeb</span>
                         </div> -->
                         <div class="mx-auto"  style="max-width: 600px">
-                            <p class="text-xl font-normal text-gray-900 mb-5">Vous souhaitez faire appel d'offres à des designeurs ou développeurs pour la réalisation d'un projet ? Vous êtes designer ou développeur et vous rechercher des petits projets ?</p>
+                            <p class="text-xl font-normal text-gray-900 mb-5">Vous souhaitez faire appel d'offres à des designers ou développeurs pour la réalisation d'un projet ? Vous êtes designer ou développeur et vous rechercher des petits projets ?</p>
                             <a href="{{ route('project.create') }}" class="button button-dark button-hero h-translatey-3 tf-ts button-reveal overflow-visible bg-gray-900 text-right"><span>Je demande</span><i class="icon-line-arrow-right"></i></a>
                             <a href="{{ route('projects.index') }}" data-scrollto="#footer" data-easing="easeInOutExpo" data-speed="1250" data-offset="70" class="button button-large button-light text-gray-900 bg-transparent m-0" style="z-index: 1;"><i class="icon-line2-arrow-down font-bold"></i> <u>Chercher un projet</u></a>
                         </div>
@@ -292,34 +292,26 @@
 
                         <div class="md:w-2/5 pr-4 pl-4">
                             <h3 class="h1 mb-5">Vous avez une question ?</h3>
-                            <div class="form-widget" data-loader="button" data-alert-type="inline">
 
-                                <div class="form-result"></div>
-
-                                <form class="flex flex-wrap  mb-0" id="landing-enquiry" action="include/form.php" method="post" enctype="multipart/form-data">
-                                    <div class="form-process"></div>
+                                <form class="flex flex-wrap  mb-0" action="{{ route('contact') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="w-full mb-4">
                                         <label>Votre nom ?</label>
-                                        <input type="text" name="landing-enquiry-name" id="landing-enquiry-name" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="@auth{{ Auth()->user()->firstname ? Auth()->user()->firstname : '' }}  {{ Auth()->user()->lastname ? Auth()->user()->lastname : '' }}@endauth">
+                                        <input type="text" name="name" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="@auth{{ Auth()->user()->firstname ? Auth()->user()->firstname : '' }}  {{ Auth()->user()->lastname ? Auth()->user()->lastname : '' }}@endauth">
                                     </div>
                                     <div class="w-full mb-4">
                                         <label>Votre adresse email ?</label>
-                                        <input type="email" name="landing-enquiry-email" id="landing-enquiry-email" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="@auth{{ Auth()->user()->email ? Auth()->user()->email : '' }}@endauth">
+                                        <input type="email" name="email" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="@auth{{ Auth()->user()->email ? Auth()->user()->email : '' }}@endauth">
                                     </div>
                                     <div class="w-full mb-4">
                                         <label>Votre question ?:</label>
-                                        <textarea name="landing-enquiry-additional-requirements" id="landing-enquiry-additional-requirements" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control" cols="10" rows="3"></textarea>
-                                    </div>
-                                    <div class="w-full hidden">
-                                        <input type="text" id="landing-enquiry-botcheck" name="landing-enquiry-botcheck" value="" />
+                                        <textarea name="texte" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control" cols="10" rows="3"></textarea>
                                     </div>
                                     <div class="w-full">
                                         <button type="submit" name="landing-enquiry-submit" class="button h-translatey-3 bg-gray-900 rounded-full py-4 px-8">Envoyer</button>
                                     </div>
-
-                                    <input type="hidden" name="prefix" value="landing-enquiry-">
                                 </form>
-                            </div>
+
                         </div>
 
                     </div>
