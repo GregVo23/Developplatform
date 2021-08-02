@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\Category;
+use App\Models\ProjectUser;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,10 +26,21 @@ class ProjectController extends Controller
      */
     public function welcome()
     {
-        $projects = Project::take(3)->get();
+        // 3 examples of project
+        $projects = Project::take(3)->get();   //TODO only project with a picture
+
+        // offers/projects
+        $nbProjects = Project::where('done','=',NULL)->get()->count();
+        $nbOffer = ProjectUser::where('proposal','!=',NULL)->get()->count();
+        if(!empty($nbProjects) && !empty($nbOffer)){
+            $pourcentage = $nbOffer/$nbProjects*100;
+        }else{
+            $pourcentage = 85;
+        }
 
         return view('welcome', [
             'projects' => $projects,
+            'pourcentage' => $pourcentage,
         ]);
     }
 

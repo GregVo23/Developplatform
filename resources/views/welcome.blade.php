@@ -184,7 +184,7 @@
 
                             <div class="md:w-1/3 pr-4 pl-4">
                                 <div class="flex items-center justify-center">
-                                    <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="4" data-to="83" data-refresh-interval="50" data-speed="1500"></span></div>
+                                    <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="4" data-to="{{ $pourcentage }}" data-refresh-interval="50" data-speed="1500"></span></div>
                                     <span class="text-white">% de demandes <br>Ont reçus un devis.</span>
                                 </div>
                             </div>
@@ -231,44 +231,16 @@
                             <div class="flex-1 bg-white p-6 flex flex-col justify-between">
                                 <div class="flex-1">
                                     <p class="text-sm font-medium text-indigo-600">
-                                        <a href="#" class="hover:underline">
                                         {{ $project->sub_category->name }}
-                                        </a>
                                     </p>
                                 <a href="#" class="block mt-2">
                                     <p class="text-xl font-semibold text-gray-900">
                                         {{ $project->name }}
                                     </p>
                                     <p class="mt-3 text-base text-gray-500">
-                                        <!--description-->
+                                        {{ Str::limit($project->about, 60 , ' ...') }}
                                     </p>
                                 </a>
-                                </div>
-                                <div class="mt-6 flex items-center">
-                                    <div class="flex-shrink-0">
-                                        <a href="#">
-                                        <span class="sr-only">Roel Aufderehar</span>
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3">
-                                        <p class="text-sm font-medium text-gray-900">
-                                        <a href="#" class="hover:underline">
-                                            Roel Aufderehar
-                                        </a>
-                                        </p>
-                                        <div class="flex space-x-1 text-sm text-gray-500">
-                                        <time datetime="2020-03-16">
-                                            Mar 16, 2020
-                                        </time>
-                                        <span aria-hidden="true">
-                                            &middot;
-                                        </span>
-                                        <span>
-                                            6 min read
-                                        </span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
