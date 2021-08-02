@@ -39,7 +39,8 @@ class Search extends Component
 
         if(strlen($this->search) > 2)
         {
-            $this->projects = Project::where('name', 'like', $query)->orWhere('tags', 'like', $query)->get();
+            $this->projects = Project::where('name', 'like', $query)->get();
+            //$this->projects = Project::where('name', 'like', $query)->orWhere('tags', 'like', $query)->get();
         }
     }
 

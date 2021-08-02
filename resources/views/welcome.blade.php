@@ -90,6 +90,14 @@
             </div>
         </header><!-- #header end -->
 
+        <!--show message
+        ============================================= -->
+        <x-message/>
+
+        <!--show if errors
+        ============================================= -->
+        <x-error/>
+
         <!-- Slider
         ============================================= -->
         <section id="slider" class="slider-element min-vh-md-100 py-4 include-header" style="background: #e5e5e5 repeat top center; background-size: cover; z-index: 1;">
