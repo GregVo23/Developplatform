@@ -50,6 +50,15 @@
         <!-- Header
         ============================================= -->
         <header id="header" class="border-b-0 no-sticky transparent-header">
+            
+            <!--show message
+            ============================================= -->
+            <x-message/>
+
+            <!--show if errors
+            ============================================= -->
+            <x-error/>
+
             <div id="header-wrap">
                 <div class="container mx-auto sm:px-4">
                     <div class="header-row">
@@ -89,14 +98,6 @@
                 </div>
             </div>
         </header><!-- #header end -->
-
-        <!--show message
-        ============================================= -->
-        <x-message/>
-
-        <!--show if errors
-        ============================================= -->
-        <x-error/>
 
         <!-- Slider
         ============================================= -->

@@ -8,6 +8,7 @@ use App\Mail\EmailContact;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 
 class ContactController extends Controller {
@@ -49,6 +50,8 @@ class ContactController extends Controller {
     
             Mail::to($email)->send(new EmailContact($mailData));
     
+            $request->session()->regenerate();
+            Session::flash('success', $message);
             return redirect()->route('welcome')->with($message);
         }
     }
