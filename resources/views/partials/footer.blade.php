@@ -53,105 +53,37 @@
             </h3>
             <x-menu/>
           </div>
-          <div class="mt-12 md:mt-0">
+          <div>
             <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Support
+              Session
             </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Pricing
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Documentation
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Guides
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  API Status
-                </a>
-              </li>
+                <!-- Navigation Links -->
+              <ul class="mt-4 space-y-4">
+                <li><a class="text-gray-500 hover:text-indigo-500" href="{{ route('profil.show', Auth()->user()->id)}}">
+                    {{ __('Profil') }}</a>
+                </li>
+                <li><a class="text-gray-500 hover:text-indigo-500" href="{{ route('projects.index')}}">
+                    {{ __('Contact') }}</a>
+                </li>
+                <li>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                      <input class="text-gray-500 hover:text-indigo-500 bg-white cursor-pointer" type="submit" value="{{ __('Se déconnecter') }}">
+                  </form>
+                </li>
             </ul>
           </div>
         </div>
-        <div class="md:grid md:grid-cols-2 md:gap-8">
-          <div>
-            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Company
-            </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  About
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Blog
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Jobs
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Press
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Partners
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="mt-12 md:mt-0">
-            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Legal
-            </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Claim
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Privacy
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Terms
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div>
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+          <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_rnduosnd.json"  background="transparent"  speed="1"  style="width: 100%;"  loop  autoplay></lottie-player>
         </div>
       </div>
     </div>
     <div class="mt-12 border-t border-gray-200 pt-8">
       <p class="text-base text-gray-400 xl:text-center">
-        &copy; 2020 Workflow, Inc. All rights reserved.
-      </p>
+        &copy; 2021 <span class="text-gray-500">Developplatform</span>, réalisé par <a class="gradient-text gradient-horizon" href="https://www.vanossel.be/">Van Ossel Grégory</a>.
+      <br><span class="text-sm">Dans le cadre d'un travail de fin d'étude en Web Développement à l' <a class="text-blue-300" href="https://www.epfc.eu/">EPFC</a></span></p>
     </div>
   </div>
 </footer>

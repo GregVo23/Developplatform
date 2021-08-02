@@ -40,6 +40,7 @@ class ProjectController extends Controller
 
         return view('welcome', [
             'projects' => $projects,
+            'withoutOffer' => $nbProjects,
             'pourcentage' => $pourcentage,
         ]);
     }

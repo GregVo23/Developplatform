@@ -72,7 +72,7 @@
                             <ul class="menu-container">
                                 <li class="menu-item"><a class="menu-link" href="{{ url('/customer') }}"><div>Demandeur</div></a></li>
                                 <li class="menu-item"><a class="menu-link" href="{{ url('/maker') }}"><div>Réalisateur</div></a></li>
-                                <li class="menu-item"><a class="menu-link" href="#" data-scrollto="#footer" data-easing="easeInOutExpo" data-speed="1250" data-offset="70"><div>A propos</div></a></li>
+                                <li class="menu-item"><a class="menu-link" href="#" data-scrollto="#footer" data-easing="easeInOutExpo" data-speed="1250" data-offset="70"><div>Contact</div></a></li>
                             <li class="menu-item">
                                 @auth
                                 <a href="{{ url('/projets') }}" class="button button-border rounded-full py-2 px-4">Mes projets</a>
@@ -110,9 +110,9 @@
                             <span class="uppercase font-bold ml-3">SemiColonWeb</span>
                         </div> -->
                         <div class="mx-auto"  style="max-width: 600px">
-                            <p class="text-xl font-normal text-gray-900 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, atque. Minus, harum porro unde quisquam! Minima vitae neque hic vel porro quidem totam. </p>
-                            <a href="#" class="button button-dark button-hero h-translatey-3 tf-ts button-reveal overflow-visible bg-gray-900 text-right"><span>Je demande</span><i class="icon-line-arrow-right"></i></a>
-                            <a href="#" data-scrollto="#footer" data-easing="easeInOutExpo" data-speed="1250" data-offset="70" class="button button-large button-light text-gray-900 bg-transparent m-0" style="z-index: 1;"><i class="icon-line2-arrow-down font-bold"></i> <u>Chercher un projet</u></a>
+                            <p class="text-xl font-normal text-gray-900 mb-5">Vous souhaitez faire appel d'offres à des designeurs ou développeurs pour la réalisation d'un projet ? Vous êtes designer ou développeur et vous rechercher des petits projets ?</p>
+                            <a href="{{ route('project.create') }}" class="button button-dark button-hero h-translatey-3 tf-ts button-reveal overflow-visible bg-gray-900 text-right"><span>Je demande</span><i class="icon-line-arrow-right"></i></a>
+                            <a href="{{ route('projects.index') }}" data-scrollto="#footer" data-easing="easeInOutExpo" data-speed="1250" data-offset="70" class="button button-large button-light text-gray-900 bg-transparent m-0" style="z-index: 1;"><i class="icon-line2-arrow-down font-bold"></i> <u>Chercher un projet</u></a>
                         </div>
                     </div>
                 </div>
@@ -129,8 +129,8 @@
                 <div style="display:flex; flex-wrap:nowrap; justify-content:space-between;">
                     <img src="./images/left.jpg" style="max-width: 200px;">
                     <div class="m-12 p-12 text-center">
-                        <h3 class="font-weight-bolder h1 mb-4">Designer & Developer, to make your <span class="gradient-text gradient-horizon">projets</span></h3>
-                        <p class="mb-5 text-xl font-light text-black-50 font-weight-extralight">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, atque. Minus, harum porro unde quisquam! Minima vitae neque hic vel porro quidem totam.</p>
+                        <h3 class="font-weight-bolder h1 mb-4">Designer & Développeur, pour réaliser vos <span class="gradient-text gradient-horizon">demandes</span></h3>
+                        <p class="mb-5 text-xl font-light text-black-50 font-weight-extralight">Vous ne disposez pas de capacités pour réaliser un projet graphique ou de développement et vous rechercher quelqu'un pour mener à bien cette réalisation. Proposer votre projet, votre prix, votre délais et les offres viendront à vous.</p>
                     </div>
                     <img src="./images/right.jpg" style="float:right; max-width: 220px;">
                 </div>
@@ -145,8 +145,8 @@
                         <div class="flex flex-wrap  justify-center text-center mt-5">
                             <div class="lg:w-1/2 pr-4 pl-4">
                                 <div>
-                                    <h3 class="font-weight-bolder h1 mb-4">Designer & Developer, to make your <span class="gradient-text gradient-horizon">projets</span></h3>
-                                    <p class="mb-5 text-xl font-light text-black-50 font-weight-extralight">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, atque. Minus, harum porro unde quisquam! Minima vitae neque hic vel porro quidem totam.</p>
+                                    <h3 class="font-weight-bolder h1 mb-4">Envoyer ou recevoir une <span class="gradient-text gradient-horizon">offre de prix</span></h3>
+                                    <p class="mb-5 text-xl font-light text-black-50 font-weight-extralight">Vous serez notifiez des offres de la communauté par e-mail ou via le site et ce, sans engagement. En effet nous vous mettrons juste en contact avec le prestataire et ce, seulement si vous l'accepter.</p>
                                 </div>
                             </div>
                         </div>
@@ -155,8 +155,8 @@
                         <div class="parallax min-vh-75" style="background-image: url('./images/designer-project.jpg'); background-size: cover; background-position: center center;" data-bottom-top="width: 40vw" data-center-top="width: 100vw;">
                             <div class="flex flex-wrap  items-center justify-center h-full">
                                 <div class="col-auto text-center">
-                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>Welcome</u></a>
-                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>to the comun</u></a>
+                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>Demander</u></a>
+                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>Recevez</u></a>
                                 </div>
                             </div>
                         </div>
@@ -177,8 +177,8 @@
                         <div class="flex flex-wrap  col-mb-30 mt-5">
                             <div class="md:w-1/3 pr-4 pl-4">
                                 <div class="flex items-center justify-center">
-                                    <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="1" data-to="15" data-refresh-interval="2" data-speed="600"></span></div>
-                                    <span class="text-white">+ Years Of<br>Experience.</span>
+                                    <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="1" data-to="{{ $withoutOffer }}" data-refresh-interval="2" data-speed="600"></span></div>
+                                    <span class="text-white">demandes de <br>réalisations.</span>
                                 </div>
                             </div>
 
@@ -192,7 +192,7 @@
                             <div class="md:w-1/3 pr-4 pl-4">
                                 <div class="flex items-center justify-center">
                                     <div class="counter counter-xlarge text-white font-weight-bolder"><span data-from="5" data-to="100" data-refresh-interval="30" data-speed="1200"></span></div>
-                                    <span class="text-white">% Satisfied<br>Customers.</span>
+                                    <span class="text-white">% de satisfaction <br>Clients.</span>
                                 </div>
                             </div>
                         </div>
@@ -214,10 +214,10 @@
                 <div class="relative max-w-7xl mx-auto">
                     <div class="text-center mb-8">
                         <h2 class="text-3xl tracking-tight uppercase ls3 font-weight-bolder text-gray-900 sm:text-4xl">
-                        Les dernières demandes
+                        Quelques demandes
                         </h2>
-                        <p class="mt-3 mb-6 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
+                        <p class="mt-6 mb-8 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+                        De nombreuses demandes de <span class="gradient-text gradient-horizon">Design</span> ou de <span class="gradient-text gradient-horizon">développement</span> classées par catégories vous attendent.
                         </p>
                     </div>
                     <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
@@ -233,7 +233,7 @@
                                     <p class="text-sm font-medium text-indigo-600">
                                         {{ $project->sub_category->name }}
                                     </p>
-                                <a href="#" class="block mt-2">
+                                <a href="{{ route('project.show', $project->id) }}" class="block mt-2">
                                     <p class="text-xl font-semibold text-gray-900">
                                         {{ $project->name }}
                                     </p>
@@ -300,11 +300,11 @@
                                     <div class="form-process"></div>
                                     <div class="w-full mb-4">
                                         <label>Votre nom ?</label>
-                                        <input type="text" name="landing-enquiry-name" id="landing-enquiry-name" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="">
+                                        <input type="text" name="landing-enquiry-name" id="landing-enquiry-name" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="{{ Auth()->user()->firstname ? Auth()->user()->firstname : '' }}  {{ Auth()->user()->lastname ? Auth()->user()->lastname : '' }}">
                                     </div>
                                     <div class="w-full mb-4">
                                         <label>Votre adresse email ?</label>
-                                        <input type="email" name="landing-enquiry-email" id="landing-enquiry-email" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="">
+                                        <input type="email" name="landing-enquiry-email" id="landing-enquiry-email" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="{{ Auth()->user()->email ? Auth()->user()->email : '' }}">
                                     </div>
                                     <div class="w-full mb-4">
                                         <label>Votre question ?:</label>
@@ -314,7 +314,7 @@
                                         <input type="text" id="landing-enquiry-botcheck" name="landing-enquiry-botcheck" value="" />
                                     </div>
                                     <div class="w-full">
-                                        <button type="submit" name="landing-enquiry-submit" class="button h-translatey-3 bg-gray-900 rounded-full py-2 px-4"><i class="icon-line-arrow-right m-0"></i></button>
+                                        <button type="submit" name="landing-enquiry-submit" class="button h-translatey-3 bg-gray-900 rounded-full py-4 px-8">Envoyer</button>
                                     </div>
 
                                     <input type="hidden" name="prefix" value="landing-enquiry-">
