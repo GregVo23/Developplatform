@@ -300,11 +300,11 @@
                                     <div class="form-process"></div>
                                     <div class="w-full mb-4">
                                         <label>Votre nom ?</label>
-                                        <input type="text" name="landing-enquiry-name" id="landing-enquiry-name" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="{{ Auth()->user()->firstname ? Auth()->user()->firstname : '' }}  {{ Auth()->user()->lastname ? Auth()->user()->lastname : '' }}">
+                                        <input type="text" name="landing-enquiry-name" id="landing-enquiry-name" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="@auth{{ Auth()->user()->firstname ? Auth()->user()->firstname : '' }}  {{ Auth()->user()->lastname ? Auth()->user()->lastname : '' }}@endauth">
                                     </div>
                                     <div class="w-full mb-4">
                                         <label>Votre adresse email ?</label>
-                                        <input type="email" name="landing-enquiry-email" id="landing-enquiry-email" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="{{ Auth()->user()->email ? Auth()->user()->email : '' }}">
+                                        <input type="email" name="landing-enquiry-email" id="landing-enquiry-email" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded border-form-control required" value="@auth{{ Auth()->user()->email ? Auth()->user()->email : '' }}@endauth">
                                     </div>
                                     <div class="w-full mb-4">
                                         <label>Votre question ?:</label>
