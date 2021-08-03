@@ -17,6 +17,7 @@ class CreateSubCategoriesTable extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->string('name');
+            $table->string('image');
             $table->text('description');
         });
     }
