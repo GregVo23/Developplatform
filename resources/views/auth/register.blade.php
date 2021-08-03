@@ -41,26 +41,6 @@
                 </select>
             </div>
 
-            <div class="col-span-6">
-                <label for="street" class="block text-sm font-medium text-gray-700">Rue</label>
-                <input type="text" name="street" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-
-            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                <label for="number" class="block text-sm font-medium text-gray-700">Numéro</label>
-                <input type="number" name="number" id="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-
-            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                <label for="city" class="block text-sm font-medium text-gray-700">Ville</label>
-                <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-
-            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                <label for="postalCode" class="block text-sm font-medium text-gray-700">Code postal</label>
-                <input type="text" name="postalCode" id="postalCode" autocomplete="postalCode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-
             <!-- Password -->
             <div class="col-span-6">
                 <x-label for="password" :value="__('Mot de passe')" />

@@ -23,10 +23,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('country')->nullable();
-            $table->string('city')->nullable();
-            $table->string('street')->nullable();
-            $table->integer('number')->nullable();
-            $table->integer('zipcode')->nullable();
             $table->string('phone')->nullable()->unique();
             $table->enum('level', ['expert','pro','advanced','novice','student'])->nullable();
             $table->text('about')->nullable();

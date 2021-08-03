@@ -29,9 +29,6 @@
     }
 </style>
 
-
-
-
     <div class="container mx-auto my-5 p-5">
         <div class="md:flex no-wrap md:-mx-2 ">
             <!-- Left Side -->
@@ -84,10 +81,6 @@
                                 <div class="px-4 py-2">{{ $user->phone ? $user->phone : "non communiqué" }}</div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold"><b>Addresse</b></div>
-                                <div class="px-4 py-2">{{ $user->address() }}</div>
-                            </div>
-                            <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold"><b>Email</b></div>
                                 <div class="px-4 py-2">
                                     <a class="text-blue-800" href="mailto:{{ $user->email }}">{{ $user->email }}</a>
@@ -97,44 +90,39 @@
                     </div>
 
                     <div class="mt-8 flex">
-                    <!--<button
-                        class="flex w-1/2 text-gray-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                        <b>Modifier mon profil</b>
-                    </button>-->
 
-                    <button
-                      class="flex items-center ml-4
-                      focus:outline-none group border rounded-full
-                      py-2 px-8 leading-none border-indigo-600
-                      dark:border-yellow select-none
-                      hover:bg-indigo-600 text-indigo-600 hover:text-white
-                      dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                      <span class="text-gray-700 group-hover:text-white">
-                          {{ "Modifier mon profil" }}
-                      </span>
-                  </button>
+                        <button
+                            class="flex items-center ml-4
+                            focus:outline-none group border rounded-full
+                            py-2 px-8 leading-none border-indigo-600
+                            dark:border-yellow select-none
+                            hover:bg-indigo-600 text-indigo-600 hover:text-white
+                            dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                            <span class="text-gray-700 group-hover:text-white">
+                                {{ "Modifier mon profil" }}
+                            </span>
+                        </button>
 
-                    <button
-                      class="flex items-center ml-4
-                      focus:outline-none group border rounded-full
-                      py-2 px-8 leading-none border-yellow
-                      dark:border-yellow select-none
-                      hover:bg-yellow text-yellow hover:text-white
-                      dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                      <span class="text-gray-700 group-hover:text-white">
-                          {{ "Supprimer mon profil" }}
-                      </span>
-                  </button>
+                        <button
+                            class="flex items-center ml-4
+                            focus:outline-none group border rounded-full
+                            py-2 px-8 leading-none border-yellow
+                            dark:border-yellow select-none
+                            hover:bg-yellow text-yellow hover:text-white
+                            dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                            <span class="text-gray-700 group-hover:text-white">
+                                {{ "Supprimer mon profil" }}
+                            </span>
+                        </button>
                     </div>
-
                 </div>
                 <!-- End of about section -->
 

@@ -42,10 +42,6 @@ class RegisteredUserController extends Controller
             'phone' => 'required|unique:users',
             'rules' => 'required',
             'country' => 'string|max:255',
-            'city' => 'string|max:255',
-            'zipcode' => 'string|max:255',
-            'number' => 'numeric|max:255',
-            'street' => 'string|max:255',
         ]);
 
         $categories = Category::all();

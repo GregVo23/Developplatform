@@ -26,10 +26,6 @@ class User extends Authenticatable  implements MustVerifyEmail
         'password',
         'role_id',
         'country',
-        'street',
-        'number',
-        'city',
-        'zipcode',
         'phone',
         'level',
         'avatar',
@@ -84,13 +80,6 @@ class User extends Authenticatable  implements MustVerifyEmail
     public function favorites_projects()
     {
         return $this->belongsToMany(Project::class)->wherePivot('favorite', true);
-    }
-
-    public function address()
-    {
-        $address = $this->city.", ".$this->street." n°".$this->number;
-
-        return $address;
     }
 
     public function name()
