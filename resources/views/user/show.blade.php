@@ -90,38 +90,39 @@
                     </div>
 
                     <div class="mt-8 flex">
+                        @if ($user->id === auth()->user()->id)
+                            <button
+                                class="flex items-center ml-4
+                                focus:outline-none group border rounded-full
+                                py-2 px-8 leading-none border-indigo-600
+                                dark:border-yellow select-none
+                                hover:bg-indigo-600 text-indigo-600 hover:text-white
+                                dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span class="text-gray-700 group-hover:text-white">
+                                    {{ "Modifier mon profil" }}
+                                </span>
+                            </button>
 
-                        <button
-                            class="flex items-center ml-4
-                            focus:outline-none group border rounded-full
-                            py-2 px-8 leading-none border-indigo-600
-                            dark:border-yellow select-none
-                            hover:bg-indigo-600 text-indigo-600 hover:text-white
-                            dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                            <span class="text-gray-700 group-hover:text-white">
-                                {{ "Modifier mon profil" }}
-                            </span>
-                        </button>
-
-                        <button
-                            class="flex items-center ml-4
-                            focus:outline-none group border rounded-full
-                            py-2 px-8 leading-none border-yellow
-                            dark:border-yellow select-none
-                            hover:bg-yellow text-yellow hover:text-white
-                            dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                            <span class="text-gray-700 group-hover:text-white">
-                                {{ "Supprimer mon profil" }}
-                            </span>
-                        </button>
+                            <button
+                                class="flex items-center ml-4
+                                focus:outline-none group border rounded-full
+                                py-2 px-8 leading-none border-yellow
+                                dark:border-yellow select-none
+                                hover:bg-yellow text-yellow hover:text-white
+                                dark-hover:text-gray-200 transition ease-in-out duration-200 transform hover:-translate-y-1 hover:translate-x-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span class="text-gray-700 group-hover:text-white">
+                                    {{ "Supprimer mon profil" }}
+                                </span>
+                            </button>
+                        @endif
                     </div>
                 </div>
                 <!-- End of about section -->
@@ -141,7 +142,7 @@
                                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </span>
-                                <span class="tracking-wide">Mes demandes</span>
+                                <span class="tracking-wide">Demandes de réalisation</span>
                             </div>
                             <ul class="list-inside space-y-2">
 
@@ -152,7 +153,7 @@
                                     </li>
                                 @empty
                                     <li>
-                                        <div class="text-teal-600">Aucune demandes</div>
+                                        <div class="text-teal-600">Aucune demandes de réalisation</div>
                                     </li>
                                 @endforelse
 
@@ -161,20 +162,38 @@
                         <div>
                             <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
                                 <span clas="text-indigo-500">
-                                    <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-                                        <path fill="#fff"
-                                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </span>
+                                <span class="tracking-wide">Offres de prestations</span>
+                            </div>
+                            <ul class="list-inside space-y-2">
+
+                                @forelse ($myProjectsDone as $myProjects)
+                                    <li>
+                                        <div class="text-indigo-600 "><a href="{{ route('project.show', $myProjectDone->id) }}">{{ $myProjectDone->name }}</a></div>
+                                        <div class="text-gray-500 text-xs">Réalisé {{ $myProjectDone->created_at->diffForHumans() }}</div>
+                                    </li>
+                                @empty
+                                    <li>
+                                        <div class="text-teal-600">Aucune offres</div>
+                                    </li>
+                                @endforelse
+
+                            </ul>
+
+                            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3 mt-8">
+                                <span clas="text-indigo-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </span>
                                 <span class="tracking-wide">Projets réalisés</span>
                             </div>
                             <ul class="list-inside space-y-2">
 
-                                @forelse ($myProjectsDone as $myProjectDone)
+                                @forelse ($myProjectsDone as $myProjects)
                                     <li>
                                         <div class="text-indigo-600 "><a href="{{ route('project.show', $myProjectDone->id) }}">{{ $myProjectDone->name }}</a></div>
                                         <div class="text-gray-500 text-xs">Réalisé {{ $myProjectDone->created_at->diffForHumans() }}</div>

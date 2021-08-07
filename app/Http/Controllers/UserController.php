@@ -26,6 +26,20 @@ class UserController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function makers()
+    {
+        $users = User::all();
+
+        return view('user.makers',[
+            'users' => $users,
+        ]);
+    }
+
+    /**
      * Upload user avatar.
      *
      * @return \Illuminate\Http\Response
@@ -80,7 +94,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = Auth()->user();
+        $user =User::find($id);
         $myProjects = Project::where('user_id', '=', $user->id)->where('done', '=', NULL)->get();
         $myProjectsDone = Project::where('user_id', '=', $user->id)->where('done', '!=', NULL)->get();
 

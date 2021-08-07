@@ -44,3 +44,5 @@ Route::post('/{id}/favoris', [App\Http\Controllers\FavoriteController::class, 's
 //Offre
 Route::post('/{id}/accept', [App\Http\Controllers\ProjectUserController::class, 'accept'])->middleware(['auth','verified'])->name('project.accept');
 Route::post('/{id}/offre', [App\Http\Controllers\ProjectUserController::class, 'offer'])->middleware(['auth','verified'])->name('project.offer');
+//Prestataires
+Route::get('/prestataires', [App\Http\Controllers\UserController::class, 'makers'])->middleware(['auth','verified'])->name('makers.index');

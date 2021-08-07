@@ -51,8 +51,8 @@
                 </div>
 
                 <!-- Right column -->
-                <div class="grid grid-cols-1 gap-4 wrap" id="wrap">
-                <section aria-labelledby="section-2-title">
+                <div class="grid grid-cols-1 gap-4 wrap">
+                <section id="sidebar" aria-labelledby="section-2-title">
                     <h2 class="sr-only" id="section-2-title">Section title</h2>
                     <div class="rounded-lg bg-white overflow-hidden shadow" id="sidebar">
                     <div class="p-6">

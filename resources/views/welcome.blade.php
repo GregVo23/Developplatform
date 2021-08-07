@@ -50,7 +50,7 @@
         <!-- Header
         ============================================= -->
         <header id="header" class="border-b-0 no-sticky transparent-header">
-            
+
             <!--show message
             ============================================= -->
             <x-message/>
@@ -164,8 +164,8 @@
                         <div class="parallax min-vh-75" style="background-image: url('./images/designer-project.jpg'); background-size: cover; background-position: center center;" data-bottom-top="width: 40vw" data-center-top="width: 100vw;">
                             <div class="flex flex-wrap  items-center justify-center h-full">
                                 <div class="col-auto text-center">
-                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>Demander</u></a>
-                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>Recevez</u></a>
+                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>Prestataire</u></a>
+                                    <a href="#" class="text-4xl font-weight-bolder text-white inline-block mx-4 h-op-08 op-ts"><u>Client</u></a>
                                 </div>
                             </div>
                         </div>

@@ -17,7 +17,7 @@
                     </x-nav-link>
                     <x-menu-window>
                         <x-slot name="triggermenu">
-                                        
+
                             <a class="inline-flex items-center px-1 pt-6 pb-5 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 cursor-pointer focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Projets</a>
 
                         </x-slot>
@@ -44,7 +44,7 @@
                                         </p>
                                         </div>
                                     </a>
-                            
+
                                     <a href="{{ route('project.create') }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
                                         <!-- Heroicon name: outline/cursor-click -->
@@ -61,7 +61,7 @@
                                         </p>
                                         </div>
                                     </a>
-                            
+
                                     <a href="{{ route('projects.maked.mine', Auth()->user()->id) }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-yellow text-white sm:h-12 sm:w-12">
                                         <!-- Heroicon name: outline/shield-check -->
@@ -78,7 +78,7 @@
                                         </p>
                                         </div>
                                     </a>
-                            
+
                                     <a href="{{ route('projects.mine', Auth()->user()->id) }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
                                         <!-- Heroicon name: outline/view-grid -->
@@ -95,7 +95,7 @@
                                         </p>
                                         </div>
                                     </a>
-                            
+
                                     <a href="{{ route('favoris.index', Auth()->user()->id) }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-yellow text-white sm:h-12 sm:w-12">
                                         <!-- Heroicon name: outline/refresh -->
@@ -112,8 +112,8 @@
                                         </p>
                                         </div>
                                     </a>
-                            
-                                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150">
+
+                                    <a href="{{ route('makers.index') }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
                                         <!-- Heroicon name: outline/document-report -->
                                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
